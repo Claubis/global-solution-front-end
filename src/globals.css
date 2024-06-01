@@ -938,3 +938,441 @@ body {
 	font-weight: 800;
 	line-height: 126px;
 }
+
+/************************( Funcionalidade )************************/
+
+._4funcionalidades__4funcionalidades {
+	position: relative;
+	left: 0px;
+	top: 0px;
+	margin: auto;
+	width: 100%;
+	height: 100vh;
+	overflow: auto;
+}
+._4funcionalidades__4funcionalidades .fundo {
+	position: absolute;
+	left: 40.298507462686565%;
+	top: 85.5px;
+	transform: translate(-50%, 0);
+	width: 1296px;
+	height: 1428.3px;
+	background: rgba(245,234,232,1.00);
+}
+._4funcionalidades__4funcionalidades .fundo_1 {
+	position: absolute;
+	left: 40.298507462686565%;
+	top: 63px;
+	transform: translate(-50%, 0);
+	width: 1296px;
+	height: 1428.3px;
+	background: rgba(245,234,232,1.00);
+}
+._4funcionalidades__4funcionalidades .fundo_2 {
+	position: absolute;
+	left: 40.298507462686565%;
+	top: 29.7px;
+	transform: translate(-50%, 0);
+	width: 1296px;
+	height: 1428.3px;
+	background: rgba(245,234,232,1.00);
+}
+._4funcionalidades__4funcionalidades .buttoncadastrese {
+	position: absolute;
+	left: 694.8000000000001px;
+	top: 1310.4px;
+	width: 410.40000000000003px;
+	height: 45px;
+}
+._4funcionalidades__4funcionalidades .buttoncadastrese .Rectangle18 {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 410.40000000000003px;
+	height: 45px;
+	background: rgba(241,160,39,1.00);
+}
+._4funcionalidades__4funcionalidades .buttoncadastrese .faaseucadastro {
+	position: absolute;
+	left: 13.0981201171875px;
+	top: 10.8px;
+	width: 382.87317810058596px;
+	height: 23.57142791748047px;
+	display: flex;
+	justify-content: center;
+	text-align: center;
+	color: rgba(255,255,255,1.00);
+	font-family: Montserrat;
+	font-size: 14.4px;
+	font-weight: 600;
+	line-height: 17.55359973907471px;
+}
+._4funcionalidades__4funcionalidades .mockupcel2 {
+	position: absolute;
+	left: 0px;
+	top: 810.9px;
+	width: 443.4141357421875px;
+	height: 649.4729370117187px;
+}
+._4funcionalidades__4funcionalidades .mockupcel2 .Vector {
+	position: absolute;
+	left: -0.000005044571480539162px;
+	top: 212.39997996330277px;
+	width: 443.414140786759px;
+	height: 437.0729807002543px;
+}
+._4funcionalidades__4funcionalidades .mockupcel2 .mockupcel22 {
+	position: absolute;
+	left: 123.3px;
+	top: 0px;
+	width: 292.5px;
+	height: 567px;
+	object-fit: cover;
+	overflow: hidden;
+}
+._4funcionalidades__4funcionalidades .titlefuncionalidades {
+	position: absolute;
+	left: 104.4px;
+	top: 250.20000000000002px;
+	width: 504px;
+	height: 85.5px;
+	color: rgba(32,161,154,1.00);
+	font-family: Montserrat;
+	font-size: 57.6px;
+	font-weight: 800;
+	line-height: 86.4px;
+}
+._4funcionalidades__4funcionalidades .retanguloverde {
+	position: absolute;
+	left: 0px;
+	top: 8.1px;
+	width: 1296px;
+	height: 183.6px;
+	background: rgba(32,161,154,1.00);
+}
+._4funcionalidades__4funcionalidades .funcionalidade4 {
+	position: absolute;
+	left: 533.7px;
+	top: 1080.9px;
+	width: 621.9px;
+	height: 125.10000000000001px;
+}
+._4funcionalidades__4funcionalidades .funcionalidade4 .Textmapainterativo {
+	position: absolute;
+	left: 99.98096923828125px;
+	top: 0px;
+	width: 521.9190307617188px;
+	height: 125.10000000000001px;
+}
+._4funcionalidades__4funcionalidades .funcionalidade4 .Textmapainterativo .Acesseumavariedadederecursoseducativosqueabordamdesdeabiologiamarinhaattcnicasparalidarcompoluioeresgatedeanimaisenriquecendoseuconhecimentosobreomeioambientemarinhoeprticasdesustentabilidade {
+	position: absolute;
+	left: 45%;
+	top: 45px;
+	transform: translate(-50%, 0);
+	width: 521.9190307617188px;
+	height: 80.10000000000001px;
+	color: rgba(0,0,0,1.00);
+	font-family: Montserrat;
+	font-size: 18px;
+	font-weight: 400;
+	line-height: 27px;
+}
+._4funcionalidades__4funcionalidades .funcionalidade4 .Textmapainterativo .EducaoeRecursos {
+	position: absolute;
+	left: 45%;
+	top: 0px;
+	transform: translate(-50%, 0);
+	width: 521.9190307617188px;
+	height: 29.7px;
+	color: rgba(0,0,0,1.00);
+	font-family: Montserrat;
+	font-size: 18px;
+	font-weight: 700;
+	line-height: 27px;
+}
+._4funcionalidades__4funcionalidades .funcionalidade4 .iconeducao {
+	position: absolute;
+	left: 0px;
+	top: 44.1px;
+	width: 75.21504592895508px;
+	height: 73.8px;
+}
+._4funcionalidades__4funcionalidades .funcionalidade4 .iconeducao .Group40 {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 75.21504592895508px;
+	height: 73.8px;
+}
+._4funcionalidades__4funcionalidades .funcionalidade4 .iconeducao .Group40 .Rectangle48 {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 75.21504592895508px;
+	height: 73.8px;
+	background: rgba(185,226,224,1.00);
+	border-radius: 45px;
+}
+._4funcionalidades__4funcionalidades .funcionalidade4 .iconeducao .Group40 .BookAndPencil {
+	position: absolute;
+	left: 15.593389892578125px;
+	top: 15.3px;
+	width: 44.02831764221192px;
+	height: 43.2px;
+	object-fit: cover;
+	overflow: hidden;
+}
+._4funcionalidades__4funcionalidades .funcionalidade3 {
+	position: absolute;
+	left: 533.7px;
+	top: 866.7px;
+	width: 621.9px;
+	height: 161.1px;
+}
+._4funcionalidades__4funcionalidades .funcionalidade3 .Textalertasenotificaes {
+	position: absolute;
+	left: 99.98096923828125px;
+	top: 0px;
+	width: 521.9190307617188px;
+	height: 161.1px;
+}
+._4funcionalidades__4funcionalidades .funcionalidade3 .Textalertasenotificaes .Recebaalertassobrenovosencalhesavistamentosderesduospoluentesoudesastresambientaisnassuasproximidadesbaseadosemsuasconfiguraesdelocalizaoepreferncias {
+	position: absolute;
+	left: 45%;
+	top: 45px;
+	transform: translate(-50%, 0);
+	width: 521.9190307617188px;
+	height: 116.10000000000001px;
+	color: rgba(0,0,0,1.00);
+	font-family: Montserrat;
+	font-size: 18px;
+	font-weight: 400;
+	line-height: 27px;
+}
+._4funcionalidades__4funcionalidades .funcionalidade3 .Textalertasenotificaes .AlertaseNotificaes {
+	position: absolute;
+	left: 45%;
+	top: 0px;
+	transform: translate(-50%, 0);
+	width: 521.9190307617188px;
+	height: 29.7px;
+	color: rgba(0,0,0,1.00);
+	font-family: Montserrat;
+	font-size: 18px;
+	font-weight: 700;
+	line-height: 27px;
+}
+._4funcionalidades__4funcionalidades .funcionalidade3 .iconregistro {
+	position: absolute;
+	left: 0px;
+	top: 44.1px;
+	width: 75.21504592895508px;
+	height: 73.8px;
+}
+._4funcionalidades__4funcionalidades .funcionalidade3 .iconregistro .iconsiren {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 75.21504592895508px;
+	height: 73.8px;
+}
+._4funcionalidades__4funcionalidades .funcionalidade3 .iconregistro .iconsiren .Rectangle48_1 {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 75.21504592895508px;
+	height: 73.8px;
+	background: rgba(185,226,224,1.00);
+	border-radius: 45px;
+}
+._4funcionalidades__4funcionalidades .funcionalidade3 .iconregistro .iconsiren .Siren {
+	position: absolute;
+	left: 15.593389892578125px;
+	top: 15.3px;
+	width: 44.02831764221192px;
+	height: 43.2px;
+	object-fit: cover;
+	overflow: hidden;
+}
+._4funcionalidades__4funcionalidades .funcionalidade2 {
+	position: absolute;
+	left: 135.9px;
+	top: 602.1px;
+	width: 610.2px;
+	height: 161.1px;
+}
+._4funcionalidades__4funcionalidades .funcionalidade2 .Textmapainterativo_1 {
+	position: absolute;
+	left: 98.10000000000001px;
+	top: 0px;
+	width: 512.1px;
+	height: 161.1px;
+}
+._4funcionalidades__4funcionalidades .funcionalidade2 .Textmapainterativo_1 .Oaplicativoofereceummapainterativoquemostratodososencalhesreportadosemtemporealpermitindoaosusuriosvisualizaremonitorarasituaonassuasproximidadesouemescalaglobal {
+	position: absolute;
+	left: 45%;
+	top: 45px;
+	transform: translate(-50%, 0);
+	width: 512.1px;
+	height: 116.10000000000001px;
+	color: rgba(0,0,0,1.00);
+	font-family: Montserrat;
+	font-size: 18px;
+	font-weight: 400;
+	line-height: 27px;
+}
+._4funcionalidades__4funcionalidades .funcionalidade2 .Textmapainterativo_1 .MapaInterativo {
+	position: absolute;
+	left: 45%;
+	top: 0px;
+	transform: translate(-50%, 0);
+	width: 512.1px;
+	height: 29.7px;
+	color: rgba(0,0,0,1.00);
+	font-family: Montserrat;
+	font-size: 18px;
+	font-weight: 700;
+	line-height: 27px;
+}
+._4funcionalidades__4funcionalidades .funcionalidade2 .iconregistro_1 {
+	position: absolute;
+	left: 0px;
+	top: 44.1px;
+	width: 73.8px;
+	height: 73.8px;
+}
+._4funcionalidades__4funcionalidades .funcionalidade2 .iconregistro_1 .Group40_1 {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 73.8px;
+	height: 73.8px;
+	border-radius: 45px;
+}
+._4funcionalidades__4funcionalidades .funcionalidade2 .iconregistro_1 .Group40_1 .Rectangle48_2 {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 73.8px;
+	height: 73.8px;
+	background: rgba(185,226,224,1.00);
+	border-radius: 45px;
+}
+._4funcionalidades__4funcionalidades .funcionalidade2 .iconregistro_1 .Country {
+	position: absolute;
+	left: 15.3px;
+	top: 15.3px;
+	width: 43.2px;
+	height: 43.2px;
+	object-fit: cover;
+	overflow: hidden;
+}
+._4funcionalidades__4funcionalidades .funcionalidade1 {
+	position: absolute;
+	left: 135.9px;
+	top: 387.90000000000003px;
+	width: 610.2px;
+	height: 161.1px;
+}
+._4funcionalidades__4funcionalidades .funcionalidade1 .Textregistrodeincidentes {
+	position: absolute;
+	left: 98.10000000000001px;
+	top: 0px;
+	width: 512.1px;
+	height: 161.1px;
+}
+._4funcionalidades__4funcionalidades .funcionalidade1 .Textregistrodeincidentes .Utilizeoaplicativopararegistrarnosencalhesdeanimaismarinhosmastambmocorrnciasderesduospoluentesedesastresambientaismartimosincluindoalocalizaoexatadetalhesdoincidenteefotos {
+	position: absolute;
+	left: 45%;
+	top: 45px;
+	transform: translate(-50%, 0);
+	width: 512.1px;
+	height: 116.10000000000001px;
+	color: rgba(0,0,0,1.00);
+	font-family: Montserrat;
+	font-size: 18px;
+	font-weight: 400;
+	line-height: 27px;
+}
+._4funcionalidades__4funcionalidades .funcionalidade1 .Textregistrodeincidentes .RegistrodeIncidentes {
+	position: absolute;
+	left: 45%;
+	top: 0px;
+	transform: translate(-50%, 0);
+	width: 512.1px;
+	height: 29.7px;
+	color: rgba(0,0,0,1.00);
+	font-family: Montserrat;
+	font-size: 18px;
+	font-weight: 700;
+	line-height: 27px;
+}
+._4funcionalidades__4funcionalidades .funcionalidade1 .iconregistro_2 {
+	position: absolute;
+	left: 0px;
+	top: 44.1px;
+	width: 73.8px;
+	height: 73.8px;
+}
+._4funcionalidades__4funcionalidades .funcionalidade1 .iconregistro_2 .Group40_2 {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 73.8px;
+	height: 73.8px;
+	border-radius: 45px;
+}
+._4funcionalidades__4funcionalidades .funcionalidade1 .iconregistro_2 .Group40_2 .Rectangle48_3 {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 73.8px;
+	height: 73.8px;
+	background: rgba(185,226,224,1.00);
+	border-radius: 45px;
+}
+._4funcionalidades__4funcionalidades .funcionalidade1 .iconregistro_2 .TailOfWhale {
+	position: absolute;
+	left: 15.3px;
+	top: 15.3px;
+	width: 43.2px;
+	height: 43.2px;
+	object-fit: cover;
+	overflow: hidden;
+}
+._4funcionalidades__4funcionalidades .mockupcel1 {
+	position: absolute;
+	left: 692.1px;
+	top: 0px;
+	width: 755.1px;
+	height: 772.9736022949219px;
+}
+._4funcionalidades__4funcionalidades .mockupcel1 .Vector_1 {
+	position: absolute;
+	left: 90.00003602206708px;
+	top: 246.59994260072708px;
+	width: 534.0104376107455px;
+	height: 526.3736848264933px;
+}
+._4funcionalidades__4funcionalidades .mockupcel1 .mockupcel12 {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 755.1px;
+	height: 755.1px;
+	object-fit: cover;
+	overflow: hidden;
+}
+._4funcionalidades__4funcionalidades .textappMiloTech {
+	position: absolute;
+	left: 30.55970149253731%;
+	top: 8.1px;
+	transform: translate(-50%, 0);
+	width: 842.4px;
+	height: 125.10000000000001px;
+	color: rgba(255,255,255,1.00);
+	font-family: Montserrat;
+	font-size: 16.2px;
+	font-weight: 400;
+	line-height: 29.159997940063477px;
+}

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import imagem from '../../public/assets/Feedback_Rectangle33.png';
+import Header from '@/components/Header';
 
 interface FormData {
   name: string;
@@ -80,6 +81,9 @@ const Feedback: React.FC = () => {
 
   return (
     <div className="w-full h-screen overflow-auto bg-white relative mb-20">
+
+      
+
       <div className="absolute top-0 left-0 w-full h-[387px] bg-teal-700">
         <Image
           className="absolute top-0 left-1/2 transform -translate-x-1/2 w-full h-full"
@@ -94,6 +98,8 @@ const Feedback: React.FC = () => {
           </span>
         </div>
       </div>
+
+      <Header/>
 
       <form
         name="form-feedback"

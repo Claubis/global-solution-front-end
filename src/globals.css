@@ -163,3 +163,778 @@ body {
 
 /************************( Header )************************/
 
+
+.loginverdados_loginverdados {
+	position: relative;
+	left: 0px;
+	top: 0px;
+	margin: auto;
+	width: 100%;
+	height: 100vh;
+	overflow: auto;
+	background: rgba(255,255,255,1.00);
+}
+.loginverdados_loginverdados .background {
+	position: absolute;
+	left: 50.21367390950521%;
+	top: 50.160085378868736%;
+	transform: translate(-50%, -50%);
+	width: 1446.15380859375px;
+	height: 940px;
+	object-fit: cover;
+	overflow: hidden;
+}
+.loginverdados_loginverdados .menu {
+	position: absolute;
+	left: 82px;
+	top: 23px;
+	width: 1266px;
+	height: 53.00000762939453px;
+}
+.loginverdados_loginverdados .menu .button {
+	position: absolute;
+	left: 1040px;
+	top: 7px;
+	width: 226px;
+	height: 40px;
+}
+.loginverdados_loginverdados .menu .button .Rectangle28 {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 226px;
+	height: 40px;
+	border: 1px solid rgba(245.00000059604645,245.00000059604645,245.00000059604645,1);
+	box-sizing: border-box;
+}
+.loginverdados_loginverdados .menu .button .apoienossamisso {
+	position: absolute;
+	left: 23px;
+	top: 9px;
+	width: 180px;
+	height: 22px;
+	color: rgba(255,255,255,1.00);
+	font-family: Montserrat;
+	font-size: 18px;
+	font-weight: 600;
+	line-height: 21.941999435424805px;
+}
+.loginverdados_loginverdados .menu .educao {
+	position: absolute;
+	left: 881px;
+	top: 16px;
+	width: 91px;
+	height: 22px;
+	color: rgba(255,255,255,1.00);
+	font-family: Montserrat;
+	font-size: 18px;
+	font-weight: 600;
+	line-height: 21.941999435424805px;
+}
+.loginverdados_loginverdados .menu .prlanamento {
+	position: absolute;
+	left: 662px;
+	top: 16px;
+	width: 150px;
+	height: 22px;
+	color: rgba(255,255,255,1.00);
+	font-family: Montserrat;
+	font-size: 18px;
+	font-weight: 600;
+	line-height: 21.941999435424805px;
+}
+.loginverdados_loginverdados .menu .roadmap {
+	position: absolute;
+	left: 514px;
+	top: 16px;
+	width: 85px;
+	height: 22px;
+	color: rgba(255,255,255,1.00);
+	font-family: Montserrat;
+	font-size: 18px;
+	font-weight: 600;
+	line-height: 21.941999435424805px;
+}
+.loginverdados_loginverdados .menu .crowdfunding {
+	position: absolute;
+	left: 317px;
+	top: 16px;
+	width: 132px;
+	height: 22px;
+	color: rgba(255,255,255,1.00);
+	font-family: Montserrat;
+	font-size: 18px;
+	font-weight: 600;
+	line-height: 21.941999435424805px;
+}
+.loginverdados_loginverdados .menu .sobreoprojeto {
+	position: absolute;
+	left: 110px;
+	top: 16px;
+	width: 141px;
+	height: 22px;
+	color: rgba(255,255,255,1.00);
+	font-family: Montserrat;
+	font-size: 18px;
+	font-weight: 600;
+	line-height: 21.941999435424805px;
+}
+.loginverdados_loginverdados .menu .logoimage {
+	position: absolute;
+	left: 0.0000014979934803704964px;
+	top: -0.0000021855692580174946px;
+	width: 49.99999850200652px;
+	height: 53.000006000266524px;
+	object-fit: cover;
+	overflow: hidden;
+}
+.loginverdados_loginverdados .rectangleright {
+	position: absolute;
+	left: 578px;
+	top: 138px;
+	width: 726px;
+	height: 662px;
+	background: rgba(255,255,255,1.00);
+	border-radius: 10px;
+}
+.loginverdados_loginverdados .rectangleleft {
+	position: absolute;
+	left: 126.0001220703125px;
+	top: 136px;
+	width: 470px;
+	height: 662px;
+	border-radius: 10px;
+}
+.loginverdados_loginverdados .rectangleleft .imagegradiente {
+	position: absolute;
+	left: 0.34747314453125px;
+	top: 0px;
+	width: 468.5843505859375px;
+	height: 662px;
+	object-fit: cover;
+	overflow: hidden;
+	background: linear-gradient(0deg, rgba(0,0,0,0.30), rgba(0,0,0,0.30));
+	border-radius: 10px;
+	background-size: cover;
+}
+.loginverdados_loginverdados .rectangleleft .glassmorphism {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	width: 470px;
+	height: 662px;
+	border-radius: 10px;
+}
+.loginverdados_loginverdados .Vector {
+	position: absolute;
+	left: 875px;
+	top: 251.43003845214844px;
+	width: 335.7900085449219px;
+	height: 7.139916896820068px;
+}
+.loginverdados_loginverdados .textleft {
+	position: absolute;
+	left: 192px;
+	top: 206px;
+	width: 352px;
+	height: 486px;
+}
+.loginverdados_loginverdados .textleft .text {
+	position: absolute;
+	left: 0px;
+	top: 234px;
+	width: 332.335205078125px;
+	height: 252px;
+	color: rgba(255,255,255,1.00);
+	font-family: Montserrat;
+	font-size: 18px;
+	font-weight: 500;
+	line-height: 36px;
+}
+.loginverdados_loginverdados .textleft .title {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 352px;
+	height: 156px;
+	color: rgba(255,255,255,1.00);
+	font-family: Montserrat;
+	font-size: 64px;
+	font-weight: 800;
+	line-height: 78.01599884033203px;
+}
+.loginverdados_loginverdados .text_1 {
+	position: absolute;
+	left: 672px;
+	top: 240px;
+	width: 172px;
+	height: 36px;
+	display: flex;
+	justify-content: center;
+	text-align: center;
+	color: rgba(241,160,39,1.00);
+	font-family: Montserrat;
+	font-size: 24px;
+	font-weight: 700;
+	line-height: 36px;
+}
+.loginverdados_loginverdados .buttons {
+	position: absolute;
+	left: 672px;
+	top: 702px;
+	width: 539px;
+	height: 47px;
+	border-radius: 50px;
+}
+.loginverdados_loginverdados .buttons .buttonatualizar {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 254px;
+	height: 47px;
+	border-radius: 50px;
+}
+.loginverdados_loginverdados .buttons .buttonatualizar .Rectangle33 {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 254px;
+	height: 47px;
+	background: rgba(0,120,113,1.00);
+	border-radius: 50px;
+}
+.loginverdados_loginverdados .buttons .buttonatualizar .AtualizarDados {
+	position: absolute;
+	left: 51.99998092651367px;
+	top: 10px;
+	width: 151px;
+	height: 27px;
+	color: rgba(255,255,255,1.00);
+	font-family: Montserrat;
+	font-size: 18px;
+	font-weight: 500;
+	line-height: 27px;
+}
+.loginverdados_loginverdados .buttons .buttondeletar {
+	position: absolute;
+	left: 286px;
+	top: 0px;
+	width: 253px;
+	height: 47px;
+	border-radius: 50px;
+}
+.loginverdados_loginverdados .buttons .buttondeletar .Rectangle33_1 {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 253px;
+	height: 47px;
+	background: rgba(192,192,192,1.00);
+	border-radius: 50px;
+}
+.loginverdados_loginverdados .buttons .buttondeletar .DeletarConta {
+	position: absolute;
+	left: 63px;
+	top: 10px;
+	width: 128px;
+	height: 27px;
+	color: rgba(255,255,255,1.00);
+	font-family: Montserrat;
+	font-size: 18px;
+	font-weight: 500;
+	line-height: 27px;
+}
+.loginverdados_loginverdados .inputlastname {
+	position: absolute;
+	left: 672px;
+	top: 429px;
+	width: 539px;
+	height: 35px;
+}
+.loginverdados_loginverdados .inputlastname .Sobrenome {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 171.57357788085938px;
+	height: 27px;
+	color: rgba(38,57,77,1.00);
+	font-family: Montserrat;
+	font-size: 18px;
+	font-weight: 400;
+	line-height: 27px;
+}
+.loginverdados_loginverdados .inputlastname .Line8 {
+	position: absolute;
+	left: 0px;
+	top: 35px;
+	width: 539px;
+	height: 0px;
+	border: 2px solid rgba(0,120.00000044703484,113.00000086426735,1);
+}
+.loginverdados_loginverdados .inputtelephone {
+	position: absolute;
+	left: 672px;
+	top: 497px;
+	width: 539px;
+	height: 35px;
+}
+.loginverdados_loginverdados .inputtelephone .Telefone {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 124.63363647460938px;
+	height: 27px;
+	color: rgba(38,57,77,1.00);
+	font-family: Montserrat;
+	font-size: 18px;
+	font-weight: 400;
+	line-height: 27px;
+}
+.loginverdados_loginverdados .inputtelephone .Line8_1 {
+	position: absolute;
+	left: 0px;
+	top: 35px;
+	width: 539px;
+	height: 0px;
+	border: 2px solid rgba(142.00000673532486,153.00000607967377,171.00000500679016,1);
+}
+.loginverdados_loginverdados .inputtelephone_1 {
+	position: absolute;
+	left: 672px;
+	top: 565px;
+	width: 539px;
+	height: 35px;
+}
+.loginverdados_loginverdados .inputtelephone_1 .Email {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 93.8798828125px;
+	height: 27px;
+	color: rgba(38,57,77,1.00);
+	font-family: Montserrat;
+	font-size: 18px;
+	font-weight: 400;
+	line-height: 27px;
+}
+.loginverdados_loginverdados .inputtelephone_1 .Line8_2 {
+	position: absolute;
+	left: 0px;
+	top: 35px;
+	width: 539px;
+	height: 0px;
+	border: 2px solid rgba(142.00000673532486,153.00000607967377,171.00000500679016,1);
+}
+.loginverdados_loginverdados .inputname {
+	position: absolute;
+	left: 672px;
+	top: 361px;
+	width: 539px;
+	height: 35px;
+}
+.loginverdados_loginverdados .inputname .Nome {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 90.64264678955078px;
+	height: 27px;
+	color: rgba(0,0,0,1.00);
+	font-family: Montserrat;
+	font-size: 18px;
+	font-weight: 400;
+	line-height: 27px;
+}
+.loginverdados_loginverdados .inputname .Line9 {
+	position: absolute;
+	left: 0px;
+	top: 35px;
+	width: 539px;
+	height: 0px;
+	border: 2px solid rgba(142.00000673532486,153.00000607967377,171.00000500679016,1);
+}
+
+
+/************************( Missao )************************/
+
+
+
+._2misso__2misso {
+	position: relative;
+	left: 0px;
+	top: 0px;
+	margin: auto;
+	width: 100%;
+	height: 100vh;
+	overflow: auto;
+}
+._2misso__2misso .caroussel {
+	position: absolute;
+	left: 53px;
+	top: 467px;
+	width: 1329px;
+	height: 605px;
+}
+._2misso__2misso .caroussel .carouselimage {
+	position: absolute;
+	left: 49.96237772761475%;
+	top: 0px;
+	transform: translate(-50%, 0);
+	width: 1328px;
+	height: 605px;
+	object-fit: cover;
+	overflow: hidden;
+	background: linear-gradient(0deg, rgba(0,0,0,0.20), rgba(0,0,0,0.20));
+	mix-blend-mode: normal;
+}
+._2misso__2misso .caroussel .carouselglassbox {
+	position: absolute;
+	left: 1px;
+	top: 382px;
+	width: 1328px;
+	height: 223px;
+	background: rgba(255,255,255,0.09);
+	border: 1px solid rgba(255,255,255,1);
+	box-sizing: border-box;
+}
+._2misso__2misso .caroussel .carouseltext {
+	position: absolute;
+	left: 49.96237772761475%;
+	top: 420px;
+	transform: translate(-50%, 0);
+	width: 1210px;
+	height: 128px;
+	color: rgba(255,255,255,1.00);
+	font-family: Montserrat;
+	font-size: 24px;
+	font-weight: 500;
+	line-height: 36px;
+}
+._2misso__2misso .caroussel .Group33 {
+	position: absolute;
+	left: 50.03762227238525%;
+	top: 592px;
+	transform: translate(-50%, 0);
+	width: 76px;
+	height: 0.000001223919070980628px;
+}
+._2misso__2misso .caroussel .Group33 .Line2 {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 33px;
+	height: 0px;
+}
+._2misso__2misso .caroussel .Group33 .Line3 {
+	position: absolute;
+	left: 40px;
+	top: -0.0000012239189572937903px;
+	width: 14px;
+	height: 0.0000012239189572937903px;
+}
+._2misso__2misso .caroussel .Group33 .Line4 {
+	position: absolute;
+	left: 62px;
+	top: -0.0000012239189572937903px;
+	width: 14px;
+	height: 0.0000012239189572937903px;
+}
+._2misso__2misso .caroussel .arrowfoward {
+	position: absolute;
+	left: 1269px;
+	top: 279px;
+	width: 48px;
+	height: 48px;
+	object-fit: cover;
+	overflow: hidden;
+}
+._2misso__2misso .caroussel .arrowback {
+	position: absolute;
+	left: 12px;
+	top: 279px;
+	width: 48px;
+	height: 48px;
+	object-fit: cover;
+	overflow: hidden;
+}
+._2misso__2misso .contbackground {
+	position: absolute;
+	left: -7px;
+	top: -1px;
+	width: 1447px;
+	height: 54px;
+	object-fit: cover;
+	overflow: hidden;
+}
+._2misso__2misso .card1 {
+	position: absolute;
+	left: 139px;
+	top: 6px;
+	width: 332px;
+	height: 357px;
+}
+._2misso__2misso .card1 .Rectangle39 {
+	position: absolute;
+	left: 0px;
+	top: 25px;
+	width: 332px;
+	height: 332px;
+	background: rgba(255,255,255,0.31);
+	border-radius: 40px;
+	border: 1px solid rgba(255,255,255,1);
+	box-sizing: border-box;
+}
+._2misso__2misso .card1 .Address {
+	position: absolute;
+	left: 125px;
+	top: 0px;
+	width: 80px;
+	height: 80px;
+	object-fit: cover;
+	overflow: hidden;
+}
+._2misso__2misso .card1 .ReporteInstantneo {
+	position: absolute;
+	left: 57px;
+	top: 127px;
+	width: 217px;
+	height: 24px;
+	color: rgba(4,142,140,1.00);
+	font-family: Montserrat;
+	font-size: 20px;
+	font-weight: 700;
+	line-height: 24.3799991607666px;
+}
+._2misso__2misso .card1 .Marquerapidamentealocalizaodeencalhesealerteasautoridadeslocaiscomapenasalgunstoques {
+	position: absolute;
+	left: 28px;
+	top: 191px;
+	width: 275px;
+	height: 108px;
+	display: flex;
+	justify-content: center;
+	text-align: center;
+	color: rgba(4,142,140,1.00);
+	font-family: Montserrat;
+	font-size: 18px;
+	font-weight: 500;
+	line-height: 27px;
+}
+._2misso__2misso .card3 {
+	position: absolute;
+	left: 963px;
+	top: 3px;
+	width: 332px;
+	height: 360px;
+}
+._2misso__2misso .card3 .Rectangle41 {
+	position: absolute;
+	left: 0px;
+	top: 28px;
+	width: 332px;
+	height: 332px;
+	background: rgba(255,255,255,0.31);
+	border-radius: 40px;
+	border: 1px solid rgba(255,255,255,1);
+	box-sizing: border-box;
+}
+._2misso__2misso .card3 .AprendaeContribua {
+	position: absolute;
+	left: 57px;
+	top: 130px;
+	width: 219px;
+	height: 24px;
+	color: rgba(4,142,140,1.00);
+	font-family: Montserrat;
+	font-size: 20px;
+	font-weight: 700;
+	line-height: 24.3799991607666px;
+}
+._2misso__2misso .card3 .Acessemateriaiseducativosesaibacomosuasaespodemfazeradiferenanaconservaodosoceanos {
+	position: absolute;
+	left: 29px;
+	top: 194px;
+	width: 275px;
+	height: 108px;
+	display: flex;
+	justify-content: center;
+	text-align: center;
+	color: rgba(4,142,140,1.00);
+	font-family: Montserrat;
+	font-size: 18px;
+	font-weight: 500;
+	line-height: 27px;
+}
+._2misso__2misso .card3 .Storytelling {
+	position: absolute;
+	left: 126px;
+	top: 0px;
+	width: 80px;
+	height: 80px;
+	object-fit: cover;
+	overflow: hidden;
+}
+._2misso__2misso .card2 {
+	position: absolute;
+	left: 551px;
+	top: 0px;
+	width: 332px;
+	height: 363px;
+}
+._2misso__2misso .card2 .Rectangle40 {
+	position: absolute;
+	left: 0px;
+	top: 31px;
+	width: 332px;
+	height: 332px;
+	background: rgba(255,255,255,0.31);
+	border-radius: 40px;
+	border: 1px solid rgba(255,255,255,1);
+	box-sizing: border-box;
+}
+._2misso__2misso .card2 .FiqueInformado {
+	position: absolute;
+	left: 79px;
+	top: 133px;
+	width: 175px;
+	height: 24px;
+	color: rgba(4,142,140,1.00);
+	font-family: Montserrat;
+	font-size: 20px;
+	font-weight: 700;
+	line-height: 24.3799991607666px;
+}
+._2misso__2misso .card2 .Recebanotificaesemtemporealsobreencalhesprximoseeventosdeconservaomarinha {
+	position: absolute;
+	left: 29px;
+	top: 197px;
+	width: 275px;
+	height: 108px;
+	display: flex;
+	justify-content: center;
+	text-align: center;
+	color: rgba(4,142,140,1.00);
+	font-family: Montserrat;
+	font-size: 18px;
+	font-weight: 500;
+	line-height: 27px;
+}
+._2misso__2misso .card2 .Alarm {
+	position: absolute;
+	left: 126px;
+	top: 0px;
+	width: 80px;
+	height: 80px;
+	object-fit: cover;
+	overflow: hidden;
+}
+
+
+/************************( Projeto )************************/
+
+
+._3sobreoprojeto__3sobreoprojeto {
+	position: relative;
+	left: 0px;
+	top: 0px;
+	margin: auto;
+	width: 100%;
+	height: 100vh;
+	overflow: auto;
+	background: rgba(245,234,232,1.00);
+}
+._3sobreoprojeto__3sobreoprojeto .background {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 1440px;
+	height: 940px;
+}
+._3sobreoprojeto__3sobreoprojeto .background .fundo {
+	position: absolute;
+	left: 50%;
+	top: 0px;
+	transform: translate(-50%, 0);
+	width: 1440px;
+	height: 940px;
+	background: rgba(255,255,255,1.00);
+}
+._3sobreoprojeto__3sobreoprojeto .background .Rectangle48 {
+	position: absolute;
+	left: 0px;
+	top: 854px;
+	width: 1440px;
+	height: 86px;
+	background: rgba(32,161,154,1.00);
+}
+._3sobreoprojeto__3sobreoprojeto .videopitch {
+	position: absolute;
+	left: 572px;
+	top: 224.19744873046875px;
+	width: 800.9197998046875px;
+	height: 497.86907958984375px;
+}
+._3sobreoprojeto__3sobreoprojeto .videopitch .video {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 800.9197998046875px;
+	height: 497.86907958984375px;
+	background: linear-gradient(0deg, rgba(217,217,217,1.00), rgba(217,217,217,1.00));
+	background-size: cover;
+}
+._3sobreoprojeto__3sobreoprojeto .videopitch .play {
+	position: absolute;
+	left: 336.24200439453125px;
+	top: 184.71669006347656px;
+	width: 129.87889099121094px;
+	height: 129.87889099121094px;
+	object-fit: cover;
+	overflow: hidden;
+}
+._3sobreoprojeto__3sobreoprojeto .text {
+	position: absolute;
+	left: 78px;
+	top: 212px;
+	width: 400px;
+	height: 480px;
+}
+._3sobreoprojeto__3sobreoprojeto .text .subtitle {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 363px;
+	height: 51px;
+	color: rgba(32,161,154,1.00);
+	font-family: Montserrat;
+	font-size: 40px;
+	font-weight: 700;
+	line-height: 60px;
+}
+._3sobreoprojeto__3sobreoprojeto .text .text_1 {
+	position: absolute;
+	left: 0px;
+	top: 96px;
+	width: 400px;
+	height: 384px;
+	color: rgba(0,0,0,1.00);
+	font-family: Montserrat;
+	font-size: 20px;
+	font-weight: 400;
+	line-height: 32px;
+}
+._3sobreoprojeto__3sobreoprojeto .title {
+	position: absolute;
+	left: 380px;
+	top: 39px;
+	width: 680px;
+	height: 109px;
+	display: flex;
+	justify-content: flex-end;
+	text-align: right;
+	color: rgba(241,160,39,1.00);
+	font-family: Montserrat;
+	font-size: 84px;
+	font-weight: 800;
+	line-height: 126px;
+}

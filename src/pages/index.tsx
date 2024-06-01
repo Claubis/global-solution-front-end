@@ -9,14 +9,18 @@ import ModalLogin from '../components/ModalLogin'
 import AboutForms from '../components/AboutForms'
 import InfiniteMovingCardsDemo from './CarroselPartner' */
 
-import Feedback from "./Feedback"
+import HomePage from "@/components/HomePage"
+import _2misso from "@/components/Missao"
+import _3sobreoprojeto from "@/components/_3sobreoprojeto"
 
 export default function Home() {
 
   return (
     <div> 
       
-      <Feedback/>
+      <HomePage/>
+      <_2misso/>
+      <_3sobreoprojeto/>
 
     </div>
   )

@@ -10,9 +10,14 @@ import AboutForms from '../components/AboutForms'
 import InfiniteMovingCardsDemo from './CarroselPartner' */
 
 import HomePage from "@/components/HomePage"
-import _2misso from "@/components/Missao"
-import _3sobreoprojeto from "@/components/_3sobreoprojeto"
-import _4funcionalidades from "@/components/_4funcionalidades"
+import Missao from "@/components/Missao"
+import AboutProject from "@/components/AboutProject"
+import Funcionalidades from "@/components/Funcionalidades"
+import Data from "@/components/Data"
+import AboutMission from "@/components/AboutMission"
+import CarroselEvents from "@/components/CarroselEvents"
+import RoadMap from "@/components/RoadMap"
+import Education from "@/components/Education"
 
 export default function Home() {
 
@@ -20,9 +25,14 @@ export default function Home() {
     <div> 
       
       <HomePage/>
-      <_2misso/>
-      <_3sobreoprojeto/>
-      <_4funcionalidades/>
+      <Missao/>
+      <AboutProject/>
+      <Funcionalidades/>
+      <Data/>
+      <AboutMission/>
+      <CarroselEvents/>
+      <RoadMap/>
+      <Education/>
 
     </div>
   )

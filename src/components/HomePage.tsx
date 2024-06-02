@@ -12,7 +12,7 @@ const HomePage: React.FC = () => {
         <Header />
         <div className="container mx-auto px-4 py-16 flex items-center justify-end min-h-screen">
           <div className="text-right text-white">
-            <h1 className="text-6xl font-bold">Transforme sua paixão</h1>
+            <h1 className="text-6xl font-montserrat">Transforme sua paixão</h1>
             <p className="text-6xl">pelo mar em ação</p>
 
             <p className="mt-4 text-2xl">Descubra como cada um de nós pode fazer a diferença. Use nossa plataforma para registrar encalhes, participar de iniciativas de conservação e aprender mais sobre como você pode ajudar a salvar nossos oceanos.</p>

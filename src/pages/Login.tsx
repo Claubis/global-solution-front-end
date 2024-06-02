@@ -1,68 +1,64 @@
-import React from 'react';
-import Image from 'next/image';
+import React from 'react'
+import imagem from '../../public/assets/Login/loginverdados_background.png'
+import imagem1 from '../../public/assets/Login/loginverdados_logoimage.png'
+import imagem2 from '../../public/assets/Login/loginverdados_Vector.png'
+import imagem3 from '../../public/assets/Login/loginverdados_Line8.png'
+import imagem4 from '../../public/assets/Login/loginverdados_Line8_1.png'
+import imagem5 from '../../public/assets/Login/loginverdados_Line8_2.png'
+import imagem6 from '../../public/assets/Login/loginverdados_Line9.png'
 
-const LoginPage: React.FC = () => {
-  return (
-    <div className="bg-gradient-to-r from-teal-500 to-blue-500 min-h-screen flex items-center justify-center">
-      <div className="bg-white shadow-lg rounded-lg overflow-hidden w-full max-w-4xl flex">
-        <div className="w-1/2 bg-cover bg-center p-8" style={{ backgroundImage: `url('/assets/login-bg.png')` }}>
-          <div className="h-full flex flex-col justify-center text-white">
-            <h2 className="text-4xl font-bold mb-4">Bem-vindo de volta!</h2>
-            <p className="text-lg mb-8">
-              Se você já faz parte da nossa comunidade, estamos felizes em vê-lo de volta! Insira suas credenciais ao lado para continuar acessando o site e contribuir para a conservação marinha. Seu engajamento é essencial para ajudar a proteger a vida marinha.
-            </p>
-          </div>
-        </div>
-        <div className="w-1/2 p-8">
-          <h3 className="text-2xl font-bold text-orange-500 mb-6">LOGIN</h3>
-          <form>
-            <div className="mb-4">
-              <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
-                E-mail
-              </label>
-              <input 
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
-                id="email" 
-                type="email" 
-                placeholder="E-mail"
-              />
-            </div>
-            <div className="mb-4">
-              <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
-                Senha
-              </label>
-              <input 
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
-                id="password" 
-                type="password" 
-                placeholder="Senha"
-              />
-            </div>
-            <div className="mb-6 text-right">
-              <a className="inline-block align-baseline font-bold text-sm text-orange-500 hover:text-orange-800" href="#">
-                Esqueceu sua senha?
-              </a>
-            </div>
-            <div className="flex items-center justify-between">
-              <button 
-                className="bg-teal-700 hover:bg-teal-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" 
-                type="button"
-              >
-                Login
-              </button>
-              <button 
-                className="bg-white text-gray-700 font-bold py-2 px-4 rounded border border-gray-300 flex items-center justify-center focus:outline-none focus:shadow-outline" 
-                type="button"
-              >
-                <img src="/assets/google-icon.svg" alt="Google" className="h-5 w-5 mr-2" />
-                Google
-              </button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  );
+export default function Login () {
+	return (
+		<div className='loginverdados_loginverdados'>
+			<img className='background' src = {imagem.src} />
+			<div className='menu'>
+				<div className='button'>
+					<div className='Rectangle28'/>
+					<span className='apoienossamisso'>apoie nossa missÃ£o</span>
+				</div>
+				<span className='educao'>educacao</span>
+				<span className='prlanamento'>pre-lancamento</span>
+				<span className='roadmap'>roadmap</span>
+				<span className='crowdfunding'>crowdfunding</span>
+				<span className='sobreoprojeto'>sobre o projeto</span>
+				<img className='logoimage' src = {imagem1.src} />
+			</div>
+			<div className='rectangleright'/>
+			<div className='rectangleleft'><div className='imagegradiente' style={{backgroundImage: `linear-gradient(0deg, rgba(0,0,0,0.30), rgba(0,0,0,0.30)),url(${'/assets/Login/loginverdados_imagegradiente.png'})`}}/>
+				<div className='glassmorphism'/>
+			</div>
+			<img className='Vector' src = {imagem2.src} />
+			<div className='textleft'>
+				<span className='text'>Estamos felizes em ve-lo novamente! Aqui na sua Ã¡rea pessoal, vocÃª pode gerenciar suas informaÃ§Ãµes e configuraÃ§Ãµes de conta para continuar aproveitando todas as funcionalidades do aplicativo da melhor forma possÃ­vel.</span>
+				<span className='title'>olá¡, Nome!</span>
+			</div>
+			<span className='text_1'>MEUS DADOS</span>
+			<div className='buttons'>
+				<div className='buttonatualizar'>
+					<div className='Rectangle33'/>
+					<span className='AtualizarDados'>Atualizar Dados</span>
+				</div>
+				<div className='buttondeletar'>
+					<div className='Rectangle33_1'/>
+					<span className='DeletarConta'>Deletar Conta</span>
+				</div>
+			</div>
+			<div className='inputlastname'>
+				<span className='Sobrenome'>Sobrenome</span>
+				<img className='Line8' src = {imagem3.src} />
+			</div>
+			<div className='inputtelephone'>
+				<span className='Telefone'>Telefone</span>
+				<img className='Line8_1' src = {imagem4.src} />
+			</div>
+			<div className='inputtelephone_1'>
+				<span className='Email'>E-mail</span>
+				<img className='Line8_2' src = {imagem5.src} />
+			</div>
+			<div className='inputname'>
+				<span className='Nome'>Nome</span>
+				<img className='Line9' src = {imagem6.src} />
+			</div>
+		</div>
+	)
 }
-
-export default LoginPage;

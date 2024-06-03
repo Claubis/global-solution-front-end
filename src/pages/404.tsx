@@ -1,6 +1,7 @@
 import React from 'react';
+import Link from 'next/link';
+
 import ImgAsset from '../../public/assets/assets_logovetorizado021.png';
-import imagem2 from '../../public/assets/_404notfound_background.png';
 import imagem3 from '../../public/assets/404.png';
 
 const NotFoundPage: React.FC = () => {
@@ -19,7 +20,7 @@ const NotFoundPage: React.FC = () => {
         <div className="mt-16 mb-8">
           <button className="relative bg-white text-teal-700 font-bold text-lg py-3 px-8 border border-white shadow-lg">
             <span className="absolute inset-0 bg-transparent border border-white"></span>
-            <span className="relative"><a href="/">voltar a superfície</a></span>
+            <span className="relative"><Link href="/">voltar a superfície</Link></span>
           </button>
         </div>
 

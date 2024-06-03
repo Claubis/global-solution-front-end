@@ -4,7 +4,7 @@ import imagem from '../../public/assets/FormOcorrencia/mapa.png';
 import icone from '../../public/assets/FormOcorrencia/Released Fish.png'; // Substitua pelo caminho correto do ícone
 
 const FormOcorrencia: React.FC = () => {
-  const [selection, setSelection] = useState<string>('');
+  const [selection, setSelection] = useState<string>('animal');
   const [step, setStep] = useState<number>(1);
 
   const nextStep = () => setStep(prevStep => prevStep + 1);
@@ -23,10 +23,10 @@ const FormOcorrencia: React.FC = () => {
         </div>
 
         <div className="flex justify-center gap-5 w-full bg-gray-200 p-3">
-          <button onClick={() => { setSelection('animal'); setStep(1); }} className="bg-white text-black py-2 px-4 rounded w-full">
+          <button onClick={() => { setSelection('animal'); setStep(1); }} className={`py-2 px-4 rounded w-full ${selection === 'animal' ? 'bg-white text-black' : 'bg-gray-200 text-black'}`}>
             Encalhe
           </button>
-          <button onClick={() => { setSelection('poluente'); setStep(1); }} className="bg-gray-200 text-black py-2 px-4 rounded w-full">
+          <button onClick={() => { setSelection('poluente'); setStep(1); }} className={`py-2 px-4 rounded w-full ${selection === 'poluente' ? 'bg-white text-black' : 'bg-gray-200 text-black'}`}>
             Poluente (Lixo)
           </button>
         </div>
@@ -145,6 +145,128 @@ const AnimalForm: React.FC<AnimalFormProps> = ({ step, nextStep, prevStep }) => 
               <option value="Sim">Sim</option>
               <option value="Não">Não</option>
             </select>
+          </div>
+          <div className="flex justify-between">
+            <button type="button" onClick={prevStep} className="bg-gray-200 text-black py-2 px-4 rounded">
+              Back
+            </button>
+            <button type="button" onClick={nextStep} className="bg-[#20A19A] text-white py-2 px-4 rounded">
+              Next
+            </button>
+          </div>
+        </>
+      )}
+
+      {step === 3 && (
+        <>
+          <div className="flex flex-col space-y-2">
+            <label htmlFor="endereco" className="block text-sm font-medium text-gray-700">
+              Endereço
+            </label>
+            <div className="flex gap-2">
+              <button type="button" className="bg-gray-200 text-black py-2 px-4 rounded w-full">
+                Inserir Manualmente
+              </button>
+              <button type="button" className="bg-gray-200 text-black py-2 px-4 rounded w-full">
+                Usar Localização Atual
+              </button>
+            </div>
+          </div>
+          <div className="flex flex-col space-y-2 mt-4">
+            <label htmlFor="cep" className="block text-sm font-medium text-gray-700">
+              CEP
+            </label>
+            <input
+              type="text"
+              name="cep"
+              id="cep"
+              className="w-full p-2 border border-gray-300 rounded"
+              placeholder="CEP"
+            />
+          </div>
+          <div className="flex flex-col space-y-2">
+            <label htmlFor="estado" className="block text-sm font-medium text-gray-700">
+              Estado
+            </label>
+            <input
+              type="text"
+              name="estado"
+              id="estado"
+              className="w-full p-2 border border-gray-300 rounded"
+              placeholder="Estado"
+            />
+          </div>
+          <div className="flex flex-col space-y-2">
+            <label htmlFor="cidade" className="block text-sm font-medium text-gray-700">
+              Cidade
+            </label>
+            <input
+              type="text"
+              name="cidade"
+              id="cidade"
+              className="w-full p-2 border border-gray-300 rounded"
+              placeholder="Cidade"
+            />
+          </div>
+          <div className="flex flex-col space-y-2">
+            <label htmlFor="rua" className="block text-sm font-medium text-gray-700">
+              Rua
+            </label>
+            <input
+              type="text"
+              name="rua"
+              id="rua"
+              className="w-full p-2 border border-gray-300 rounded"
+              placeholder="Rua"
+            />
+          </div>
+          <div className="flex flex-col space-y-2">
+            <label htmlFor="complemento" className="block text-sm font-medium text-gray-700">
+              Complemento
+            </label>
+            <input
+              type="text"
+              name="complemento"
+              id="complemento"
+              className="w-full p-2 border border-gray-300 rounded"
+              placeholder="Complemento"
+            />
+          </div>
+          <div className="flex justify-between">
+            <button type="button" onClick={prevStep} className="bg-gray-200 text-black py-2 px-4 rounded">
+              Back
+            </button>
+            <button type="button" onClick={nextStep} className="bg-[#20A19A] text-white py-2 px-4 rounded">
+              Next
+            </button>
+          </div>
+        </>
+      )}
+
+      {step === 4 && (
+        <>
+          <div className="flex flex-col space-y-2">
+            <label htmlFor="foto" className="block text-sm font-medium text-gray-700">
+              Anexar Foto
+            </label>
+            <input
+              type="file"
+              name="foto"
+              id="foto"
+              className="w-full p-2 border border-gray-300 rounded"
+            />
+          </div>
+          <div className="flex flex-col space-y-2">
+            <label htmlFor="descricao" className="block text-sm font-medium text-gray-700">
+              Descrição do Ocorrido
+            </label>
+            <textarea
+              name="descricao"
+              id="descricao"
+              rows={4}
+              className="w-full p-2 border border-gray-300 rounded"
+              placeholder="Descreva o ocorrido"
+            ></textarea>
           </div>
           <div className="flex justify-between">
             <button type="button" onClick={prevStep} className="bg-gray-200 text-black py-2 px-4 rounded">

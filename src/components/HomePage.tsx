@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 
 import imagem1 from '../../public/assets/Desktop_Rectangle20.png';
 import imagem2 from '../../public/assets/Slide Up.png'
@@ -17,8 +18,10 @@ const HomePage: React.FC = () => {
             <p className="mt-4 text-2xl">Descubra como cada um de nós pode fazer a diferença. Use nossa plataforma para registrar encalhes, participar de iniciativas de conservação e aprender mais sobre como você pode ajudar a salvar nossos oceanos.</p>
     
             <div className="mt-6 flex justify-end">
-              <button className="bg-[#F1A027] text-white px-4 py-2 rounded mr-2"><a href="/FormOcorrencia">Registrar ocorrência</a></button>
-              <button className="bg-transparent text-white px-4 py-2 rounded border border-white"><a href="/Login">Saiba mais</a></button>
+              
+              <button className="bg-[#F1A027] text-white px-4 py-2 rounded mr-2"><Link href="/FormOcorrencia">Registrar ocorrência</Link></button>
+              
+              <button className="bg-transparent text-white px-4 py-2 rounded border border-white"><Link href="/Login">Saiba mais</Link></button>
             </div>
 
             

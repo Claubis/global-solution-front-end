@@ -1,12 +1,17 @@
 import React, { useState } from 'react';
+import Image from 'next/image';
+
+import imagem from "../../public/assets/Carrosel/imagem1.png"
+import imagem1 from "../../public/assets/Carrosel/imagem2.png"
+import imagem2 from "../../public/assets/Carrosel/imagem3.png"
 
 const CarroselEvents: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const slides = [
-    { id: 1, content: 'Slide 1' },
-    { id: 2, content: 'Slide 2' },
-    { id: 3, content: 'Slide 3' },
+    { id: 1, content: <Image src={imagem} alt="Slide 1" /> },
+    { id: 2, content: <Image src={imagem1} alt="Slide 1" /> },
+    { id: 3, content: <Image src={imagem2} alt="Slide 1" /> },
     { id: 4, content: 'Slide 4' },
     { id: 5, content: 'Slide 5' },
   ];
@@ -31,7 +36,7 @@ const CarroselEvents: React.FC = () => {
             key={slide.id}
             className="w-1/3 flex-shrink-0 p-4 transition-transform duration-500"
           >
-            <div className="bg-indigo-50 rounded-2xl h-96 flex justify-center items-center">
+            <div className=" rounded-2xl h-96 flex justify-center items-center mb-10">
               <span className="text-2xl font-semibold text-indigo-600">
                 {slide.content}
               </span>
@@ -42,10 +47,10 @@ const CarroselEvents: React.FC = () => {
       <div className="absolute bottom-12 left-1/2 transform -translate-x-1/2 flex space-x-4">
         <button
           onClick={prevSlide}
-          className="p-2 flex justify-center items-center border border-solid border-indigo-600 w-12 h-12 transition-all duration-500 rounded-full hover:bg-indigo-600"
+          className="p-2 flex justify-center items-center border border-solid border-white w-12 h-12 transition-all duration-500 rounded-full hover:bg-indigo-600"
         >
           <svg
-            className="h-5 w-5 text-indigo-600 group-hover:text-white"
+            className="h-5 w-5 text-white group-hover:text-white"
             xmlns="http://www.w3.org/2000/svg"
             width="16"
             height="16"
@@ -63,10 +68,10 @@ const CarroselEvents: React.FC = () => {
         </button>
         <button
           onClick={nextSlide}
-          className="p-2 flex justify-center items-center border border-solid border-indigo-600 w-12 h-12 transition-all duration-500 rounded-full hover:bg-indigo-600"
+          className="p-2 flex justify-center items-center border border-solid border-white w-12 h-12 transition-all duration-500 rounded-full hover:bg-indigo-600"
         >
           <svg
-            className="h-5 w-5 text-indigo-600 group-hover:text-white"
+            className="h-5 w-5 text-white group-hover:text-white"
             xmlns="http://www.w3.org/2000/svg"
             width="16"
             height="16"

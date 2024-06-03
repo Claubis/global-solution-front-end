@@ -16,7 +16,7 @@ import Funcionalidades from "@/components/Funcionalidades"
 import Data from "@/components/Data"
 import AboutMission from "@/components/AboutMission"
 import CarroselEvents from "@/components/CarroselEvents"
-import RoadMap from "@/components/RoadMap"
+import RoadMap from "@/components/Roadmap"
 import Education from "@/components/Education"
 
 export default function Home() {

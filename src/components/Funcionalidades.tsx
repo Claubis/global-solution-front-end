@@ -2,14 +2,12 @@ import React from 'react'
 import Link from 'next/link'
 
 
-import imagem from '../../public/assets/funcionalidades/_4funcionalidades_Vector.png'
-import imagem2 from '../../public/assets/funcionalidades/_4funcionalidades_mockupcel22.png'
+import imagem from '../../public/assets/funcionalidades/mockup-cel-2.png'
 import imagem3 from '../../public/assets/funcionalidades/_4funcionalidades_BookAndPencil.png'
 import imagem4 from '../../public/assets/funcionalidades/_4funcionalidades_Siren.png'
 import imagem5 from '../../public/assets/funcionalidades/_4funcionalidades_Country.png'
 import imagem6 from '../../public/assets/funcionalidades/_4funcionalidades_TailOfWhale.png'
-import imagem7 from '../../public/assets/funcionalidades/_4funcionalidades_Vector_1.png'
-import imagem8 from '../../public/assets/funcionalidades/_4funcionalidades_mockupcel12.png'
+import imagem7 from '../../public/assets/funcionalidades/mockup-cel-1.png'
 
 export default function Funcionalidades() {
   return (
@@ -61,7 +59,6 @@ export default function Funcionalidades() {
 
 				{/* Imagens aqui */}
 				<div className="w-[755px] h-[755px] relative">
-					<img className="absolute w-full h-full object-cover" src={imagem8.src} alt="Mockup Celular 1" />
 					<img className="bottom-0 left-0 w-[534px] h-[526px]" src={imagem7.src} alt="Vector 1" />
 				</div>
 
@@ -72,7 +69,6 @@ export default function Funcionalidades() {
 				{/* Imagens aqui */}
 
 				<div className="w-[355px] relative">
-					<img className="absolute w-full object-cover" src={imagem2.src} alt="Mockup Celular 2" />
 					<img className="bottom-0 left-0 w-full" src={imagem.src} alt="Vector" />
 				</div>
 				

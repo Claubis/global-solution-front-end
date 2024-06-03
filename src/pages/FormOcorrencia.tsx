@@ -19,7 +19,7 @@ interface FormData {
   cidade: string;
   rua: string;
   complemento: string;
-  foto: File | null;
+  foto: string;
   descricao: string;
 }
 
@@ -38,7 +38,7 @@ interface FormErrors {
   cidade: string;
   rua: string;
   complemento: string;
-  foto: File | null;
+  foto: string;
   descricao: string;
 }
 
@@ -61,7 +61,7 @@ const FormOcorrencia: React.FC = () => {
     cidade: '',
     rua: '',
     complemento: '',
-    foto: null,
+    foto: '',
     descricao: ''
   });
 
@@ -199,10 +199,11 @@ const FormOcorrencia: React.FC = () => {
   };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files) {
+    const { name, value } = e.target;
+    if (e.target) {
       setFormData({
         ...formData,
-        foto: e.target.files[0]
+        [name]: value
       });
     }
   };

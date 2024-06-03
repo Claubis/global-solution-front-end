@@ -6,9 +6,177 @@ import icone from '../../public/assets/FormOcorrencia/Released Fish.png'; // Sub
 const FormOcorrencia: React.FC = () => {
   const [selection, setSelection] = useState<string>('animal');
   const [step, setStep] = useState<number>(1);
+  const [formData, setFormData] = useState({
+    nome: '',
+    email: '',
+    telefone: '',
+    animal: '',
+    condition: '',
+    firstAid: '',
+    cep: '',
+    estado: '',
+    cidade: '',
+    rua: '',
+    complemento: '',
+    foto: null,
+    descricao: ''
+  });
 
-  const nextStep = () => setStep(prevStep => prevStep + 1);
+  const [errors, setErrors] = useState({
+    nome: '',
+    email: '',
+    telefone: '',
+    animal: '',
+    condition: '',
+    firstAid: '',
+    cep: '',
+    estado: '',
+    cidade: '',
+    rua: '',
+    complemento: '',
+    foto: '',
+    descricao: ''
+  });
+
+  const validateStep = () => {
+    let valid = true;
+    const newErrors = { ...errors };
+
+    if (step === 1) {
+      if (!formData.nome) {
+        newErrors.nome = 'Nome é obrigatório';
+        valid = false;
+      } else {
+        newErrors.nome = '';
+      }
+      if (!formData.email) {
+        newErrors.email = 'E-mail é obrigatório';
+        valid = false;
+      } else {
+        newErrors.email = '';
+      }
+      if (!formData.telefone) {
+        newErrors.telefone = 'Telefone é obrigatório';
+        valid = false;
+      } else {
+        newErrors.telefone = '';
+      }
+    }
+
+    if (step === 2) {
+      if (!formData.animal) {
+        newErrors.animal = 'Seleção do animal é obrigatória';
+        valid = false;
+      } else {
+        newErrors.animal = '';
+      }
+      if (!formData.condition) {
+        newErrors.condition = 'Condição do animal é obrigatória';
+        valid = false;
+      } else {
+        newErrors.condition = '';
+      }
+      if (!formData.firstAid) {
+        newErrors.firstAid = 'Informação sobre primeiros socorros é obrigatória';
+        valid = false;
+      } else {
+        newErrors.firstAid = '';
+      }
+    }
+
+    if (step === 3) {
+      if (!formData.cep) {
+        newErrors.cep = 'CEP é obrigatório';
+        valid = false;
+      } else {
+        newErrors.cep = '';
+      }
+      if (!formData.estado) {
+        newErrors.estado = 'Estado é obrigatório';
+        valid = false;
+      } else {
+        newErrors.estado = '';
+      }
+      if (!formData.cidade) {
+        newErrors.cidade = 'Cidade é obrigatória';
+        valid = false;
+      } else {
+        newErrors.cidade = '';
+      }
+      if (!formData.rua) {
+        newErrors.rua = 'Rua é obrigatória';
+        valid = false;
+      } else {
+        newErrors.rua = '';
+      }
+    }
+
+    if (step === 4) {
+      if (!formData.foto) {
+        newErrors.foto = 'Foto é obrigatória';
+        valid = false;
+      } else {
+        newErrors.foto = '';
+      }
+      if (!formData.descricao) {
+        newErrors.descricao = 'Descrição é obrigatória';
+        valid = false;
+      } else {
+        newErrors.descricao = '';
+      }
+    }
+
+    setErrors(newErrors);
+    return valid;
+  };
+
+  const nextStep = () => {
+    if (validateStep()) {
+      setStep(prevStep => prevStep + 1);
+    }
+  };
+
   const prevStep = () => setStep(prevStep => prevStep - 1);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value
+    });
+  };
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files) {
+      setFormData({
+        ...formData,
+        foto: e.target.files[0]
+      });
+    }
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (validateStep()) {
+      const formDataToSend = new FormData();
+      Object.entries(formData).forEach(([key, value]) => {
+        formDataToSend.append(key, value as string | Blob);
+      });
+
+      try {
+        const response = await fetch('http://seu-endpoint-backend/api/cadastro', {
+          method: 'POST',
+          body: formDataToSend
+        });
+
+        const result = await response.json();
+        console.log('Sucesso:', result);
+        // Adicione aqui qualquer lógica adicional após o envio bem-sucedido
+      } catch (error) {
+        console.error('Erro:', error);
+      }
+    }
+  };
 
   return (
     <div className='flex justify-center items-center min-h-screen bg-[#F5EAE8] p-6'>
@@ -32,8 +200,8 @@ const FormOcorrencia: React.FC = () => {
         </div>
 
         <div className="w-full mt-6">
-          {selection === 'animal' && <AnimalForm step={step} nextStep={nextStep} prevStep={prevStep} />}
-          {selection === 'poluente' && <PoluenteForm />}
+          {selection === 'animal' && <AnimalForm step={step} nextStep={nextStep} prevStep={prevStep} handleChange={handleChange} handleFileChange={handleFileChange} handleSubmit={handleSubmit} formData={formData} errors={errors} />}
+          {selection === 'poluente' && <PoluenteForm handleChange={handleChange} handleSubmit={handleSubmit} formData={formData} errors={errors} />}
         </div>
       </div>
     </div>
@@ -44,14 +212,19 @@ interface AnimalFormProps {
   step: number;
   nextStep: () => void;
   prevStep: () => void;
+  handleChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => void;
+  handleFileChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+  formData: any;
+  errors: any;
 }
 
-const AnimalForm: React.FC<AnimalFormProps> = ({ step, nextStep, prevStep }) => {
+const AnimalForm: React.FC<AnimalFormProps> = ({ step, nextStep, prevStep, handleChange, handleFileChange, handleSubmit, formData, errors }) => {
   const animalOptions = ['Golfinho', 'Baleia', 'Tartaruga', 'Foca']; // Exemplo de opções de animais
   const conditionOptions = ['Vivo', 'Morto', 'Ferido', 'Doente']; // Exemplo de opções de condições
 
   return (
-    <form className="space-y-6">
+    <form className="space-y-6" onSubmit={handleSubmit}>
       {step === 1 && (
         <>
           <div className="flex flex-col space-y-2">
@@ -62,9 +235,12 @@ const AnimalForm: React.FC<AnimalFormProps> = ({ step, nextStep, prevStep }) => 
               type="text"
               name="nome"
               id="nome"
+              value={formData.nome}
+              onChange={handleChange}
               className="w-full p-2 border border-gray-300 rounded"
               placeholder="Nome"
             />
+            {errors.nome && <p className="text-red-500 text-sm">{errors.nome}</p>}
           </div>
           <div className="flex flex-col space-y-2">
             <label htmlFor="email" className="block text-sm font-medium text-gray-700">
@@ -74,9 +250,12 @@ const AnimalForm: React.FC<AnimalFormProps> = ({ step, nextStep, prevStep }) => 
               type="email"
               name="email"
               id="email"
+              value={formData.email}
+              onChange={handleChange}
               className="w-full p-2 border border-gray-300 rounded"
               placeholder="E-mail"
             />
+            {errors.email && <p className="text-red-500 text-sm">{errors.email}</p>}
           </div>
           <div className="flex flex-col space-y-2">
             <label htmlFor="telefone" className="block text-sm font-medium text-gray-700">
@@ -86,9 +265,12 @@ const AnimalForm: React.FC<AnimalFormProps> = ({ step, nextStep, prevStep }) => 
               type="text"
               name="telefone"
               id="telefone"
+              value={formData.telefone}
+              onChange={handleChange}
               className="w-full p-2 border border-gray-300 rounded"
               placeholder="Telefone"
             />
+            {errors.telefone && <p className="text-red-500 text-sm">{errors.telefone}</p>}
           </div>
           <button type="button" onClick={nextStep} className="bg-[#20A19A] text-white py-2 px-4 rounded">
             Next
@@ -105,6 +287,8 @@ const AnimalForm: React.FC<AnimalFormProps> = ({ step, nextStep, prevStep }) => 
             <select
               name="animal"
               id="animal"
+              value={formData.animal}
+              onChange={handleChange}
               className="w-full p-2 border border-gray-300 rounded"
             >
               <option value="">Selecione...</option>
@@ -114,6 +298,7 @@ const AnimalForm: React.FC<AnimalFormProps> = ({ step, nextStep, prevStep }) => 
                 </option>
               ))}
             </select>
+            {errors.animal && <p className="text-red-500 text-sm">{errors.animal}</p>}
           </div>
           <div className="flex flex-col space-y-2">
             <label htmlFor="condition" className="block text-sm font-medium text-gray-700">
@@ -122,6 +307,8 @@ const AnimalForm: React.FC<AnimalFormProps> = ({ step, nextStep, prevStep }) => 
             <select
               name="condition"
               id="condition"
+              value={formData.condition}
+              onChange={handleChange}
               className="w-full p-2 border border-gray-300 rounded"
             >
               <option value="">Selecione...</option>
@@ -131,6 +318,7 @@ const AnimalForm: React.FC<AnimalFormProps> = ({ step, nextStep, prevStep }) => 
                 </option>
               ))}
             </select>
+            {errors.condition && <p className="text-red-500 text-sm">{errors.condition}</p>}
           </div>
           <div className="flex flex-col space-y-2">
             <label htmlFor="firstAid" className="block text-sm font-medium text-gray-700">
@@ -139,12 +327,15 @@ const AnimalForm: React.FC<AnimalFormProps> = ({ step, nextStep, prevStep }) => 
             <select
               name="firstAid"
               id="firstAid"
+              value={formData.firstAid}
+              onChange={handleChange}
               className="w-full p-2 border border-gray-300 rounded"
             >
               <option value="">Selecione...</option>
               <option value="Sim">Sim</option>
               <option value="Não">Não</option>
             </select>
+            {errors.firstAid && <p className="text-red-500 text-sm">{errors.firstAid}</p>}
           </div>
           <div className="flex justify-between">
             <button type="button" onClick={prevStep} className="bg-gray-200 text-black py-2 px-4 rounded">
@@ -180,9 +371,12 @@ const AnimalForm: React.FC<AnimalFormProps> = ({ step, nextStep, prevStep }) => 
               type="text"
               name="cep"
               id="cep"
+              value={formData.cep}
+              onChange={handleChange}
               className="w-full p-2 border border-gray-300 rounded"
               placeholder="CEP"
             />
+            {errors.cep && <p className="text-red-500 text-sm">{errors.cep}</p>}
           </div>
           <div className="flex flex-col space-y-2">
             <label htmlFor="estado" className="block text-sm font-medium text-gray-700">
@@ -192,9 +386,12 @@ const AnimalForm: React.FC<AnimalFormProps> = ({ step, nextStep, prevStep }) => 
               type="text"
               name="estado"
               id="estado"
+              value={formData.estado}
+              onChange={handleChange}
               className="w-full p-2 border border-gray-300 rounded"
               placeholder="Estado"
             />
+            {errors.estado && <p className="text-red-500 text-sm">{errors.estado}</p>}
           </div>
           <div className="flex flex-col space-y-2">
             <label htmlFor="cidade" className="block text-sm font-medium text-gray-700">
@@ -204,9 +401,12 @@ const AnimalForm: React.FC<AnimalFormProps> = ({ step, nextStep, prevStep }) => 
               type="text"
               name="cidade"
               id="cidade"
+              value={formData.cidade}
+              onChange={handleChange}
               className="w-full p-2 border border-gray-300 rounded"
               placeholder="Cidade"
             />
+            {errors.cidade && <p className="text-red-500 text-sm">{errors.cidade}</p>}
           </div>
           <div className="flex flex-col space-y-2">
             <label htmlFor="rua" className="block text-sm font-medium text-gray-700">
@@ -216,9 +416,12 @@ const AnimalForm: React.FC<AnimalFormProps> = ({ step, nextStep, prevStep }) => 
               type="text"
               name="rua"
               id="rua"
+              value={formData.rua}
+              onChange={handleChange}
               className="w-full p-2 border border-gray-300 rounded"
               placeholder="Rua"
             />
+            {errors.rua && <p className="text-red-500 text-sm">{errors.rua}</p>}
           </div>
           <div className="flex flex-col space-y-2">
             <label htmlFor="complemento" className="block text-sm font-medium text-gray-700">
@@ -228,6 +431,8 @@ const AnimalForm: React.FC<AnimalFormProps> = ({ step, nextStep, prevStep }) => 
               type="text"
               name="complemento"
               id="complemento"
+              value={formData.complemento}
+              onChange={handleChange}
               className="w-full p-2 border border-gray-300 rounded"
               placeholder="Complemento"
             />
@@ -253,8 +458,10 @@ const AnimalForm: React.FC<AnimalFormProps> = ({ step, nextStep, prevStep }) => 
               type="file"
               name="foto"
               id="foto"
+              onChange={handleFileChange}
               className="w-full p-2 border border-gray-300 rounded"
             />
+            {errors.foto && <p className="text-red-500 text-sm">{errors.foto}</p>}
           </div>
           <div className="flex flex-col space-y-2">
             <label htmlFor="descricao" className="block text-sm font-medium text-gray-700">
@@ -264,9 +471,12 @@ const AnimalForm: React.FC<AnimalFormProps> = ({ step, nextStep, prevStep }) => 
               name="descricao"
               id="descricao"
               rows={4}
+              value={formData.descricao}
+              onChange={handleChange}
               className="w-full p-2 border border-gray-300 rounded"
               placeholder="Descreva o ocorrido"
             ></textarea>
+            {errors.descricao && <p className="text-red-500 text-sm">{errors.descricao}</p>}
           </div>
           <div className="flex justify-between">
             <button type="button" onClick={prevStep} className="bg-gray-200 text-black py-2 px-4 rounded">
@@ -282,8 +492,15 @@ const AnimalForm: React.FC<AnimalFormProps> = ({ step, nextStep, prevStep }) => 
   );
 };
 
-const PoluenteForm: React.FC = () => (
-  <form className="space-y-6">
+interface PoluenteFormProps {
+  handleChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => void;
+  handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+  formData: any;
+  errors: any;
+}
+
+const PoluenteForm: React.FC<PoluenteFormProps> = ({ handleChange, handleSubmit, formData, errors }) => (
+  <form className="space-y-6" onSubmit={handleSubmit}>
     <div className="flex flex-col space-y-2">
       <label htmlFor="nome" className="block text-sm font-medium text-gray-700">
         Nome
@@ -292,9 +509,12 @@ const PoluenteForm: React.FC = () => (
         type="text"
         name="nome"
         id="nome"
+        value={formData.nome}
+        onChange={handleChange}
         className="w-full p-2 border border-gray-300 rounded"
         placeholder="Nome"
       />
+      {errors.nome && <p className="text-red-500 text-sm">{errors.nome}</p>}
     </div>
     <div className="flex flex-col space-y-2">
       <label htmlFor="email" className="block text-sm font-medium text-gray-700">
@@ -304,9 +524,12 @@ const PoluenteForm: React.FC = () => (
         type="email"
         name="email"
         id="email"
+        value={formData.email}
+        onChange={handleChange}
         className="w-full p-2 border border-gray-300 rounded"
         placeholder="E-mail"
       />
+      {errors.email && <p className="text-red-500 text-sm">{errors.email}</p>}
     </div>
     <div className="flex flex-col space-y-2">
       <label htmlFor="tipoResiduo" className="block text-sm font-medium text-gray-700">
@@ -316,9 +539,12 @@ const PoluenteForm: React.FC = () => (
         type="text"
         name="tipoResiduo"
         id="tipoResiduo"
+        value={formData.tipoResiduo}
+        onChange={handleChange}
         className="w-full p-2 border border-gray-300 rounded"
         placeholder="Tipo de Resíduo"
       />
+      {errors.tipoResiduo && <p className="text-red-500 text-sm">{errors.tipoResiduo}</p>}
     </div>
     <button type="submit" className="bg-[#20A19A] text-white py-2 px-4 rounded">
       Enviar

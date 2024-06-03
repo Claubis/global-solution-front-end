@@ -4,7 +4,7 @@ import imagem1 from '../../public/assets/Projeto/video.png';
 
 export default function AboutProject() {
   return (
-    <div className=" mx-auto w-full min-h-screen bg-white py-10">
+    <div className=" mx-auto w-full min-h-screen bg-white py-10" id='AboutProject'>
       
       <h1 className="top-10 text-[#F1A027] font-montserrat font-extrabold text-[84px] leading-[126px] text-center">
         sobre o projeto

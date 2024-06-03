@@ -19,7 +19,7 @@ const NotFoundPage: React.FC = () => {
         <div className="mt-16 mb-8">
           <button className="relative bg-white text-teal-700 font-bold text-lg py-3 px-8 border border-white shadow-lg">
             <span className="absolute inset-0 bg-transparent border border-white"></span>
-            <span className="relative">voltar a superfície</span>
+            <span className="relative"><a href="/">voltar a superfície</a></span>
           </button>
         </div>
 

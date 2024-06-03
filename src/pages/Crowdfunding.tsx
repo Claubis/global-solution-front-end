@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import Header from '@/components/Header';
 
-const Investidores: React.FC = () => {
+
+const Crowdfunding: React.FC = () => {
   const [formData, setFormData] = useState({
     nome: '',
     email: '',
@@ -38,7 +38,7 @@ const Investidores: React.FC = () => {
   };
 
   return (
-    <div className="relative w-full min-h-screen overflow-auto bg-white flex">
+    <div className="relative w-full min-h-screen overflow-auto bg-white flex" id='Crowdfunding'>
    
       <div className="container mx-auto px-4 py-16 flex flex-col md:flex-row  justify-center items-center">
         
@@ -168,4 +168,4 @@ const Investidores: React.FC = () => {
   );
 }
 
-export default Investidores;
+export default Crowdfunding;

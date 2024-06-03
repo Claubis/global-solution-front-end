@@ -45,7 +45,7 @@ const roadmapData = [
 
 const Roadmap: React.FC = () => {
   return (
-    <div className="bg-[#F5EAE8] min-h-screen py-10">
+    <div className="bg-[#F5EAE8] min-h-screen py-10" id='Roadmap'>
       <div className="text-center mb-12">
         <h1 className="text-[#F1A027] font-montserrat font-bold text-7xl ">roadmap</h1>
         <p className="text-[#000] font-montserrat font-semibold text-2xl mt-4">

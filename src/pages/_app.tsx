@@ -31,7 +31,8 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
 
   return (
     <SessionProvider session={session}>
-      {/* {!isHomePage && <Header />} */}
+      {/*{!isHomePage && <Header />*/}
+      <Header/>
       <Component {...pageProps} />
       <Footer />
     </SessionProvider>

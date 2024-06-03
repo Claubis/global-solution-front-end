@@ -1,4 +1,6 @@
 import React from 'react';
+import Image from 'next/image';
+
 import imagem from '../../public/assets/Projeto/_3sobreoprojeto_play.png';
 import imagem1 from '../../public/assets/Projeto/video.png';
 
@@ -24,7 +26,7 @@ export default function AboutProject() {
 
           <div className=" flex justify-center items-center p-10">
             <div className="relative w-[800.92px] h-[497.87px] bg-gray-200 bg-cover" style={{ backgroundImage: `url(${imagem1.src})` }}>
-              <img className="absolute inset-0 w-[129.88px] h-[129.88px] m-auto" src={imagem.src} alt="Play" />
+              <Image className="absolute inset-0 w-[129.88px] h-[129.88px] m-auto" src={imagem.src} alt="Play" width={130} height={100}/>
             </div>
           </div>
 

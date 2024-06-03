@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 import imagem1 from '../../public/assets/Desktop_Rectangle20.png';
 import imagem2 from '../../public/assets/Slide Up.png'
@@ -31,7 +32,7 @@ const HomePage: React.FC = () => {
         </div>
 
         <div className='flex justify-end items-end'>
-                <img src={imagem2.src} alt="Seta para voltar ao menu" className='w-100'/>
+                <Image src={imagem2.src} alt="Seta para voltar ao menu" className='w-100' width={70} height={100}/>
         </div>
 
       </div>

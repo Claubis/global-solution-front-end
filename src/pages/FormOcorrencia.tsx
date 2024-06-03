@@ -1,7 +1,47 @@
 'use client'
 import React, { useState } from 'react';
 import imagem from '../../public/assets/FormOcorrencia/mapa.png';
-import icone from '../../public/assets/FormOcorrencia/Released Fish.png'; // Substitua pelo caminho correto do ícone
+import icone from '../../public/assets/FormOcorrencia/Released Fish.png';
+import Image from 'next/image';
+
+interface FormData {
+  nome: string;
+  email: string;
+  telefone: string;
+  animal: string;
+  condition: string;
+  firstAid: string;
+  tipoResiduo: string;
+  quantidade: string;
+  areaPerigo: string;
+  cep: string;
+  estado: string;
+  cidade: string;
+  rua: string;
+  complemento: string;
+  foto: File | null;
+  descricao: string;
+}
+
+interface FormErrors {
+  nome: string;
+  email: string;
+  telefone: string;
+  animal: string;
+  condition: string;
+  firstAid: string;
+  tipoResiduo: string;
+  quantidade: string;
+  areaPerigo: string;
+  cep: string;
+  estado: string;
+  cidade: string;
+  rua: string;
+  complemento: string;
+  foto: File | null;
+  descricao: string;
+}
+
 
 const FormOcorrencia: React.FC = () => {
   const [selection, setSelection] = useState<string>('animal');
@@ -13,6 +53,9 @@ const FormOcorrencia: React.FC = () => {
     animal: '',
     condition: '',
     firstAid: '',
+    tipoResiduo: '',
+    quantidade: '',
+    areaPerigo: '',
     cep: '',
     estado: '',
     cidade: '',
@@ -29,6 +72,9 @@ const FormOcorrencia: React.FC = () => {
     animal: '',
     condition: '',
     firstAid: '',
+    tipoResiduo: '',
+    quantidade: '',
+    areaPerigo: '',
     cep: '',
     estado: '',
     cidade: '',
@@ -64,23 +110,44 @@ const FormOcorrencia: React.FC = () => {
     }
 
     if (step === 2) {
-      if (!formData.animal) {
-        newErrors.animal = 'Seleção do animal é obrigatória';
-        valid = false;
+      if (selection === 'animal') {
+        if (!formData.animal) {
+          newErrors.animal = 'Seleção do animal é obrigatória';
+          valid = false;
+        } else {
+          newErrors.animal = '';
+        }
+        if (!formData.condition) {
+          newErrors.condition = 'Condição do animal é obrigatória';
+          valid = false;
+        } else {
+          newErrors.condition = '';
+        }
+        if (!formData.firstAid) {
+          newErrors.firstAid = 'Informação sobre primeiros socorros é obrigatória';
+          valid = false;
+        } else {
+          newErrors.firstAid = '';
+        }
       } else {
-        newErrors.animal = '';
-      }
-      if (!formData.condition) {
-        newErrors.condition = 'Condição do animal é obrigatória';
-        valid = false;
-      } else {
-        newErrors.condition = '';
-      }
-      if (!formData.firstAid) {
-        newErrors.firstAid = 'Informação sobre primeiros socorros é obrigatória';
-        valid = false;
-      } else {
-        newErrors.firstAid = '';
+        if (!formData.tipoResiduo) {
+          newErrors.tipoResiduo = 'Tipo de resíduo é obrigatório';
+          valid = false;
+        } else {
+          newErrors.tipoResiduo = '';
+        }
+        if (!formData.quantidade) {
+          newErrors.quantidade = 'Quantidade é obrigatória';
+          valid = false;
+        } else {
+          newErrors.quantidade = '';
+        }
+        if (!formData.areaPerigo) {
+          newErrors.areaPerigo = 'Informação sobre a área em perigo é obrigatória';
+          valid = false;
+        } else {
+          newErrors.areaPerigo = '';
+        }
       }
     }
 
@@ -108,21 +175,6 @@ const FormOcorrencia: React.FC = () => {
         valid = false;
       } else {
         newErrors.rua = '';
-      }
-    }
-
-    if (step === 4) {
-      if (!formData.foto) {
-        newErrors.foto = 'Foto é obrigatória';
-        valid = false;
-      } else {
-        newErrors.foto = '';
-      }
-      if (!formData.descricao) {
-        newErrors.descricao = 'Descrição é obrigatória';
-        valid = false;
-      } else {
-        newErrors.descricao = '';
       }
     }
 
@@ -181,12 +233,12 @@ const FormOcorrencia: React.FC = () => {
   return (
     <div className='flex justify-center items-center min-h-screen bg-[#F5EAE8] p-6'>
       <div className='w-full md:w-1/2 p-7'>
-        <img src={imagem.src} alt="Mapa" className="w-full h-full object-cover rounded-lg" />
+        <Image src={imagem.src} alt="Mapa" className="w-full h-full object-cover rounded-lg" />
       </div>
 
       <div className="bg-white rounded-xl min-h-[100vh] md:h-auto w-full md:w-1/2 p-10 flex flex-col items-center">
         <div className="bg-[#20A19A] h-[180px] flex flex-col items-center justify-center rounded-md mb-6 relative w-full">
-          <img src={icone.src} alt="Ícone" className="absolute top-4 left-4 w-16 h-16" />
+          <Image src={icone.src} alt="Ícone" className="absolute top-4 left-4 w-16 h-16" />
           <h1 className="text-2xl font-bold text-white">Registrar Ocorrência</h1>
         </div>
 
@@ -201,14 +253,14 @@ const FormOcorrencia: React.FC = () => {
 
         <div className="w-full mt-6">
           {selection === 'animal' && <AnimalForm step={step} nextStep={nextStep} prevStep={prevStep} handleChange={handleChange} handleFileChange={handleFileChange} handleSubmit={handleSubmit} formData={formData} errors={errors} />}
-          {selection === 'poluente' && <PoluenteForm handleChange={handleChange} handleSubmit={handleSubmit} formData={formData} errors={errors} />}
+          {selection === 'poluente' && <PoluenteForm step={step} nextStep={nextStep} prevStep={prevStep} handleChange={handleChange} handleFileChange={handleFileChange} handleSubmit={handleSubmit} formData={formData} errors={errors} />}
         </div>
       </div>
     </div>
   );
 };
 
-interface AnimalFormProps {
+interface FormProps {
   step: number;
   nextStep: () => void;
   prevStep: () => void;
@@ -219,7 +271,7 @@ interface AnimalFormProps {
   errors: any;
 }
 
-const AnimalForm: React.FC<AnimalFormProps> = ({ step, nextStep, prevStep, handleChange, handleFileChange, handleSubmit, formData, errors }) => {
+const AnimalForm: React.FC<FormProps> = ({ step, nextStep, prevStep, handleChange, handleFileChange, handleSubmit, formData, errors }) => {
   const animalOptions = ['Golfinho', 'Baleia', 'Tartaruga', 'Foca']; // Exemplo de opções de animais
   const conditionOptions = ['Vivo', 'Morto', 'Ferido', 'Doente']; // Exemplo de opções de condições
 
@@ -461,7 +513,6 @@ const AnimalForm: React.FC<AnimalFormProps> = ({ step, nextStep, prevStep, handl
               onChange={handleFileChange}
               className="w-full p-2 border border-gray-300 rounded"
             />
-            {errors.foto && <p className="text-red-500 text-sm">{errors.foto}</p>}
           </div>
           <div className="flex flex-col space-y-2">
             <label htmlFor="descricao" className="block text-sm font-medium text-gray-700">
@@ -476,7 +527,6 @@ const AnimalForm: React.FC<AnimalFormProps> = ({ step, nextStep, prevStep, handl
               className="w-full p-2 border border-gray-300 rounded"
               placeholder="Descreva o ocorrido"
             ></textarea>
-            {errors.descricao && <p className="text-red-500 text-sm">{errors.descricao}</p>}
           </div>
           <div className="flex justify-between">
             <button type="button" onClick={prevStep} className="bg-gray-200 text-black py-2 px-4 rounded">
@@ -492,64 +542,273 @@ const AnimalForm: React.FC<AnimalFormProps> = ({ step, nextStep, prevStep, handl
   );
 };
 
-interface PoluenteFormProps {
-  handleChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => void;
-  handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
-  formData: any;
-  errors: any;
-}
+const PoluenteForm: React.FC<FormProps> = ({ step, nextStep, prevStep, handleChange, handleFileChange, handleSubmit, formData, errors }) => {
+  const residuoOptions = ['Plástico', 'Metal', 'Vidro', 'Papel', 'Orgânico']; // Exemplo de opções de resíduos
+  const perigoOptions = ['Sim', 'Não']; // Exemplo de opções de perigo
 
-const PoluenteForm: React.FC<PoluenteFormProps> = ({ handleChange, handleSubmit, formData, errors }) => (
-  <form className="space-y-6" onSubmit={handleSubmit}>
-    <div className="flex flex-col space-y-2">
-      <label htmlFor="nome" className="block text-sm font-medium text-gray-700">
-        Nome
-      </label>
-      <input
-        type="text"
-        name="nome"
-        id="nome"
-        value={formData.nome}
-        onChange={handleChange}
-        className="w-full p-2 border border-gray-300 rounded"
-        placeholder="Nome"
-      />
-      {errors.nome && <p className="text-red-500 text-sm">{errors.nome}</p>}
-    </div>
-    <div className="flex flex-col space-y-2">
-      <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-        E-mail
-      </label>
-      <input
-        type="email"
-        name="email"
-        id="email"
-        value={formData.email}
-        onChange={handleChange}
-        className="w-full p-2 border border-gray-300 rounded"
-        placeholder="E-mail"
-      />
-      {errors.email && <p className="text-red-500 text-sm">{errors.email}</p>}
-    </div>
-    <div className="flex flex-col space-y-2">
-      <label htmlFor="tipoResiduo" className="block text-sm font-medium text-gray-700">
-        Tipo de Resíduo
-      </label>
-      <input
-        type="text"
-        name="tipoResiduo"
-        id="tipoResiduo"
-        value={formData.tipoResiduo}
-        onChange={handleChange}
-        className="w-full p-2 border border-gray-300 rounded"
-        placeholder="Tipo de Resíduo"
-      />
-      {errors.tipoResiduo && <p className="text-red-500 text-sm">{errors.tipoResiduo}</p>}
-    </div>
-    <button type="submit" className="bg-[#20A19A] text-white py-2 px-4 rounded">
-      Enviar
-    </button>
-  </form>
-);
+  return (
+    <form className="space-y-6" onSubmit={handleSubmit}>
+      {step === 1 && (
+        <>
+          <div className="flex flex-col space-y-2">
+            <label htmlFor="nome" className="block text-sm font-medium text-gray-700">
+              Nome
+            </label>
+            <input
+              type="text"
+              name="nome"
+              id="nome"
+              value={formData.nome}
+              onChange={handleChange}
+              className="w-full p-2 border border-gray-300 rounded"
+              placeholder="Nome"
+            />
+            {errors.nome && <p className="text-red-500 text-sm">{errors.nome}</p>}
+          </div>
+          <div className="flex flex-col space-y-2">
+            <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+              E-mail
+            </label>
+            <input
+              type="email"
+              name="email"
+              id="email"
+              value={formData.email}
+              onChange={handleChange}
+              className="w-full p-2 border border-gray-300 rounded"
+              placeholder="E-mail"
+            />
+            {errors.email && <p className="text-red-500 text-sm">{errors.email}</p>}
+          </div>
+          <div className="flex flex-col space-y-2">
+            <label htmlFor="telefone" className="block text-sm font-medium text-gray-700">
+              Telefone
+            </label>
+            <input
+              type="text"
+              name="telefone"
+              id="telefone"
+              value={formData.telefone}
+              onChange={handleChange}
+              className="w-full p-2 border border-gray-300 rounded"
+              placeholder="Telefone"
+            />
+            {errors.telefone && <p className="text-red-500 text-sm">{errors.telefone}</p>}
+          </div>
+          <button type="button" onClick={nextStep} className="bg-[#20A19A] text-white py-2 px-4 rounded">
+            Next
+          </button>
+        </>
+      )}
+
+      {step === 2 && (
+        <>
+          <div className="flex flex-col space-y-2">
+            <label htmlFor="tipoResiduo" className="block text-sm font-medium text-gray-700">
+              Tipo de Resíduo
+            </label>
+            <select
+              name="tipoResiduo"
+              id="tipoResiduo"
+              value={formData.tipoResiduo}
+              onChange={handleChange}
+              className="w-full p-2 border border-gray-300 rounded"
+            >
+              <option value="">Selecione...</option>
+              {residuoOptions.map((residuo) => (
+                <option key={residuo} value={residuo}>
+                  {residuo}
+                </option>
+              ))}
+            </select>
+            {errors.tipoResiduo && <p className="text-red-500 text-sm">{errors.tipoResiduo}</p>}
+          </div>
+          <div className="flex flex-col space-y-2">
+            <label htmlFor="quantidade" className="block text-sm font-medium text-gray-700">
+              Quantidade
+            </label>
+            <input
+              type="text"
+              name="quantidade"
+              id="quantidade"
+              value={formData.quantidade}
+              onChange={handleChange}
+              className="w-full p-2 border border-gray-300 rounded"
+              placeholder="Quantidade"
+            />
+            {errors.quantidade && <p className="text-red-500 text-sm">{errors.quantidade}</p>}
+          </div>
+          <div className="flex flex-col space-y-2">
+            <label htmlFor="areaPerigo" className="block text-sm font-medium text-gray-700">
+              Coloca a Área em Perigo?
+            </label>
+            <select
+              name="areaPerigo"
+              id="areaPerigo"
+              value={formData.areaPerigo}
+              onChange={handleChange}
+              className="w-full p-2 border border-gray-300 rounded"
+            >
+              <option value="">Selecione...</option>
+              {perigoOptions.map((perigo) => (
+                <option key={perigo} value={perigo}>
+                  {perigo}
+                </option>
+              ))}
+            </select>
+            {errors.areaPerigo && <p className="text-red-500 text-sm">{errors.areaPerigo}</p>}
+          </div>
+          <div className="flex justify-between">
+            <button type="button" onClick={prevStep} className="bg-gray-200 text-black py-2 px-4 rounded">
+              Back
+            </button>
+            <button type="button" onClick={nextStep} className="bg-[#20A19A] text-white py-2 px-4 rounded">
+              Next
+            </button>
+          </div>
+        </>
+      )}
+
+      {step === 3 && (
+        <>
+          <div className="flex flex-col space-y-2">
+            <label htmlFor="endereco" className="block text-sm font-medium text-gray-700">
+              Endereço
+            </label>
+            <div className="flex gap-2">
+              <button type="button" className="bg-gray-200 text-black py-2 px-4 rounded w-full">
+                Inserir Manualmente
+              </button>
+              <button type="button" className="bg-gray-200 text-black py-2 px-4 rounded w-full">
+                Usar Localização Atual
+              </button>
+            </div>
+          </div>
+          <div className="flex flex-col space-y-2 mt-4">
+            <label htmlFor="cep" className="block text-sm font-medium text-gray-700">
+              CEP
+            </label>
+            <input
+              type="text"
+              name="cep"
+              id="cep"
+              value={formData.cep}
+              onChange={handleChange}
+              className="w-full p-2 border border-gray-300 rounded"
+              placeholder="CEP"
+            />
+            {errors.cep && <p className="text-red-500 text-sm">{errors.cep}</p>}
+          </div>
+          <div className="flex flex-col space-y-2">
+            <label htmlFor="estado" className="block text-sm font-medium text-gray-700">
+              Estado
+            </label>
+            <input
+              type="text"
+              name="estado"
+              id="estado"
+              value={formData.estado}
+              onChange={handleChange}
+              className="w-full p-2 border border-gray-300 rounded"
+              placeholder="Estado"
+            />
+            {errors.estado && <p className="text-red-500 text-sm">{errors.estado}</p>}
+          </div>
+          <div className="flex flex-col space-y-2">
+            <label htmlFor="cidade" className="block text-sm font-medium text-gray-700">
+              Cidade
+            </label>
+            <input
+              type="text"
+              name="cidade"
+              id="cidade"
+              value={formData.cidade}
+              onChange={handleChange}
+              className="w-full p-2 border border-gray-300 rounded"
+              placeholder="Cidade"
+            />
+            {errors.cidade && <p className="text-red-500 text-sm">{errors.cidade}</p>}
+          </div>
+          <div className="flex flex-col space-y-2">
+            <label htmlFor="rua" className="block text-sm font-medium text-gray-700">
+              Rua
+            </label>
+            <input
+              type="text"
+              name="rua"
+              id="rua"
+              value={formData.rua}
+              onChange={handleChange}
+              className="w-full p-2 border border-gray-300 rounded"
+              placeholder="Rua"
+            />
+            {errors.rua && <p className="text-red-500 text-sm">{errors.rua}</p>}
+          </div>
+          <div className="flex flex-col space-y-2">
+            <label htmlFor="complemento" className="block text-sm font-medium text-gray-700">
+              Complemento
+            </label>
+            <input
+              type="text"
+              name="complemento"
+              id="complemento"
+              value={formData.complemento}
+              onChange={handleChange}
+              className="w-full p-2 border border-gray-300 rounded"
+              placeholder="Complemento"
+            />
+          </div>
+          <div className="flex justify-between">
+            <button type="button" onClick={prevStep} className="bg-gray-200 text-black py-2 px-4 rounded">
+              Back
+            </button>
+            <button type="button" onClick={nextStep} className="bg-[#20A19A] text-white py-2 px-4 rounded">
+              Next
+            </button>
+          </div>
+        </>
+      )}
+
+      {step === 4 && (
+        <>
+          <div className="flex flex-col space-y-2">
+            <label htmlFor="foto" className="block text-sm font-medium text-gray-700">
+              Anexar Foto
+            </label>
+            <input
+              type="file"
+              name="foto"
+              id="foto"
+              onChange={handleFileChange}
+              className="w-full p-2 border border-gray-300 rounded"
+            />
+          </div>
+          <div className="flex flex-col space-y-2">
+            <label htmlFor="descricao" className="block text-sm font-medium text-gray-700">
+              Descrição do Ocorrido
+            </label>
+            <textarea
+              name="descricao"
+              id="descricao"
+              rows={4}
+              value={formData.descricao}
+              onChange={handleChange}
+              className="w-full p-2 border border-gray-300 rounded"
+              placeholder="Descreva o ocorrido"
+            ></textarea>
+          </div>
+          <div className="flex justify-between">
+            <button type="button" onClick={prevStep} className="bg-gray-200 text-black py-2 px-4 rounded">
+              Back
+            </button>
+            <button type="submit" className="bg-[#20A19A] text-white py-2 px-4 rounded">
+              Enviar
+            </button>
+          </div>
+        </>
+      )}
+    </form>
+  );
+};
 
 export default FormOcorrencia;

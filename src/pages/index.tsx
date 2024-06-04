@@ -16,7 +16,7 @@ import Funcionalidades from "@/components/Funcionalidades"
 import Dados from "@/components/Dados"
 import SobreMissao from "@/components/SobreMissao"
 import Eventos from "@/components/Eventos"
-import RoadMap from "../components/Roadmap"
+import Projeto from "@/components/Projeto"
 import Educacao from "@/components/Educacao"
 
 export default function Home() {
@@ -31,7 +31,7 @@ export default function Home() {
       <Dados/>
       <SobreMissao/>
       <Eventos/>
-      <RoadMap/>
+      <Projeto/>
       <Educacao/>
 
     </div>

@@ -43,7 +43,7 @@ const roadmapData = [
   },
 ];
 
-const Roadmap: React.FC = () => {
+const Projeto: React.FC = () => {
   return (
     
     <div className="bg-[#F5EAE8] min-h-screen py-10" id='Roadmap'>
@@ -89,4 +89,4 @@ const Roadmap: React.FC = () => {
   );
 };
 
-export default Roadmap;
+export default Projeto;

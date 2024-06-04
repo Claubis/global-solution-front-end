@@ -29,7 +29,7 @@ const Menu: React.FC = () => {
               <li className="text-white font-semibold text-lg"><Link href="#Roadmap">roadmap</Link></li>
               
               <li className="text-white font-semibold text-lg"><Link href="#Educacao">educação</Link></li>
-              <li className="text-white font-semibold text-lg"><Link href="/Feedback">contato</Link></li>
+              <li className="text-white font-semibold text-lg"><Link href="/Contato">contato</Link></li>
             </ul>
             
           </div>

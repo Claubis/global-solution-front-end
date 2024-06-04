@@ -6,26 +6,26 @@ import { signIn } from 'next-auth/react';
 import imagem from '../../public/assets/Login/login_imagegradiente.png';
 
 const Login: React.FC = () => {
-  const [formData, setFormData] = useState({ email: '', password: '' });
-  const [errors, setErrors] = useState({ email: '', password: '' });
+  const [formData, setFormData] = useState({ email_login: '', password_login: '' });
+  const [errors, setErrors] = useState({ email_login: '', password_login: '' });
   const router = useRouter();
 
   const validateForm = (): boolean => {
     let valid = true;
-    const newErrors = { email: '', password: '' };
+    const newErrors = { email_login: '', password_login: '' };
 
-    if (!formData.email) {
-      newErrors.email = 'E-mail é obrigatório';
+    if (!formData.email_login) {
+      newErrors.email_login = 'E-mail é obrigatório';
       valid = false;
     } else {
-      newErrors.email = '';
+      newErrors.email_login = '';
     }
 
-    if (!formData.password) {
-      newErrors.password = 'Senha é obrigatória';
+    if (!formData.password_login) {
+      newErrors.password_login = 'Senha é obrigatória';
       valid = false;
     } else {
-      newErrors.password = '';
+      newErrors.password_login = '';
     }
 
     setErrors(newErrors);
@@ -91,12 +91,12 @@ const Login: React.FC = () => {
               type="email"
               name="email"
               id="email"
-              value={formData.email}
+              value={formData.email_login}
               onChange={handleChange}
               className="w-full p-3 border border-gray-300 rounded bg-[#B9E2E0] text-[#057872] placeholder-[#057872]"
               placeholder="E-mail"
             />
-            {errors.email && <p className="text-red-500 text-sm">{errors.email}</p>}
+            {errors.email_login && <p className="text-red-500 text-sm">{errors.email_login}</p>}
           </div>
 
           <div className="flex flex-col space-y-2">
@@ -104,12 +104,12 @@ const Login: React.FC = () => {
               type="password"
               name="password"
               id="password"
-              value={formData.password}
+              value={formData.password_login}
               onChange={handleChange}
               className="w-full p-3 border border-gray-300 rounded bg-[#B9E2E0] text-[#057872] placeholder-[#057872]"
               placeholder="Senha"
             />
-            {errors.password && <p className="text-red-500 text-sm">{errors.password}</p>}
+            {errors.password_login && <p className="text-red-500 text-sm">{errors.password_login}</p>}
           </div>
 
           <div className="flex justify-end w-full">

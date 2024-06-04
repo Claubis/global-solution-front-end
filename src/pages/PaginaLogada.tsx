@@ -1,12 +1,13 @@
-'use client'
-import React from 'react'
-import { useState } from 'react';
+'use client';
+import React, { useState } from 'react';
 import Link from 'next/link';
-
-/* Instalar item npm install recharts */
+import { useRouter } from 'next/navigation';
 import { PieChart, Pie, Cell, ResponsiveContainer, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, LineChart, Line } from 'recharts';
+import ModalDeletarConta from '../components/ModalDeletarConta';
 
 const PaginaLogada: React.FC = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   // Dados de exemplo para gráficos e tabelas
   const dataPieChart = [
     { name: 'Category A', value: 400 },
@@ -44,11 +45,8 @@ const PaginaLogada: React.FC = () => {
 
   const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
 
-
   return (
-    
     <div className="flex min-h-screen">
-      
       {/* Barra lateral esquerda com filtros */}
       <aside className="w-1/4 bg-gray-200 p-4">
         <h2 className="text-xl font-bold mb-4">Filtros</h2>
@@ -60,21 +58,14 @@ const PaginaLogada: React.FC = () => {
       </aside>
 
       {/* Conteúdo principal */}
-      
       <main className="w-3/4 p-6 bg-white">
-        
         <header className="flex justify-end space-x-4 mb-6">
-          
           <button className="py-2 px-4 bg-green-500 text-white rounded"><Link href='/AtualizarCadastro'>Alterar Cadastro</Link></button>
-          
-          <button className="py-2 px-4 bg-red-500 text-white rounded">Excluir Conta</button>
-          
+          <button className="py-2 px-4 bg-red-500 text-white rounded" onClick={() => setIsModalOpen(true)}>Excluir Conta</button>
           <button className="py-2 px-4 bg-gray-500 text-white rounded">Logout</button>
-        
         </header>
 
         {/* Tabelas */}
-
         <section className="grid gap-6 mb-6">
           <div>
             <h2 className="text-lg font-bold mb-2">Tabela 1</h2>
@@ -174,9 +165,9 @@ const PaginaLogada: React.FC = () => {
             </ResponsiveContainer>
           </div>
         </section>
-
       </main>
 
+      <ModalDeletarConta isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </div>
   );
 };

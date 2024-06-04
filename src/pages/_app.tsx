@@ -3,8 +3,8 @@ import { SessionProvider } from "next-auth/react";
 import '../globals.css';
 
 // Importações de componentes
-import Header from '../components/Header'; 
-import Footer from '@/components/Footer';
+import Menu from '../components/Menu'; 
+import Rodape from '@/components/Rodape';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 
@@ -32,9 +32,9 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   return (
     <SessionProvider session={session}>
       {/*{!isHomePage && <Header />*/}
-      <Header/>
+      <Menu/>
       <Component {...pageProps} />
-      <Footer />
+      <Rodape />
     </SessionProvider>
   );
 }

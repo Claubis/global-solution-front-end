@@ -45,25 +45,43 @@ const roadmapData = [
 
 const Roadmap: React.FC = () => {
   return (
+    
     <div className="bg-[#F5EAE8] min-h-screen py-10" id='Roadmap'>
+      
       <div className="text-center mb-12">
-        <h1 className="text-[#F1A027] font-montserrat font-bold text-7xl ">roadmap</h1>
-        <p className="text-[#000] font-montserrat font-semibold text-2xl mt-4">
+        
+      <div className="relative flex justify-center items-center mt-20 mb-20">
+          <h1 className="relative text-[#F1A027] font-montserrat font-bold text-7xl before:absolute before:content-[''] before:w-[336px] before:h-[3px] before:bg-[#F1A027] before:top-1/2 before:left-[-360px] after:absolute after:content-[''] after:w-[336px] after:h-[3px] after:bg-[#F1A027] after:top-1/2 after:right-[-360px]">
+        roadmap
+          </h1>
+      </div>
+        
+        <p className="text-[#000] font-montserrat font-semibold text-2xl m-20">
           Descubra o caminho que estamos trilhando para tornar a conservação marinha mais acessível e eficaz. Nosso roadmap destaca os principais marcos e etapas futuras para o desenvolvimento e aprimoramento do aplicativo MiloTech.
         </p>
       </div>
+
       <div className="relative container mx-auto">
         
         {roadmapData.map((item, index) => (
+          
           <div key={index} className="mb-8 flex justify-between items-center w-full" style={{ flexDirection: index % 2 === 0 ? 'row' : 'row-reverse' }}>
+            
             <div className="order-1 w-5/12"></div>
+            
             <div className={`order-1 w-5/12 px-1 py-4 bg-white rounded-lg shadow-md border-l-8`} style={{ borderColor: item.color }}>
-              <h3 className="mb-3 font-montserrat font-bold text-2xl" style={{ color: item.color }}>{item.title}</h3>
-              <p className="text-sm leading-snug tracking-wide text-gray-900 text-opacity-100">{item.description}</p>
+              
+              <h3 className=" font-montserrat font-extrabold text-2xl p-5" style={{ color: item.color }}>{item.title}</h3>
+              
+              <p className="text-sm font-montserrat font-extralight leading-snug tracking-wide text-gray-900 text-opacity-100 p-5">{item.description}</p>
             </div>
+
             <div className="order-1 flex justify-center items-center w-24 h-24 bg-white border-2 border-gray-200 rounded-full z-10 shadow-xl">
+              
               <h1 className="mx-auto text-white font-semibold text-lg" style={{ color: item.color }}>{index + 1}</h1>
+
             </div>
+
           </div>
         ))}
       </div>

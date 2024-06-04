@@ -9,30 +9,30 @@ import ModalLogin from '../components/ModalLogin'
 import AboutForms from '../components/AboutForms'
 import InfiniteMovingCardsDemo from './CarroselPartner' */
 
-import HomePage from "@/components/HomePage"
+import SessaoPrincipal from "@/components/SessaoPrincipal"
 import Missao from "@/components/Missao"
-import AboutProject from "@/components/AboutProject"
+import SobreProjeto from "@/components/SobreProjeto"
 import Funcionalidades from "@/components/Funcionalidades"
-import Data from "@/components/Data"
-import AboutMission from "@/components/AboutMission"
-import CarroselEvents from "@/components/CarroselEvents"
-import RoadMap from "../components/Roadmap"
-import Education from "../components/Education"
+import Dados from "@/components/Dados"
+import SobreMissao from "@/components/SobreMissao"
+import Eventos from "@/components/Eventos"
+import RoadMap from "@/components/Roadmap"
+import Educacao from "@/components/Educacao"
 
 export default function Home() {
 
   return (
     <div> 
       
-      <HomePage/>
+      <SessaoPrincipal/>
       <Missao/>
-      <AboutProject/>
+      <SobreProjeto/>
       <Funcionalidades/>
-      <Data/>
-      <AboutMission/>
-      <CarroselEvents/>
+      <Dados/>
+      <SobreMissao/>
+      <Eventos/>
       <RoadMap/>
-      <Education/>
+      <Educacao/>
 
     </div>
   )

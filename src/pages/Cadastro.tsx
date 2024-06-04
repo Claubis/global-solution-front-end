@@ -125,20 +125,23 @@ export default function Cadastro() {
       <div className="absolute inset-0 bg-white bg-opacity-40"></div>
 
       <div className="relative flex flex-col items-center justify-center min-h-screen p-4">
-        <div className='flex border h-auto p-0 bg-white shadow-lg w-full max-w-4xl gap-0'>
+        <div className='flex border h-auto p-0 bg-white shadow-lg w-full max-w-6xl gap-0'>
           
           <div className="w-full flex flex-col justify-center bg-[#20A19A] p-10 text-white">
-            <h2 className="font-montserrat-700 text-4xl mb-4 text-left">Crie sua conta</h2>
-            <p className="font-montserrat text-lg text-left max-w-2xl leading-10">
-              Se você ainda não faz parte da nossa comunidade, junte-se hoje e comece a fazer a diferença! O cadastro é rápido e fácil. Preencha o formulário ao lado para começar a sua jornada na conservação marinha.
+
+            <h2 className="font-montserrat font-extrabold text-6xl mb-10 text-left ">crie sua <br /> conta</h2>
+
+            <p className="font-montserrat font-medium text-lg text-left max-w-2xl leading-10">
+              Se você ainda não faz parte da nossa comunidade, <br /> junte-se hoje e comece a fazer a diferença! O cadastro <br /> é rápido e fácil. Preencha o formulário ao lado para <br /> começar a sua jornada na conservação marinha.
             </p>
           </div>
 
           <div className='w-full p-10'>
-            <h2 className="text-[#F1A027] font-montserrat text-2xl font-semibold mb-6 text-center">DIGITE SEUS DADOS</h2>
+            <h2 className="text-[#F1A027] font-montserrat text-2xl font-bold mb-6 text-center">DIGITE SEUS DADOS</h2>
             
             <form className="space-y-6 w-full" onSubmit={handleSubmit}>
-              <div className="flex flex-col space-y-2">
+              
+              <div className="flex flex-col space-y-2 font-montserrat font-normal">
                 <input
                   type="text"
                   name="nome"

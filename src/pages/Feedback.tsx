@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
-import imagem from '../../public/assets/Feedback_Rectangle33.png';
-import Header from '@/components/Header';
+
+import imagem from '../../public/assets/Feedback/Feedback_Rectangle33.png';
 
 interface FormData {
   name: string;
@@ -10,9 +10,6 @@ interface FormData {
   message: string;
 }
 
-const ImgAsset = {
-  Feedback_Rectangle32: '/assets/Rectangle32.png',
-};
 
 const StarIcon: React.FC<{ filled: boolean; onClick: () => void }> = ({ filled, onClick }) => (
   <svg
@@ -80,32 +77,28 @@ const Feedback: React.FC = () => {
   };
 
   return (
-    <div className="w-full h-screen overflow-auto bg-white relative mb-20">
+    <div className="w-full h-[860px] bg-white relative">
 
-      
+      <div className="absolute top-0 left-0 bg-[#077B74]">
+        
 
-      <div className="absolute top-0 left-0 w-full h-[387px] bg-teal-700">
-        <Image
-          className="absolute top-0 left-1/2 transform -translate-x-1/2 w-full h-full"
-          src={ImgAsset.Feedback_Rectangle32}
-          alt="Rectangle32"
-          layout="fill"
-        />
-        <div className="absolute top-[123px] left-[162px] w-[1116px] h-[50px] flex flex-col items-center justify-center">
-          <span className="text-4xl font-extrabold text-teal-200 leading-[78px] text-center">fale conosco</span>
-          <span className="mt-4 text-lg font-medium text-white leading-[27px] text-center">
+        <div className="flex flex-col px-20 justify-center items-center mb-20 mt-10">
+
+          <span className="text-6xl font-montserrat font-extrabold text-teal-200 leading-[78px] text-center">fale conosco</span>
+
+          <span className="mt-4 text-lg font-montserrat font-medium text-white leading-[27px] text-center">
             Temos interesse em ouvir suas sugestões, dúvidas ou feedback. Entre em contato conosco para saber mais sobre o projeto, nossas atividades de conservação ou como você pode se envolver mais.
           </span>
-        </div>
-      </div>
 
-      <Header/>
+        </div>
+      
+      </div>
 
       <form
         name="form-feedback"
         id="form-feedback"
         onSubmit={handleSubmitFeedback}
-        className="absolute top-[457px] left-[118px] w-[711px] h-[413px] space-y-4"
+        className="absolute top-[280px] left-[118px] w-[711px] h-[413px] space-y-4 mt-20 font-montserrat font-medium"
       >
         <div className="flex space-x-4">
           <div className="w-[350px] h-[57px] rounded-full bg-[#B9E2E0] p-4">
@@ -182,11 +175,11 @@ const Feedback: React.FC = () => {
         name="form-newsletter"
         id="form-newsletter"
         onSubmit={handleSubmitNewsletter}
-        className="absolute top-[457px] left-[900px] w-[422px] h-[413px]"
+        className="absolute top-[280px] left-[900px] w-[422px] h-[413px] mt-20"
       >
-        <img src={imagem.src} alt="Imagem de fundo de um golfinho" />
+        <Image src={imagem.src} alt="Imagem de fundo de um golfinho" width={500} height={200}/>
 
-        <div className="absolute top-[207px] left-[35px] w-[350px] h-[57px]">
+        <div className="absolute top-[207px] left-[35px] w-[350px] h-[57px] bg-white">
           <input
             type="email"
             id="newsletter-email"
@@ -199,20 +192,26 @@ const Feedback: React.FC = () => {
           />
         </div>
 
+        <span className="absolute top-[50px] left-[29px] w-[320px] text-2xl font-montserrat font-extrabold text-white leading-[36px]">
+          assine a newsletter
+        </span>
+
+      
+        <span className="absolute top-[107px] left-[29px] w-[361px] text-lg font-montserrat font-medium text-white leading-[27px]">
+          Assine nossa newsletter e mergulhe nas últimas novidades sobre conservação marinha.
+        </span>
+
         <div className="absolute top-[288px] left-[35px] w-[350px] h-[48px]">
           <div className="absolute top-0 left-0 w-full h-full bg-[#F1A027]"></div>
-          <button type="submit" className="absolute top-[11px] left-1/2 transform -translate-x-1/2 text-lg font-medium text-teal-700">
+          <button type="submit" className="absolute top-[11px] left-1/2 transform -translate-x-1/2 text-lg font-montserrat font-medium text-teal-700">
             enviar
           </button>
         </div>
 
-        <span className="absolute top-[107px] left-[29px] w-[361px] text-lg font-medium text-white leading-[27px]">
-          Assine nossa newsletter e mergulhe nas últimas novidades sobre conservação marinha.
-        </span>
-        <span className="absolute top-[50px] left-[29px] w-[320px] text-2xl font-extrabold text-white leading-[36px]">
-          assine a newsletter
-        </span>
+        
+        
       </form>
+
     </div>
   );
 };

@@ -1,7 +1,9 @@
 'use client'
 import React, { useState } from 'react';
-import imagem from '../../public/assets/Login/login_imagegradiente.png';
 import Link from 'next/link';
+
+import imagem from '../../public/assets/Login/login_imagegradiente.png';
+
 import { useRouter } from 'next/navigation';
 
 
@@ -72,17 +74,22 @@ const Login: React.FC = () => {
         style={{ backgroundImage: `url(${imagem.src})` }}
       >
         <div className="flex flex-col justify-center h-full p-10">
-          <h1 className="text-4xl font-bold text-left text-white">bem-vindo <br/>de volta!</h1>
-          <p className="text-left text-white font-medium mt-4">
-            Se você já faz parte da nossa comunidade, estamos felizes em vê-lo de volta! Insira suas credenciais ao lado para continuar acessando o site e contribuir para a conservação marinha. Seu engajamento é essencial para ajudar a proteger a vida marinha.
+          
+          <h1 className="text-6xl font-montserrat font-extrabold text-left text-white mb-10">bem-vindo <br/>de volta!</h1>
+
+          <p className="text-left text-white font-montserrat font-medium mt-4 leading-10">
+            Se você já faz parte da nossa comunidade, estamos <br />   felizes em vê-lo de volta! Insira suas credenciais ao <br /> lado para continuar acessando o site e contribuir para <br /> a conservação marinha. Seu engajamento é essencial <br /> para ajudar a proteger a vida marinha.
           </p>
         </div>
       </div>
 
       <div className="bg-white rounded-xl h-[80vh] w-[447px] p-10 flex flex-col items-center">
         <div className="w-full">
-          <h1 className="text-2xl font-bold text-[#F1A027] text-center">LOGIN</h1>
-          <p className="text-center text-black font-medium mt-4">Insira seus dados nos campos abaixo ou utilize o acesso rápido com o Google para facilitar o processo.</p>
+          
+          <h1 className="text-2xl font-montserrat font-bold text-[#F1A027] text-center">LOGIN</h1>
+          
+          <p className="text-center text-black font-montserrat font-normal mt-4">Insira seus dados nos campos abaixo ou utilize o acesso rápido com o Google para facilitar o processo.</p>
+
         </div>
 
         <form className="w-full mt-6 space-y-6" onSubmit={handleSubmit}>
@@ -117,13 +124,30 @@ const Login: React.FC = () => {
           </div>
 
           <div className="flex justify-between w-full">
-            <button type="submit" className="w-1/2 py-2 px-4 bg-[#20A19A] text-white rounded hover:bg-[#1B807A] mr-2">Login</button>
+            
+            <button type="submit" className="w-1/2 py-2 px-4 bg-[#20A19A] text-white rounded hover:bg-[#1B807A] mr-2"><Link href='/PaginaLogada'>Login</Link></button>
+            
             <button type="button" className="w-1/2 py-2 px-4 bg-gray-200 text-black flex items-center justify-center rounded hover:bg-gray-300">
-              <span className="mr-2">G Google</span>
+              <span className="mr-2">Google</span>
             
             </button>
+
           </div>
+
         </form>
+
+        <div className='min-w-full'>
+
+          <p className="text-center text-black font-montserrat font-normal mt-4">Se não possui cadastro, faça agora.</p>
+
+          <div className="flex justify-center items-center w-full mt-5">
+            
+            <button type="submit" className="w-full py-2 px-4 bg-[#20A19A] text-white rounded hover:bg-[#1B807A] mr-2"><Link href='/PaginaLogada'>cadastre-se</Link></button>
+
+          </div>
+
+        </div>
+
       </div>
     </div>
   );

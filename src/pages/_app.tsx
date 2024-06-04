@@ -1,5 +1,10 @@
 import type { AppProps } from 'next/app';
-import { SessionProvider } from "next-auth/react";
+
+/* 
+Instalar:
+npm install next-auth react
+*/
+import { SessionProvider, useSession } from "next-auth/react";
 import '../globals.css';
 
 // Importações de componentes
@@ -7,6 +12,9 @@ import Menu from '../components/Menu';
 import Rodape from '@/components/Rodape';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
+
+
+
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   const router = useRouter();

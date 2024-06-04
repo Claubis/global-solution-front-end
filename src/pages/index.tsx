@@ -16,7 +16,7 @@ import Funcionalidades from "@/components/Funcionalidades"
 import Dados from "@/components/Dados"
 import SobreMissao from "@/components/SobreMissao"
 import Eventos from "@/components/Eventos"
-import RoadMap from "@/components/Roadmap"
+import RoadMap from "../components/Roadmap"
 import Educacao from "@/components/Educacao"
 
 export default function Home() {

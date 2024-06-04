@@ -14,6 +14,17 @@ const config: Config = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
 
+      // Definição dos breakpoints
+      screens: {
+        'ss': '375px',
+        'sm': '579px',
+        'md': '768px',
+        'lg': '1024px',
+        'xl': '1280px',
+        'xx': '1440px',
+        
+      },
+
       fontFamily: {
         montserrat: ['Montserrat', 'sans-serif'],
       },

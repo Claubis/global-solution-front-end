@@ -1,71 +1,123 @@
-import React from 'react';
+import React, { useState } from 'react';
+import PesquisarEndereco from '../components/PesquisarEndereco';
+import LocalizacaoAtual from '../components/LocalizacaoAtual';
 
 interface FormProps {
   step: number;
-  nextStep: () => void;
-  prevStep: () => void;
-  handleChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => void;
-  handleFileChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
-  formData: any;
-  errors: any;
+  setStep: (step: number) => void;
 }
 
-const OcorrenciaAnimal: React.FC<FormProps> = ({ step, nextStep, prevStep, handleChange, handleFileChange, handleSubmit, formData, errors }) => {
-  const animalOptions = ['Golfinho', 'Baleia', 'Tartaruga', 'Foca']; // Exemplo de opções de animais
-  const conditionOptions = ['Vivo', 'Morto', 'Ferido', 'Doente']; // Exemplo de opções de condições
+const OcorrenciaAnimal: React.FC<FormProps> = ({ step, setStep }) => {
+
+  const [formData, setFormData] = useState({
+    nome_form_animal: '',
+    email_form_animal: '',
+    tel_form_animal: '',
+    nome_animal: '',
+    condicao_animal: '',
+    primeiros_socorros_animal: '',
+    cep_animal: '',
+    estado_animal: '',
+    cidade_animal: '',
+    rua_animal: '',
+    complemento_animal: '',
+    descricao_animal: '',
+    foto_animal: null,
+  });
+
+  const [showAddressSearch, setShowAddressSearch] = useState(false);
+
+  const animalOptions = ['Golfinho', 'Baleia', 'Tartaruga', 'Foca'];
+  const conditionOptions = ['Vivo', 'Morto', 'Ferido', 'Doente'];
+
+  const handleAddressSelect = (address: {
+    cep: string;
+    estado: string;
+    cidade: string;
+    rua: string;
+    complemento?: string;
+  }) => {
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      cep_animal: address.cep,
+      estado_animal: address.estado,
+      cidade_animal: address.cidade,
+      rua_animal: address.rua,
+      complemento_animal: address.complemento || '',
+    }));
+    setShowAddressSearch(false);
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [name]: value,
+    }));
+  };
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, files } = e.target;
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [name]: files ? files[0] : null,
+    }));
+  };
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log(formData);
+    // Processar o envio do formulário
+  };
 
   return (
     <form className="space-y-6" onSubmit={handleSubmit}>
       {step === 1 && (
         <>
           <div className="flex flex-col space-y-2">
-            <label htmlFor="nome" className="block text-sm font-medium text-gray-700">
+            <label htmlFor="nome_form_animal" className="block text-sm font-medium text-gray-700">
               Nome
             </label>
             <input
               type="text"
-              name="nome"
-              id="nome"
-              value={formData.nome}
-              onChange={handleChange}
+              name="nome_form_animal"
+              id="nome_form_animal"
+              value={formData.nome_form_animal}
+              onChange={handleInputChange}
               className="w-full p-2 border border-gray-300 rounded"
               placeholder="Nome"
             />
-            {errors.nome && <p className="text-red-500 text-sm">{errors.nome}</p>}
           </div>
           <div className="flex flex-col space-y-2">
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+            <label htmlFor="email_form_animal" className="block text-sm font-medium text-gray-700">
               E-mail
             </label>
             <input
               type="email"
-              name="email"
-              id="email"
-              value={formData.email}
-              onChange={handleChange}
+              name="email_form_animal"
+              id="email_form_animal"
+              value={formData.email_form_animal}
+              onChange={handleInputChange}
               className="w-full p-2 border border-gray-300 rounded"
               placeholder="E-mail"
             />
-            {errors.email && <p className="text-red-500 text-sm">{errors.email}</p>}
           </div>
           <div className="flex flex-col space-y-2">
-            <label htmlFor="telefone" className="block text-sm font-medium text-gray-700">
+            <label htmlFor="tel_form_animal" className="block text-sm font-medium text-gray-700">
               Telefone
             </label>
             <input
               type="text"
-              name="telefone"
-              id="telefone"
-              value={formData.telefone}
-              onChange={handleChange}
+              name="tel_form_animal"
+              id="tel_form_animal"
+              value={formData.tel_form_animal}
+              onChange={handleInputChange}
               className="w-full p-2 border border-gray-300 rounded"
               placeholder="Telefone"
             />
-            {errors.telefone && <p className="text-red-500 text-sm">{errors.telefone}</p>}
           </div>
-          <button type="button" onClick={nextStep} className="bg-[#20A19A] text-white py-2 px-4 rounded">
-            Next
+          <button type="button" onClick={() => setStep(2)} className="bg-[#20A19A] text-white py-2 px-4 rounded">
+            Próximo
           </button>
         </>
       )}
@@ -73,14 +125,14 @@ const OcorrenciaAnimal: React.FC<FormProps> = ({ step, nextStep, prevStep, handl
       {step === 2 && (
         <>
           <div className="flex flex-col space-y-2">
-            <label htmlFor="animal" className="block text-sm font-medium text-gray-700">
+            <label htmlFor="nome_animal" className="block text-sm font-medium text-gray-700">
               Selecione o Animal
             </label>
             <select
-              name="animal"
-              id="animal"
-              value={formData.animal}
-              onChange={handleChange}
+              name="nome_animal"
+              id="nome_animal"
+              value={formData.nome_animal}
+              onChange={handleInputChange}
               className="w-full p-2 border border-gray-300 rounded"
             >
               <option value="">Selecione...</option>
@@ -90,17 +142,16 @@ const OcorrenciaAnimal: React.FC<FormProps> = ({ step, nextStep, prevStep, handl
                 </option>
               ))}
             </select>
-            {errors.animal && <p className="text-red-500 text-sm">{errors.animal}</p>}
           </div>
           <div className="flex flex-col space-y-2">
-            <label htmlFor="condition" className="block text-sm font-medium text-gray-700">
+            <label htmlFor="condicao_animal" className="block text-sm font-medium text-gray-700">
               Condição do Animal
             </label>
             <select
-              name="condition"
-              id="condition"
-              value={formData.condition}
-              onChange={handleChange}
+              name="condicao_animal"
+              id="condicao_animal"
+              value={formData.condicao_animal}
+              onChange={handleInputChange}
               className="w-full p-2 border border-gray-300 rounded"
             >
               <option value="">Selecione...</option>
@@ -110,31 +161,29 @@ const OcorrenciaAnimal: React.FC<FormProps> = ({ step, nextStep, prevStep, handl
                 </option>
               ))}
             </select>
-            {errors.condition && <p className="text-red-500 text-sm">{errors.condition}</p>}
           </div>
           <div className="flex flex-col space-y-2">
-            <label htmlFor="firstAid" className="block text-sm font-medium text-gray-700">
+            <label htmlFor="primeiros_socorros_animal" className="block text-sm font-medium text-gray-700">
               Prestou os Primeiros Socorros?
             </label>
             <select
-              name="firstAid"
-              id="firstAid"
-              value={formData.firstAid}
-              onChange={handleChange}
+              name="primeiros_socorros_animal"
+              id="primeiros_socorros_animal"
+              value={formData.primeiros_socorros_animal}
+              onChange={handleInputChange}
               className="w-full p-2 border border-gray-300 rounded"
             >
               <option value="">Selecione...</option>
               <option value="Sim">Sim</option>
               <option value="Não">Não</option>
             </select>
-            {errors.firstAid && <p className="text-red-500 text-sm">{errors.firstAid}</p>}
           </div>
           <div className="flex justify-between">
-            <button type="button" onClick={prevStep} className="bg-gray-200 text-black py-2 px-4 rounded">
-              Back
+            <button type="button" onClick={() => setStep(1)} className="bg-gray-200 text-black py-2 px-4 rounded">
+              Voltar
             </button>
-            <button type="button" onClick={nextStep} className="bg-[#20A19A] text-white py-2 px-4 rounded">
-              Next
+            <button type="button" onClick={() => setStep(3)} className="bg-[#20A19A] text-white py-2 px-4 rounded">
+              Próximo
             </button>
           </div>
         </>
@@ -142,99 +191,93 @@ const OcorrenciaAnimal: React.FC<FormProps> = ({ step, nextStep, prevStep, handl
 
       {step === 3 && (
         <>
-          <div className="flex flex-col space-y-2">
-            <label htmlFor="endereco" className="block text-sm font-medium text-gray-700">
-              Endereço
-            </label>
-            <div className="flex gap-2">
-              <button type="button" className="bg-gray-200 text-black py-2 px-4 rounded w-full">
-                Inserir Manualmente
-              </button>
-              <button type="button" className="bg-gray-200 text-black py-2 px-4 rounded w-full">
-                Usar Localização Atual
-              </button>
-            </div>
+          <div className="flex justify-center gap-10 space-y-2 w-full">
+            <button type="button" onClick={() => setShowAddressSearch(true)} className="bg-blue-500 text-white py-2 px-4 rounded mt-2 w-full">
+              Pesquisar Endereço
+            </button>
+            <LocalizacaoAtual onLocationSelect={handleAddressSelect} />
           </div>
-          <div className="flex flex-col space-y-2 mt-4">
-            <label htmlFor="cep" className="block text-sm font-medium text-gray-700">
+
+          {showAddressSearch && (
+            <PesquisarEndereco onAddressSelect={handleAddressSelect} />
+          )}
+          
+          <div className="flex flex-col space-y-2">
+            <label htmlFor="cep_animal" className="block text-sm font-medium text-gray-700">
               CEP
             </label>
             <input
               type="text"
-              name="cep"
-              id="cep"
-              value={formData.cep}
-              onChange={handleChange}
+              name="cep_animal"
+              id="cep_animal"
+              value={formData.cep_animal}
+              onChange={handleInputChange}
               className="w-full p-2 border border-gray-300 rounded"
               placeholder="CEP"
             />
-            {errors.cep && <p className="text-red-500 text-sm">{errors.cep}</p>}
           </div>
           <div className="flex flex-col space-y-2">
-            <label htmlFor="estado" className="block text-sm font-medium text-gray-700">
+            <label htmlFor="estado_animal" className="block text-sm font-medium text-gray-700">
               Estado
             </label>
             <input
               type="text"
-              name="estado"
-              id="estado"
-              value={formData.estado}
-              onChange={handleChange}
+              name="estado_animal"
+              id="estado_animal"
+              value={formData.estado_animal}
+              onChange={handleInputChange}
               className="w-full p-2 border border-gray-300 rounded"
               placeholder="Estado"
             />
-            {errors.estado && <p className="text-red-500 text-sm">{errors.estado}</p>}
           </div>
           <div className="flex flex-col space-y-2">
-            <label htmlFor="cidade" className="block text-sm font-medium text-gray-700">
+            <label htmlFor="cidade_animal" className="block text-sm font-medium text-gray-700">
               Cidade
             </label>
             <input
               type="text"
-              name="cidade"
-              id="cidade"
-              value={formData.cidade}
-              onChange={handleChange}
+              name="cidade_animal"
+              id="cidade_animal"
+              value={formData.cidade_animal}
+              onChange={handleInputChange}
               className="w-full p-2 border border-gray-300 rounded"
               placeholder="Cidade"
             />
-            {errors.cidade && <p className="text-red-500 text-sm">{errors.cidade}</p>}
           </div>
           <div className="flex flex-col space-y-2">
-            <label htmlFor="rua" className="block text-sm font-medium text-gray-700">
+            <label htmlFor="rua_animal" className="block text-sm font-medium text-gray-700">
               Rua
             </label>
             <input
               type="text"
-              name="rua"
-              id="rua"
-              value={formData.rua}
-              onChange={handleChange}
+              name="rua_animal"
+              id="rua_animal"
+              value={formData.rua_animal}
+              onChange={handleInputChange}
               className="w-full p-2 border border-gray-300 rounded"
               placeholder="Rua"
             />
-            {errors.rua && <p className="text-red-500 text-sm">{errors.rua}</p>}
           </div>
           <div className="flex flex-col space-y-2">
-            <label htmlFor="complemento" className="block text-sm font-medium text-gray-700">
+            <label htmlFor="complemento_animal" className="block text-sm font-medium text-gray-700">
               Complemento
             </label>
             <input
               type="text"
-              name="complemento"
-              id="complemento"
-              value={formData.complemento}
-              onChange={handleChange}
+              name="complemento_animal"
+              id="complemento_animal"
+              value={formData.complemento_animal}
+              onChange={handleInputChange}
               className="w-full p-2 border border-gray-300 rounded"
               placeholder="Complemento"
             />
           </div>
           <div className="flex justify-between">
-            <button type="button" onClick={prevStep} className="bg-gray-200 text-black py-2 px-4 rounded">
-              Back
+            <button type="button" onClick={() => setStep(2)} className="bg-gray-200 text-black py-2 px-4 rounded">
+              Voltar
             </button>
-            <button type="button" onClick={nextStep} className="bg-[#20A19A] text-white py-2 px-4 rounded">
-              Next
+            <button type="button" onClick={() => setStep(4)} className="bg-[#20A19A] text-white py-2 px-4 rounded">
+              Próximo
             </button>
           </div>
         </>
@@ -243,34 +286,34 @@ const OcorrenciaAnimal: React.FC<FormProps> = ({ step, nextStep, prevStep, handl
       {step === 4 && (
         <>
           <div className="flex flex-col space-y-2">
-            <label htmlFor="foto" className="block text-sm font-medium text-gray-700">
+            <label htmlFor="foto_animal" className="block text-sm font-medium text-gray-700">
               Anexar Foto
             </label>
             <input
               type="file"
-              name="foto"
-              id="foto"
+              name="foto_animal"
+              id="foto_animal"
               onChange={handleFileChange}
               className="w-full p-2 border border-gray-300 rounded"
             />
           </div>
           <div className="flex flex-col space-y-2">
-            <label htmlFor="descricao" className="block text-sm font-medium text-gray-700">
+            <label htmlFor="descricao_animal" className="block text-sm font-medium text-gray-700">
               Descrição do Ocorrido
             </label>
             <textarea
-              name="descricao"
-              id="descricao"
+              name="descricao_animal"
+              id="descricao_animal"
               rows={4}
-              value={formData.descricao}
-              onChange={handleChange}
+              value={formData.descricao_animal}
+              onChange={handleInputChange}
               className="w-full p-2 border border-gray-300 rounded"
               placeholder="Descreva o ocorrido"
             ></textarea>
           </div>
           <div className="flex justify-between">
-            <button type="button" onClick={prevStep} className="bg-gray-200 text-black py-2 px-4 rounded">
-              Back
+            <button type="button" onClick={() => setStep(3)} className="bg-gray-200 text-black py-2 px-4 rounded">
+              Voltar
             </button>
             <button type="submit" className="bg-[#20A19A] text-white py-2 px-4 rounded">
               Enviar

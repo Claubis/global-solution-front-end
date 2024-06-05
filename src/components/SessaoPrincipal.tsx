@@ -26,7 +26,7 @@ const SessaoPrincipal: React.FC = () => {
       
               <div className="mt-6 flex justify-end">
                 
-                <button className="bg-[#F1A027] text-white px-4 py-2 rounded mr-2 font-montserrat font-semibold"><Link href="/Ocorrencias">Registrar ocorrência</Link></button>
+                <button className="bg-[#F1A027] text-white px-4 py-2 rounded mr-2 font-montserrat font-semibold"><Link href="/OcorrenciasAnimal">Registrar ocorrência</Link></button>
                 
                 <button className="bg-transparent text-white px-4 py-2 rounded border border-white font-montserrat font-semibold"><Link href="/Login">Saiba mais</Link></button>
 

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PesquisarEndereco from '../components/PesquisarEndereco';
-import LocalizacaoAtual from '../components/LocalizacaoAtual';
+import PosicaoAtual from '../components/PosicaoAtual';
 
 interface FormProps {
   step: number;
@@ -8,7 +8,6 @@ interface FormProps {
 }
 
 const OcorrenciaPoluente: React.FC<FormProps> = ({ step, setStep }) => {
-
   const [formData, setFormData] = useState({
     nome_form_poluente: '',
     email_form_poluente: '',
@@ -23,9 +22,12 @@ const OcorrenciaPoluente: React.FC<FormProps> = ({ step, setStep }) => {
     complemento_poluente: '',
     descricao_poluente: '',
     foto_poluente: null,
+    latitude_poluente: '',
+    longitude_poluente: '',
   });
 
   const [showAddressSearch, setShowAddressSearch] = useState(false);
+  const [useCurrentLocation, setUseCurrentLocation] = useState(false);
 
   const residuoOptions = ['Plástico', 'Metal', 'Vidro', 'Papel', 'Orgânico'];
   const perigoOptions = ['Sim', 'Não'];
@@ -68,6 +70,15 @@ const OcorrenciaPoluente: React.FC<FormProps> = ({ step, setStep }) => {
     e.preventDefault();
     console.log(formData);
     // Processar o envio do formulário
+  };
+
+  const handleLocationFound = (location: { lat: number; lng: number }) => {
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      latitude_poluente: location.lat.toString(),
+      longitude_poluente: location.lng.toString(),
+    }));
+    setUseCurrentLocation(true);
   };
 
   return (
@@ -193,83 +204,129 @@ const OcorrenciaPoluente: React.FC<FormProps> = ({ step, setStep }) => {
             <button type="button" onClick={() => setShowAddressSearch(true)} className="bg-blue-500 text-white py-2 px-4 rounded mt-2 w-full">
               Pesquisar Endereço
             </button>
-            <LocalizacaoAtual onLocationSelect={handleAddressSelect} />
+            <button
+              type="button"
+              onClick={() => setUseCurrentLocation(true)}
+              className="bg-green-500 text-white py-2 px-4 rounded mt-2 w-full"
+            >
+              Usar Localização Atual
+            </button>
           </div>
 
           {showAddressSearch && (
             <PesquisarEndereco onAddressSelect={handleAddressSelect} />
           )}
-          
-          <div className="flex flex-col space-y-2">
-            <label htmlFor="cep_poluente" className="block text-sm font-medium text-gray-700">
-              CEP
-            </label>
-            <input
-              type="text"
-              name="cep_poluente"
-              id="cep_poluente"
-              value={formData.cep_poluente}
-              onChange={handleInputChange}
-              className="w-full p-2 border border-gray-300 rounded"
-              placeholder="CEP"
-            />
-          </div>
-          <div className="flex flex-col space-y-2">
-            <label htmlFor="estado_poluente" className="block text-sm font-medium text-gray-700">
-              Estado
-            </label>
-            <input
-              type="text"
-              name="estado_poluente"
-              id="estado_poluente"
-              value={formData.estado_poluente}
-              onChange={handleInputChange}
-              className="w-full p-2 border border-gray-300 rounded"
-              placeholder="Estado"
-            />
-          </div>
-          <div className="flex flex-col space-y-2">
-            <label htmlFor="cidade_poluente" className="block text-sm font-medium text-gray-700">
-              Cidade
-            </label>
-            <input
-              type="text"
-              name="cidade_poluente"
-              id="cidade_poluente"
-              value={formData.cidade_poluente}
-              onChange={handleInputChange}
-              className="w-full p-2 border border-gray-300 rounded"
-              placeholder="Cidade"
-            />
-          </div>
-          <div className="flex flex-col space-y-2">
-            <label htmlFor="rua_poluente" className="block text-sm font-medium text-gray-700">
-              Rua
-            </label>
-            <input
-              type="text"
-              name="rua_poluente"
-              id="rua_poluente"
-              value={formData.rua_poluente}
-              onChange={handleInputChange}
-              className="w-full p-2 border border-gray-300 rounded"
-              placeholder="Rua"
-            />
-          </div>
-          <div className="flex flex-col space-y-2">
-            <label htmlFor="complemento_poluente" className="block text-sm font-medium text-gray-700">
-              Complemento
-            </label>
-            <input
-              type="text"
-              name="complemento_poluente"
-              id="complemento_poluente"
-              value={formData.complemento_poluente}
-              onChange={handleInputChange}
-              className="w-full p-2 border border-gray-300 rounded"
-              placeholder="Complemento"
-            />
-          </div>
+
+          {useCurrentLocation ? (
+            <>
+              <PosicaoAtual onLocationFound={handleLocationFound} />
+              <div className="flex flex-col space-y-2">
+                <label htmlFor="latitude_poluente" className="block text-sm font-medium text-gray-700">
+                  Latitude
+                </label>
+                <input
+                  type="text"
+                  name="latitude_poluente"
+                  id="latitude_poluente"
+                  value={formData.latitude_poluente}
+                  onChange={handleInputChange}
+                  className="w-full p-2 border border-gray-300 rounded"
+                  placeholder="Latitude"
+                  readOnly
+                />
+              </div>
+              <div className="flex flex-col space-y-2">
+                <label htmlFor="longitude_poluente" className="block text-sm font-medium text-gray-700">
+                  Longitude
+                </label>
+                <input
+                  type="text"
+                  name="longitude_poluente"
+                  id="longitude_poluente"
+                  value={formData.longitude_poluente}
+                  onChange={handleInputChange}
+                  className="w-full p-2 border border-gray-300 rounded"
+                  placeholder="Longitude"
+                  readOnly
+                />
+              </div>
+              <div className="flex flex-col space-y-2">
+                <label htmlFor="complemento_poluente" className="block text-sm font-medium text-gray-700">
+                  Complemento
+                </label>
+                <input
+                  type="text"
+                  name="complemento_poluente"
+                  id="complemento_poluente"
+                  value={formData.complemento_poluente}
+                  onChange={handleInputChange}
+                  className="w-full p-2 border border-gray-300 rounded"
+                  placeholder="Complemento"
+                />
+              </div>
+            </>
+          ) : (
+            <>
+              <div className="flex flex-col space-y-2">
+                <label htmlFor="cep_poluente" className="block text-sm font-medium text-gray-700">
+                  CEP
+                </label>
+                <input
+                  type="text"
+                  name="cep_poluente"
+                  id="cep_poluente"
+                  value={formData.cep_poluente}
+                  onChange={handleInputChange}
+                  className="w-full p-2 border border-gray-300 rounded"
+                  placeholder="CEP"
+                />
+              </div>
+
+              <div className="flex flex-col space-y-2">
+                <label htmlFor="estado_poluente" className="block text-sm font-medium text-gray-700">
+                  Estado
+                </label>
+                <input
+                  type="text"
+                  name="estado_poluente"
+                  id="estado_poluente"
+                  value={formData.estado_poluente}
+                  onChange={handleInputChange}
+                  className="w-full p-2 border border-gray-300 rounded"
+                  placeholder="Estado"
+                />
+              </div>
+              <div className="flex flex-col space-y-2">
+                <label htmlFor="cidade_poluente" className="block text-sm font-medium text-gray-700">
+                  Cidade
+                </label>
+                <input
+                  type="text"
+                  name="cidade_poluente"
+                  id="cidade_poluente"
+                  value={formData.cidade_poluente}
+                  onChange={handleInputChange}
+                  className="w-full p-2 border border-gray-300 rounded"
+                  placeholder="Cidade"
+                />
+              </div>
+              <div className="flex flex-col space-y-2">
+                <label htmlFor="rua_poluente" className="block text-sm font-medium text-gray-700">
+                  Rua
+                </label>
+                <input
+                  type="text"
+                  name="rua_poluente"
+                  id="rua_poluente"
+                  value={formData.rua_poluente}
+                  onChange={handleInputChange}
+                  className="w-full p-2 border border-gray-300 rounded"
+                  placeholder="Rua"
+                />
+              </div>
+            </>
+          )}
+
           <div className="flex justify-between">
             <button type="button" onClick={() => setStep(2)} className="bg-gray-200 text-black py-2 px-4 rounded">
               Voltar

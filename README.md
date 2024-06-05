@@ -1,5 +1,7 @@
 API do Maps:
 
 npm install react-google-autocomplete
-npm install react-leaflet leaflet
-npm install --save-dev @types/leaflet
+npm install react-geolocated
+
+
+AIzaSyBo_tRysQ3kz2rnrnKvnN8FKz60zrkiIno

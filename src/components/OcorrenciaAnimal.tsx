@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PesquisarEndereco from '../components/PesquisarEndereco';
-import LocalizacaoAtual from '../components/LocalizacaoAtual';
+import PosicaoAtual from '../components/PosicaoAtual';
 
 interface FormProps {
   step: number;
@@ -8,7 +8,6 @@ interface FormProps {
 }
 
 const OcorrenciaAnimal: React.FC<FormProps> = ({ step, setStep }) => {
-
   const [formData, setFormData] = useState({
     nome_form_animal: '',
     email_form_animal: '',
@@ -23,9 +22,12 @@ const OcorrenciaAnimal: React.FC<FormProps> = ({ step, setStep }) => {
     complemento_animal: '',
     descricao_animal: '',
     foto_animal: null,
+    latitude_animal: '',
+    longitude_animal: '',
   });
 
   const [showAddressSearch, setShowAddressSearch] = useState(false);
+  const [useCurrentLocation, setUseCurrentLocation] = useState(false);
 
   const animalOptions = ['Golfinho', 'Baleia', 'Tartaruga', 'Foca'];
   const conditionOptions = ['Vivo', 'Morto', 'Ferido', 'Doente'];
@@ -68,6 +70,15 @@ const OcorrenciaAnimal: React.FC<FormProps> = ({ step, setStep }) => {
     e.preventDefault();
     console.log(formData);
     // Processar o envio do formulário
+  };
+
+  const handleLocationFound = (location: { lat: number; lng: number }) => {
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      latitude_animal: location.lat.toString(),
+      longitude_animal: location.lng.toString(),
+    }));
+    setUseCurrentLocation(true);
   };
 
   return (
@@ -195,83 +206,129 @@ const OcorrenciaAnimal: React.FC<FormProps> = ({ step, setStep }) => {
             <button type="button" onClick={() => setShowAddressSearch(true)} className="bg-blue-500 text-white py-2 px-4 rounded mt-2 w-full">
               Pesquisar Endereço
             </button>
-            <LocalizacaoAtual onLocationSelect={handleAddressSelect} />
+            <button
+              type="button"
+              onClick={() => setUseCurrentLocation(true)}
+              className="bg-green-500 text-white py-2 px-4 rounded mt-2 w-full"
+            >
+              Usar Localização Atual
+            </button>
           </div>
 
           {showAddressSearch && (
             <PesquisarEndereco onAddressSelect={handleAddressSelect} />
           )}
-          
-          <div className="flex flex-col space-y-2">
-            <label htmlFor="cep_animal" className="block text-sm font-medium text-gray-700">
-              CEP
-            </label>
-            <input
-              type="text"
-              name="cep_animal"
-              id="cep_animal"
-              value={formData.cep_animal}
-              onChange={handleInputChange}
-              className="w-full p-2 border border-gray-300 rounded"
-              placeholder="CEP"
-            />
-          </div>
-          <div className="flex flex-col space-y-2">
-            <label htmlFor="estado_animal" className="block text-sm font-medium text-gray-700">
-              Estado
-            </label>
-            <input
-              type="text"
-              name="estado_animal"
-              id="estado_animal"
-              value={formData.estado_animal}
-              onChange={handleInputChange}
-              className="w-full p-2 border border-gray-300 rounded"
-              placeholder="Estado"
-            />
-          </div>
-          <div className="flex flex-col space-y-2">
-            <label htmlFor="cidade_animal" className="block text-sm font-medium text-gray-700">
-              Cidade
-            </label>
-            <input
-              type="text"
-              name="cidade_animal"
-              id="cidade_animal"
-              value={formData.cidade_animal}
-              onChange={handleInputChange}
-              className="w-full p-2 border border-gray-300 rounded"
-              placeholder="Cidade"
-            />
-          </div>
-          <div className="flex flex-col space-y-2">
-            <label htmlFor="rua_animal" className="block text-sm font-medium text-gray-700">
-              Rua
-            </label>
-            <input
-              type="text"
-              name="rua_animal"
-              id="rua_animal"
-              value={formData.rua_animal}
-              onChange={handleInputChange}
-              className="w-full p-2 border border-gray-300 rounded"
-              placeholder="Rua"
-            />
-          </div>
-          <div className="flex flex-col space-y-2">
-            <label htmlFor="complemento_animal" className="block text-sm font-medium text-gray-700">
-              Complemento
-            </label>
-            <input
-              type="text"
-              name="complemento_animal"
-              id="complemento_animal"
-              value={formData.complemento_animal}
-              onChange={handleInputChange}
-              className="w-full p-2 border border-gray-300 rounded"
-              placeholder="Complemento"
-            />
-          </div>
+
+          {useCurrentLocation ? (
+            <>
+              <PosicaoAtual onLocationFound={handleLocationFound} />
+              <div className="flex flex-col space-y-2">
+                <label htmlFor="latitude_animal" className="block text-sm font-medium text-gray-700">
+                  Latitude
+                </label>
+                <input
+                  type="text"
+                  name="latitude_animal"
+                  id="latitude_animal"
+                  value={formData.latitude_animal}
+                  onChange={handleInputChange}
+                  className="w-full p-2 border border-gray-300 rounded"
+                  placeholder="Latitude"
+                  readOnly
+                />
+              </div>
+              <div className="flex flex-col space-y-2">
+                <label htmlFor="longitude_animal" className="block text-sm font-medium text-gray-700">
+                  Longitude
+                </label>
+                <input
+                  type="text"
+                  name="longitude_animal"
+                  id="longitude_animal"
+                  value={formData.longitude_animal}
+                  onChange={handleInputChange}
+                  className="w-full p-2 border border-gray-300 rounded"
+                  placeholder="Longitude"
+                  readOnly
+                />
+              </div>
+              <div className="flex flex-col space-y-2">
+                <label htmlFor="complemento_animal" className="block text-sm font-medium text-gray-700">
+                  Complemento
+                </label>
+                <input
+                  type="text"
+                  name="complemento_animal"
+                  id="complemento_animal"
+                  value={formData.complemento_animal}
+                  onChange={handleInputChange}
+                  className="w-full p-2 border border-gray-300 rounded"
+                  placeholder="Complemento"
+                />
+              </div>
+            </>
+          ) : (
+            <>
+              <div className="flex flex-col space-y-2">
+                <label htmlFor="cep_animal" className="block text-sm font-medium text-gray-700">
+                  CEP
+                </label>
+                <input
+                  type="text"
+                  name="cep_animal"
+                  id="cep_animal"
+                  value={formData.cep_animal}
+                  onChange={handleInputChange}
+                  className="w-full p-2 border border-gray-300 rounded"
+                  placeholder="CEP"
+                />
+              </div>
+
+              <div className="flex flex-col space-y-2">
+                <label htmlFor="estado_animal" className="block text-sm font-medium text-gray-700">
+                  Estado
+                </label>
+                <input
+                  type="text"
+                  name="estado_animal"
+                  id="estado_animal"
+                  value={formData.estado_animal}
+                  onChange={handleInputChange}
+                  className="w-full p-2 border border-gray-300 rounded"
+                  placeholder="Estado"
+                />
+              </div>
+              <div className="flex flex-col space-y-2">
+                <label htmlFor="cidade_animal" className="block text-sm font-medium text-gray-700">
+                  Cidade
+                </label>
+                <input
+                  type="text"
+                  name="cidade_animal"
+                  id="cidade_animal"
+                  value={formData.cidade_animal}
+                  onChange={handleInputChange}
+                  className="w-full p-2 border border-gray-300 rounded"
+                  placeholder="Cidade"
+                />
+              </div>
+              <div className="flex flex-col space-y-2">
+                <label htmlFor="rua_animal" className="block text-sm font-medium text-gray-700">
+                  Rua
+                </label>
+                <input
+                  type="text"
+                  name="rua_animal"
+                  id="rua_animal"
+                  value={formData.rua_animal}
+                  onChange={handleInputChange}
+                  className="w-full p-2 border border-gray-300 rounded"
+                  placeholder="Rua"
+                />
+              </div>
+            </>
+          )}
+
           <div className="flex justify-between">
             <button type="button" onClick={() => setStep(2)} className="bg-gray-200 text-black py-2 px-4 rounded">
               Voltar

@@ -12,7 +12,7 @@ const OcorrenciasPoluente: React.FC = () => {
 
   return (
     <div className='flex justify-center items-center min-h-screen bg-[#F5EAE8] p-6'>
-      <div className='w-full md:w-1/2 p-7'>
+      <div className='w-full md:w-1/2 p-3'>
         <Image src={imagem.src} alt="Mapa" className="w-full h-full object-cover rounded-lg" width={200} height={100} />
       </div>
 

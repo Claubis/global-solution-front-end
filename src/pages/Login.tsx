@@ -10,6 +10,11 @@ const Login: React.FC = () => {
   const [errors, setErrors] = useState({ email_login: '', password_login: '' });
   const router = useRouter();
 
+  // Preciso receber do back as informacoes do usuario para fazer login e validar com os 
+  // dados na tela -- metodo post
+  // email
+  // senha
+
   const validateForm = (): boolean => {
     let valid = true;
     const newErrors = { email_login: '', password_login: '' };

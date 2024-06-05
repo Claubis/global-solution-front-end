@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 
 interface FormData {
-  nome_feedback: string;
-  email_feedback: string;
-  tel_feedback: string;
-  msg_feedback: string;
-  nota_feedback: string;
+  nome: string;
+  email: string;
+  telefone: string;
+  mensagem: string;
+  nota: string;
 }
 
 const StarIcon: React.FC<{ filled: boolean; onClick: () => void }> = ({ filled, onClick }) => (
@@ -29,11 +29,11 @@ const StarIcon: React.FC<{ filled: boolean; onClick: () => void }> = ({ filled, 
 const FormularioFeedback: React.FC = () => {
   const [rating, setRating] = useState(0);
   const [formData, setFormData] = useState<FormData>({
-    nome_feedback: '',
-    email_feedback: '',
-    tel_feedback: '',
-    msg_feedback: '',
-    nota_feedback: '',
+    nome: '',
+    email: '',
+    telefone: '',
+    mensagem: '',
+    nota: '',
   });
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -72,7 +72,7 @@ const FormularioFeedback: React.FC = () => {
             type="text"
             id="nome_feedback"
             name="nome_feedback"
-            value={formData.nome_feedback}
+            value={formData.nome}
             onChange={handleInputChange}
             placeholder="Nome"
             required
@@ -85,7 +85,7 @@ const FormularioFeedback: React.FC = () => {
             type="text"
             id="tel_feedback"
             name="tel_feedback"
-            value={formData.tel_feedback}
+            value={formData.telefone}
             onChange={handleInputChange}
             placeholder="Telefone"
             required
@@ -99,7 +99,7 @@ const FormularioFeedback: React.FC = () => {
           type="email"
           id="email_feedback"
           name="email_feedback"
-          value={formData.email_feedback}
+          value={formData.email}
           onChange={handleInputChange}
           placeholder="E-mail"
           required
@@ -111,7 +111,7 @@ const FormularioFeedback: React.FC = () => {
         <textarea
           id="msg_feedback"
           name="msg_feedback"
-          value={formData.msg_feedback}
+          value={formData.mensagem}
           onChange={handleInputChange}
           placeholder="Mensagem"
           required

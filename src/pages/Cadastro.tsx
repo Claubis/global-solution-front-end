@@ -2,22 +2,22 @@ import React, { useState } from 'react';
 
 export default function Cadastro() {
   const [formData, setFormData] = useState({
-    nome_usuario: '',
-    sobrenome_usuario: '',
-    telefone_usuario: '',
-    email_usuario: '',
-    confirmEmail_usuario: '',
-    senha_usuario: '',
-    confirmSenha_usuario: ''
+    nome: '',
+    sobrenome: '',
+    email: '',
+    telefone: '',
+    confirmEmail: '', // Não será enviado para o back
+    senha: '',
+    confirmSenha: '' // Não será enviado para o back
   });
 
   const [errors, setErrors] = useState({
-    nome_usuario: '',
-    sobrenome_usuario: '',
-    telefone_usuario: '',
-    email_usuario: '',
-    confirmEmail_usuario: '',
-    senha_usuario: '',
+    nome: '',
+    sobrenome: '',
+    telefone: '',
+    email: '',
+    confirmEmail: '',
+    senha: '',
     confirmSenha_usuario: ''
   });
 
@@ -26,64 +26,64 @@ export default function Cadastro() {
     const newErrors = { ...errors };
 
     // Validação dos campos
-    if (!formData.nome_usuario) {
-      newErrors.nome_usuario = 'Nome é obrigatório';
+    if (!formData.nome) {
+      newErrors.nome = 'Nome é obrigatório';
       valid = false;
     } else {
-      newErrors.nome_usuario = '';
+      newErrors.nome = '';
     }
 
-    if (!formData.sobrenome_usuario) {
-      newErrors.sobrenome_usuario = 'Sobrenome é obrigatório';
+    if (!formData.sobrenome) {
+      newErrors.sobrenome = 'Sobrenome é obrigatório';
       valid = false;
     } else {
-      newErrors.sobrenome_usuario = '';
+      newErrors.sobrenome = '';
     }
 
-    if (!formData.telefone_usuario) {
-      newErrors.telefone_usuario = 'Telefone é obrigatório';
+    if (!formData.telefone) {
+      newErrors.telefone = 'Telefone é obrigatório';
       valid = false;
     } else {
-      newErrors.telefone_usuario = '';
+      newErrors.telefone = '';
     }
 
-    if (!formData.email_usuario) {
-      newErrors.email_usuario = 'E-mail é obrigatório';
+    if (!formData.email) {
+      newErrors.email = 'E-mail é obrigatório';
       valid = false;
     } else {
-      newErrors.email_usuario = '';
+      newErrors.email = '';
     }
 
-    if (formData.email_usuario !== formData.confirmEmail_usuario) {
-      newErrors.confirmEmail_usuario = 'Os e-mails não coincidem';
+    if (formData.email !== formData.confirmEmail) {
+      newErrors.confirmEmail = 'Os e-mails não coincidem';
       valid = false;
     } else {
-      newErrors.confirmEmail_usuario = '';
+      newErrors.confirmEmail = '';
     }
 
-    if (!formData.confirmEmail_usuario) {
-      newErrors.confirmEmail_usuario = 'Confirmação de e-mail é obrigatória';
+    if (!formData.confirmEmail) {
+      newErrors.confirmEmail = 'Confirmação de e-mail é obrigatória';
       valid = false;
     }
 
-    if (!formData.senha_usuario) {
-      newErrors.senha_usuario= 'Senha é obrigatória';
+    if (!formData.senha) {
+      newErrors.senha = 'Senha é obrigatória';
       valid = false;
-    } else if (!/^(?=.*[a-zA-Z]{2,})(?=.*[!@#$%^&*(),.?":{}|<>])(?=.*\d{6,}).{10,}$/.test(formData.senha_usuario)) {
-      newErrors.senha_usuario = 'A senha deve ter pelo menos duas letras, um caractere especial e seis números';
+    } else if (!/^(?=.*[a-zA-Z]{2,})(?=.*[!@#$%^&*(),.?":{}|<>])(?=.*\d{6,}).{10,}$/.test(formData.senha)) {
+      newErrors.senha = 'A senha deve ter pelo menos duas letras, um caractere especial e seis números';
       valid = false;
     } else {
-      newErrors.senha_usuario = '';
+      newErrors.senha = '';
     }
 
-    if (formData.senha_usuario !== formData.confirmSenha_usuario) {
+    if (formData.senha !== formData.confirmSenha) {
       newErrors.confirmSenha_usuario = 'As senhas não coincidem';
       valid = false;
     } else {
       newErrors.confirmSenha_usuario = '';
     }
 
-    if (!formData.confirmSenha_usuario) {
+    if (!formData.confirmSenha) {
       newErrors.confirmSenha_usuario = 'Confirmação é obrigatória';
       valid = false;
     }
@@ -145,12 +145,12 @@ export default function Cadastro() {
                 <input
                   type="text"
                   name="nome"
-                  value={formData.nome_usuario}
+                  value={formData.nome}
                   onChange={handleChange}
                   className="w-full p-2 rounded"
                   placeholder='Nome'
                 />
-                {errors.nome_usuario && <p className="text-red-500 text-sm">{errors.nome_usuario}</p>}
+                {errors.nome && <p className="text-red-500 text-sm">{errors.nome}</p>}
                 <div className='h-[2px] bg-[#8E99AB]'></div>
               </div>
 
@@ -158,12 +158,12 @@ export default function Cadastro() {
                 <input
                   type="text"
                   name="sobrenome"
-                  value={formData.sobrenome_usuario}
+                  value={formData.sobrenome}
                   onChange={handleChange}
                   className="w-full p-2 rounded"
                   placeholder='Sobrenome'
                 />
-                {errors.sobrenome_usuario && <p className="text-red-500 text-sm">{errors.sobrenome_usuario}</p>}
+                {errors.sobrenome && <p className="text-red-500 text-sm">{errors.sobrenome}</p>}
                 <div className='h-[2px] bg-[#8E99AB]'></div>
               </div>
 
@@ -171,12 +171,12 @@ export default function Cadastro() {
                 <input
                   type="number"
                   name="telefone"
-                  value={formData.telefone_usuario}
+                  value={formData.telefone}
                   onChange={handleChange}
                   className="w-full p-2 rounded"
                   placeholder='Telefone'
                 />
-                {errors.telefone_usuario && <p className="text-red-500 text-sm">{errors.telefone_usuario}</p>}
+                {errors.telefone && <p className="text-red-500 text-sm">{errors.telefone}</p>}
                 <div className='h-[2px] bg-[#8E99AB]'></div>
               </div>
 
@@ -184,12 +184,12 @@ export default function Cadastro() {
                 <input
                   type="email"
                   name="email"
-                  value={formData.email_usuario}
+                  value={formData.email}
                   onChange={handleChange}
                   className="w-full p-2  rounded"
                   placeholder='E-mail'
                 />
-                {errors.email_usuario && <p className="text-red-500 text-sm">{errors.email_usuario}</p>}
+                {errors.email && <p className="text-red-500 text-sm">{errors.email}</p>}
                 <div className='h-[2px] bg-[#8E99AB]'></div>
               </div>
 
@@ -197,12 +197,12 @@ export default function Cadastro() {
                 <input
                   type="email"
                   name="confirmEmail"
-                  value={formData.confirmEmail_usuario}
+                  value={formData.confirmEmail}
                   onChange={handleChange}
                   className="w-full p-2 rounded"
                   placeholder='Confirme seu E-mail'
                 />
-                {errors.confirmEmail_usuario && <p className="text-red-500 text-sm">{errors.confirmEmail_usuario}</p>}
+                {errors.confirmEmail && <p className="text-red-500 text-sm">{errors.confirmEmail}</p>}
                 <div className='h-[2px] bg-[#8E99AB]'></div>
               </div>
 
@@ -211,12 +211,12 @@ export default function Cadastro() {
                   <input
                     type="password"
                     name="senha"
-                    value={formData.senha_usuario}
+                    value={formData.senha}
                     onChange={handleChange}
                     className="w-full p-2 rounded"
                     placeholder='Senha'
                   />
-                  {errors.senha_usuario && <p className="text-red-500 text-sm">{errors.senha_usuario}</p>}
+                  {errors.senha && <p className="text-red-500 text-sm">{errors.senha}</p>}
                   <div className='h-[2px] bg-[#8E99AB]'></div>
                 </div>
 
@@ -224,7 +224,7 @@ export default function Cadastro() {
                   <input
                     type="password"
                     name="confirmSenha"
-                    value={formData.confirmSenha_usuario}
+                    value={formData.confirmSenha}
                     onChange={handleChange}
                     className="w-full p-2 rounded"
                     placeholder='Confirme sua Senha'

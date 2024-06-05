@@ -4,12 +4,12 @@ import Image from 'next/image';
 import imagem from '../../public/assets/Feedback/Feedback_Rectangle33.png';
 
 interface FormData {
-  email_news: string;
+  email: string;
 }
 
 const FormularioNews: React.FC = () => {
   const [formData, setFormData] = useState<FormData>({
-    email_news: '',
+    email: '',
   });
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -19,7 +19,7 @@ const FormularioNews: React.FC = () => {
 
   const handleSubmitNewsletter = async (e: React.FormEvent) => {
     e.preventDefault();
-    const email = formData.email_news;
+    const email = formData.email;
     // Substitua pela URL real do seu endpoint de back-end
     const response = await fetch('/api/newsletter', {
       method: 'POST',
@@ -46,7 +46,7 @@ const FormularioNews: React.FC = () => {
           type="email"
           id="newsletter-email"
           name="email_feedback"
-          value={formData.email_news}
+          value={formData.email}
           onChange={handleInputChange}
           className="absolute w-full h-full bg-transparent pl-4 text-lg font-medium text-teal-700 focus:outline-none flex justify-center items-center bg-[#FCF8F7]"
           placeholder="E-mail"

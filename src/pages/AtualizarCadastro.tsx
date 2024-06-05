@@ -4,6 +4,18 @@ import { useSession } from 'next-auth/react';
 export default function AtualizarCadastro() {
   const { data: session } = useSession();
 
+  // Receber as informacoes do back quando o usuário se cadastrar - Atualização de Dados
+  // idUsuario
+  // nome
+  // sobrenome
+  // email
+  // senha
+  // telefone
+
+  // Exclusão de usuário - Precisa ter o endpoint
+  // idUsuario
+
+
   return (
     
     <div className="flex items-center justify-center min-h-screen bg-[#B9E2E0]">

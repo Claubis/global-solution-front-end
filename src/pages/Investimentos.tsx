@@ -4,12 +4,12 @@ import axios from 'axios';
 
 const Investimentos: React.FC = () => {
   const [formData, setFormData] = useState({
-    nome_inv: '',
-    email_inv: '',
-    telefone_inv: '',
-    nomeEmpresa_inv: '',
-    quantiquantia_contribuida_inv: '',
-    msg_inv: '',
+    nome: '',
+    email: '',
+    telefone: '',
+    nomeEmpresa: '',
+    quantiaContribuida: '',
+    mensagem: '',
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -21,8 +21,8 @@ const Investimentos: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const { nome_inv, email_inv, telefone_inv, nomeEmpresa_inv, quantiquantia_contribuida_inv, msg_inv } = formData;
-    if (!nome_inv || !email_inv || !telefone_inv || !nomeEmpresa_inv || !quantiquantia_contribuida_inv || !msg_inv ) {
+    const { nome, email, telefone, nomeEmpresa, quantiaContribuida, mensagem } = formData;
+    if (!nome || !email || !telefone || !nomeEmpresa || !quantiaContribuida || !mensagem ) {
       alert('Por favor, preencha todos os campos');
       return;
     }
@@ -64,7 +64,7 @@ const Investimentos: React.FC = () => {
               type="text"
               placeholder="Nome"
               name="nome"
-              value={formData.nome_inv}
+              value={formData.nome}
               onChange={handleChange}
             />
           </div>
@@ -77,7 +77,7 @@ const Investimentos: React.FC = () => {
               type="email"
               placeholder="E-mail"
               name="email"
-              value={formData.email_inv}
+              value={formData.email}
               onChange={handleChange}
             />
           </div>
@@ -90,7 +90,7 @@ const Investimentos: React.FC = () => {
               type="text"
               placeholder="Telefone"
               name="telefone"
-              value={formData.telefone_inv}
+              value={formData.telefone}
               onChange={handleChange}
             />
           </div>
@@ -103,7 +103,7 @@ const Investimentos: React.FC = () => {
               type="text"
               placeholder="Nome da Empresa"
               name="nomeEmpresa"
-              value={formData.nomeEmpresa_inv}
+              value={formData.nomeEmpresa}
               onChange={handleChange}
             />
           </div>
@@ -116,7 +116,7 @@ const Investimentos: React.FC = () => {
               type="number"
               placeholder="Valor a Contribuir"
               name="valorContribuir"
-              value={formData.quantiquantia_contribuida_inv}
+              value={formData.quantiaContribuida}
               onChange={handleChange}
             />
           </div>
@@ -131,7 +131,7 @@ const Investimentos: React.FC = () => {
               id="mensagem"
               placeholder="Mensagem"
               name="mensagem"
-              value={formData.msg_inv}
+              value={formData.mensagem}
               onChange={handleChange}
             ></textarea>
           </div>

@@ -1,43 +1,37 @@
 import React from 'react';
 
+const stats = [
+  { id: 1, name: 'animais encontrados encalhados no litoral Paranaense', value: '1552' },
+  { id: 2, name: 'encalhes registrados durante o mês de Agosto no Paraná', value: '457' },
+  { id: 3, name: 'dos encalhes registrados  envolveram a espécie pinguim-de-magalhães', value: '80%' },
+]
+
 export default function Dados() {
   return (
-    <div className="relative w-full h-[280px] bg-[#90DAD6]">
-      <div className="absolute left-1/2 transform -translate-x-1/2 w-full max-w-screen-lg h-[280px] "></div>
-      
-      {/* Contêiner da primeira seção */}
-      <div className="absolute left-[13.92%] transform -translate-x-1/2 top-7 text-center">
-        <span className="text-teal-900 font-montserrat text-[84px] font-extrabold leading-[126px]">1552</span>
-        <div className="mt-[10px] text-[#007871] font-montserrat text-[18px] font-medium leading-[27px]">
-          animais encontrados encalhados <br />no litoral Paranaense
+
+        <div className="bg-[#B9E2E0] py-24 sm:py-32">
+          
+          <div className="mx-auto max-w-7xl px-6 lg:px-8">
+            
+            <dl className="grid grid-cols-1 gap-x-8 gap-y-16 text-center lg:grid-cols-3">
+              
+              {stats.map((stat) => (
+                <div key={stat.id} className="mx-auto flex max-w-xs flex-col gap-y-4">
+                  
+                  <dd className="order-first text-3xl font-montserrat font-extrabold tracking-tight text-[#007871] sm:text-5xl">
+                    {stat.value}
+                  </dd>
+
+                  <dt className="text-base leading-7 text-[#007871]">{stat.name}</dt>
+                  
+                  
+                </div>
+              ))}
+            </dl>
+
+          </div>
+          
         </div>
-      </div>
-
-      {/* Contêiner da segunda seção */}
-      <div className="absolute left-[50%] transform -translate-x-1/2 top-7 text-center">
-        <span className="text-teal-900 font-montserrat text-[84px] font-extrabold leading-[126px]">250</span>
-        <div className="mt-[10px] text-[#007871] font-montserrat text-[18px] font-medium leading-[27px]">
-          encalhes registrados <br /> durante o mês de Agosto no Paraná
-        </div>
-      </div>
-
-      {/* Contêiner da terceira seção */}
-      <div className="absolute left-[85.66%] transform -translate-x-1/2 top-7 text-center">
-        <span className="text-teal-900 font-montserrat text-[84px] font-extrabold leading-[126px]">75%</span>
-        <div className="mt-[10px] text-[#007871] font-montserrat text-[18px] font-medium leading-[27px]">
-          envolveram a espécie pinguim-de-magalhães
-        </div>
-
-      </div>
-
-      {/* Substituindo imagens por divs com bordas */}
-      <div className="absolute left-[30.5%] top-[51px] h-[160px] w-[3px] bg-teal-900"></div>
-
-      <div className="absolute left-[70.5%] top-[51px] h-[160px] w-[3px] bg-teal-900"></div>
-
-      <div className="absolute top-[250px] left-1/2 transform -translate-x-1/2 text-center text-[#007871] font-montserrat text-[14px] font-medium leading-[21px]">
-        Fonte: referencia do site
-      </div>
-    </div>
+    
   );
 }

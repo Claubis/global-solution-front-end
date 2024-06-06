@@ -45,43 +45,32 @@ const roadmapData = [
 
 const Projeto: React.FC = () => {
   return (
-    
-    <div className="bg-[#F5EAE8] min-h-screen py-10" id='Roadmap'>
-      
-      <div className="text-center mb-12">
-        
-      <div className="relative flex justify-center items-center mt-20 mb-20">
-          <h1 className="relative text-[#F1A027] font-montserrat font-bold text-7xl before:absolute before:content-[''] before:w-[336px] before:h-[3px] before:bg-[#F1A027] before:top-1/2 before:left-[-360px] after:absolute after:content-[''] after:w-[336px] after:h-[3px] after:bg-[#F1A027] after:top-1/2 after:right-[-360px]">
-        roadmap
+    <div className="bg-[#F5EAE8] min-h-screen py-10" id="Roadmap">
+      <div className="md:text-center mb-12">
+        <div className="relative flex justify-center items-center mt-20 mb-20">
+          <h1 className="relative text-[#F1A027] font-montserrat font-bold text-5xl md:text-7xl md:before:absolute md:before:content-[''] md:before:w-[336px] md:before:h-[3px] md:before:bg-[#F1A027] md:before:top-1/2 md:before:left-[-360px] md:after:absolute md:after:content-[''] md:after:w-[336px] md:after:h-[3px] after:bg-[#F1A027] md:after:top-1/2 md:after:right-[-360px]">
+            roadmap
           </h1>
-      </div>
-        
-        <p className="text-[#000] font-montserrat font-semibold text-2xl m-20">
+        </div>
+        <p className="text-[#000] font-montserrat font-extralight text-2xl md:m-20 p-10 md:p-0">
           Descubra o caminho que estamos trilhando para tornar a conservação marinha mais acessível e eficaz. Nosso roadmap destaca os principais marcos e etapas futuras para o desenvolvimento e aprimoramento do aplicativo MiloTech.
         </p>
       </div>
 
-      <div className="relative container mx-auto">
-        
+      <div className="relative container mx-auto p-10">
         {roadmapData.map((item, index) => (
-          
-          <div key={index} className="mb-8 flex justify-between items-center w-full" style={{ flexDirection: index % 2 === 0 ? 'row' : 'row-reverse' }}>
-            
-            <div className="order-1 w-5/12"></div>
-            
-            <div className={`order-1 w-5/12 px-1 py-4 bg-white rounded-lg shadow-md border-l-8`} style={{ borderColor: item.color }}>
-              
-              <h3 className=" font-montserrat font-extrabold text-2xl p-5" style={{ color: item.color }}>{item.title}</h3>
-              
+          <div
+            key={index}
+            className={`mb-8 w-full flex flex-col items-center ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} md:justify-between`}
+          >
+            <div className="order-1 w-full md:w-5/12"></div>
+            <div className={`order-1 w-full md:w-5/12 px-1 py-4 bg-white rounded-lg shadow-md border-l-8`} style={{ borderColor: item.color }}>
+              <h3 className="font-montserrat font-extrabold text-2xl p-5" style={{ color: item.color }}>{item.title}</h3>
               <p className="text-sm font-montserrat font-extralight leading-snug tracking-wide text-gray-900 text-opacity-100 p-5">{item.description}</p>
             </div>
-
-            <div className="order-1 flex justify-center items-center w-24 h-24 bg-white border-2 border-gray-200 rounded-full z-10 shadow-xl">
-              
+            <div className="order-1 md:flex justify-center items-center w-24 h-24 bg-white border-2 border-gray-200 rounded-full z-10 shadow-xl hidden">
               <h1 className="mx-auto text-white font-semibold text-lg" style={{ color: item.color }}>{index + 1}</h1>
-
             </div>
-
           </div>
         ))}
       </div>

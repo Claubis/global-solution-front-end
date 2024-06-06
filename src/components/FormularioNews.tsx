@@ -19,9 +19,17 @@ const FormularioNews: React.FC = () => {
 
   const handleSubmitNewsletter = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Inclui a nota (rating) no formData
+    const dataToSend = { ...formData };
+
+    // Adiciona o console.log para verificar os dados
+    console.log('Dados enviados para o back', dataToSend);
+
+
     const email = formData.email;
     // Substitua pela URL real do seu endpoint de back-end
-    const response = await fetch('/api/newsletter', {
+    const response = await fetch('http://localhost:8080/projetoMilotech/rest/newsletter/inscrever', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -44,8 +52,8 @@ const FormularioNews: React.FC = () => {
       <div className="absolute top-[207px] left-[35px] w-[350px] h-[57px] bg-white">
         <input
           type="email"
-          id="newsletter-email"
-          name="email_feedback"
+          id="email"
+          name="email"
           value={formData.email}
           onChange={handleInputChange}
           className="absolute w-full h-full bg-transparent pl-4 text-lg font-medium text-teal-700 focus:outline-none flex justify-center items-center bg-[#FCF8F7]"

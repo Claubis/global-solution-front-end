@@ -1,12 +1,27 @@
 'use client';
 import React, { useState } from 'react';
 import Link from 'next/link';
+import { useSession, signOut } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { PieChart, Pie, Cell, ResponsiveContainer, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, LineChart, Line } from 'recharts';
 import ModalDeletarConta from '../components/ModalDeletarConta';
 
+interface User {
+  idUsuario: string;
+  name?: string | null;
+  email?: string | null;
+  image?: string | null;
+}
+
+interface Session {
+  user?: User;
+}
+
 const PaginaLogada: React.FC = () => {
+  const { data: sessionData } = useSession();
+  const session = sessionData as Session;
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const canDelete = session?.user?.idUsuario ? true : false;
 
   // Dados de exemplo para gráficos e tabelas
   const dataPieChart = [
@@ -62,7 +77,7 @@ const PaginaLogada: React.FC = () => {
         <header className="flex justify-end space-x-4 mb-6">
           <button className="py-2 px-4 bg-green-500 text-white rounded"><Link href='/AtualizarCadastro'>Alterar Cadastro</Link></button>
           <button className="py-2 px-4 bg-red-500 text-white rounded" onClick={() => setIsModalOpen(true)}>Excluir Conta</button>
-          <button className="py-2 px-4 bg-gray-500 text-white rounded">Logout</button>
+          <button className="py-2 px-4 bg-gray-500 text-white rounded" onClick={() => signOut({ callbackUrl: '/' })}>Logout</button>
         </header>
 
         {/* Tabelas */}
@@ -167,7 +182,7 @@ const PaginaLogada: React.FC = () => {
         </section>
       </main>
 
-      <ModalDeletarConta isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      <ModalDeletarConta isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} canDelete={canDelete} />
     </div>
   );
 };

@@ -21,6 +21,14 @@ const Investimentos: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Inclui a nota (rating) no formData
+    const dataToSend = { ...formData };
+
+    // Adiciona o console.log para verificar os dados
+    console.log('Dados enviados para o back', dataToSend);
+
+
     const { nome, email, telefone, nomeEmpresa, quantiaContribuida, mensagem } = formData;
     if (!nome || !email || !telefone || !nomeEmpresa || !quantiaContribuida || !mensagem ) {
       alert('Por favor, preencha todos os campos');
@@ -28,7 +36,7 @@ const Investimentos: React.FC = () => {
     }
 
     try {
-      await axios.post('https://seu-endpoint.com/api/investidores', formData);
+      await axios.post('http://localhost:8080/projetoMilotech/rest/investidor/inserir', formData);
       alert('Mensagem enviada com sucesso!');
     } catch (error) {
       console.error('Erro ao enviar a mensagem:', error);
@@ -112,10 +120,10 @@ const Investimentos: React.FC = () => {
             
             <input
               className="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline bg-[#B9E2E0] text-[#057872]"
-              id="valorContribuir"
+              id="quantiaContribuida"
               type="number"
               placeholder="Valor a Contribuir"
-              name="valorContribuir"
+              name="quantiaContribuida"
               value={formData.quantiaContribuida}
               onChange={handleChange}
             />

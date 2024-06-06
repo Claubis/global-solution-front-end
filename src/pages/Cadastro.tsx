@@ -1,24 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 export default function Cadastro() {
   const [formData, setFormData] = useState({
-    nome: '',
-    sobrenome: '',
-    email: '',
-    telefone: '',
-    confirmEmail: '', // Não será enviado para o back
-    senha: '',
-    confirmSenha: '' // Não será enviado para o back
+    nome: "",
+    sobrenome: "",
+    telefone: "",
+    email: "",
+    confirmEmail: "",
+    senha: "",
+    confirmSenha: "",
   });
 
   const [errors, setErrors] = useState({
-    nome: '',
-    sobrenome: '',
-    telefone: '',
-    email: '',
-    confirmEmail: '',
-    senha: '',
-    confirmSenha_usuario: ''
+    nome: "",
+    sobrenome: "",
+    telefone: "",
+    email: "",
+    confirmEmail: "",
+    senha: "",
+    confirmSenha: "",
   });
 
   const validate = () => {
@@ -27,64 +27,69 @@ export default function Cadastro() {
 
     // Validação dos campos
     if (!formData.nome) {
-      newErrors.nome = 'Nome é obrigatório';
+      newErrors.nome = "Nome é obrigatório";
       valid = false;
     } else {
-      newErrors.nome = '';
+      newErrors.nome = "";
     }
 
     if (!formData.sobrenome) {
-      newErrors.sobrenome = 'Sobrenome é obrigatório';
+      newErrors.sobrenome = "Sobrenome é obrigatório";
       valid = false;
     } else {
-      newErrors.sobrenome = '';
+      newErrors.sobrenome = "";
     }
 
     if (!formData.telefone) {
-      newErrors.telefone = 'Telefone é obrigatório';
+      newErrors.telefone = "Telefone é obrigatório";
       valid = false;
     } else {
-      newErrors.telefone = '';
+      newErrors.telefone = "";
     }
 
     if (!formData.email) {
-      newErrors.email = 'E-mail é obrigatório';
+      newErrors.email = "E-mail é obrigatório";
       valid = false;
     } else {
-      newErrors.email = '';
+      newErrors.email = "";
     }
 
     if (formData.email !== formData.confirmEmail) {
-      newErrors.confirmEmail = 'Os e-mails não coincidem';
+      newErrors.confirmEmail = "Os e-mails não coincidem";
       valid = false;
     } else {
-      newErrors.confirmEmail = '';
+      newErrors.confirmEmail = "";
     }
 
     if (!formData.confirmEmail) {
-      newErrors.confirmEmail = 'Confirmação de e-mail é obrigatória';
+      newErrors.confirmEmail = "Confirmação de e-mail é obrigatória";
       valid = false;
     }
 
     if (!formData.senha) {
-      newErrors.senha = 'Senha é obrigatória';
+      newErrors.senha = "Senha é obrigatória";
       valid = false;
-    } else if (!/^(?=.*[a-zA-Z]{2,})(?=.*[!@#$%^&*(),.?":{}|<>])(?=.*\d{6,}).{10,}$/.test(formData.senha)) {
-      newErrors.senha = 'A senha deve ter pelo menos duas letras, um caractere especial e seis números';
+    } else if (
+      !/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!*@#$%^&+=])(?=\S+$).{6,}$/.test(
+        formData.senha
+      )
+    ) {
+      newErrors.senha =
+        "A senha deve conter no mínimo 6 caracteres, incluindo pelo menos um número, uma letra maiúscula, uma letra minúscula e um caractere especial";
       valid = false;
     } else {
-      newErrors.senha = '';
+      newErrors.senha = "";
     }
 
     if (formData.senha !== formData.confirmSenha) {
-      newErrors.confirmSenha_usuario = 'As senhas não coincidem';
+      newErrors.confirmSenha = "As senhas não coincidem";
       valid = false;
     } else {
-      newErrors.confirmSenha_usuario = '';
+      newErrors.confirmSenha = "";
     }
 
     if (!formData.confirmSenha) {
-      newErrors.confirmSenha_usuario = 'Confirmação é obrigatória';
+      newErrors.confirmSenha = "Confirmação é obrigatória";
       valid = false;
     }
 
@@ -92,30 +97,54 @@ export default function Cadastro() {
     return valid;
   };
 
-  const handleChange = (e: any) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
-      [name]: value
+      [name]: value,
     });
   };
 
-  const handleSubmit = async (e: any) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (validate()) {
       try {
-        const response = await fetch('http://seu-endpoint-backend/api/cadastro', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(formData)
-        });
-        const result = await response.json();
-        console.log('Sucesso:', result);
-        // Adicione aqui qualquer lógica adicional após o envio bem-sucedido
+        const response = await fetch(
+          "http://localhost:8080/projetoMilotech/rest/usuario/criar",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              nome: formData.nome,
+              sobrenome: formData.sobrenome,
+              telefone: formData.telefone.replace(/\D/g, ""), // Remove caracteres não numéricos
+              email: formData.email,
+              senha: formData.senha,
+            }),
+          }
+        );
+        if (response.ok) {
+          alert("Cadastro realizado com sucesso!");
+          setFormData({
+            nome: "",
+            sobrenome: "",
+            telefone: "",
+            email: "",
+            confirmEmail: "",
+            senha: "",
+            confirmSenha: "",
+          });
+        } else {
+          const result = await response.json();
+          alert("Erro ao cadastrar: " + result.message);
+        }
       } catch (error) {
-        console.error('Erro:', error);
+        console.error("Erro:", error);
+        alert(
+          "Ocorreu um erro ao realizar o cadastro. Tente novamente mais tarde."
+        );
       }
     }
   };
@@ -125,22 +154,26 @@ export default function Cadastro() {
       <div className="absolute inset-0 bg-white bg-opacity-40"></div>
 
       <div className="relative flex flex-col items-center justify-center min-h-screen p-4">
-        <div className='flex border h-auto p-0 bg-white shadow-lg w-full max-w-6xl gap-0'>
-          
+        <div className="flex border h-auto p-0 bg-white shadow-lg w-full max-w-6xl gap-0">
           <div className="w-full flex flex-col justify-center bg-[#20A19A] p-10 text-white">
-
-            <h2 className="font-montserrat font-extrabold text-6xl mb-10 text-left ">crie sua <br /> conta</h2>
+            <h2 className="font-montserrat font-extrabold text-6xl mb-10 text-left ">
+              crie sua <br /> conta
+            </h2>
 
             <p className="font-montserrat font-medium text-lg text-left max-w-2xl leading-10">
-              Se você ainda não faz parte da nossa comunidade, <br /> junte-se hoje e comece a fazer a diferença! O cadastro <br /> é rápido e fácil. Preencha o formulário ao lado para <br /> começar a sua jornada na conservação marinha.
+              Se você ainda não faz parte da nossa comunidade, <br /> junte-se
+              hoje e comece a fazer a diferença! O cadastro <br /> é rápido e
+              fácil. Preencha o formulário ao lado para <br /> começar a sua
+              jornada na conservação marinha.
             </p>
           </div>
 
-          <div className='w-full p-10'>
-            <h2 className="text-[#F1A027] font-montserrat text-2xl font-bold mb-6 text-center">DIGITE SEUS DADOS</h2>
-            
+          <div className="w-full p-10">
+            <h2 className="text-[#F1A027] font-montserrat text-2xl font-bold mb-6 text-center">
+              DIGITE SEUS DADOS
+            </h2>
+
             <form className="space-y-6 w-full" onSubmit={handleSubmit}>
-              
               <div className="flex flex-col space-y-2 font-montserrat font-normal">
                 <input
                   type="text"
@@ -148,10 +181,12 @@ export default function Cadastro() {
                   value={formData.nome}
                   onChange={handleChange}
                   className="w-full p-2 rounded"
-                  placeholder='Nome'
+                  placeholder="Nome"
                 />
-                {errors.nome && <p className="text-red-500 text-sm">{errors.nome}</p>}
-                <div className='h-[2px] bg-[#8E99AB]'></div>
+                {errors.nome && (
+                  <p className="text-red-500 text-sm">{errors.nome}</p>
+                )}
+                <div className="h-[2px] bg-[#8E99AB]"></div>
               </div>
 
               <div className="flex flex-col space-y-2">
@@ -161,23 +196,27 @@ export default function Cadastro() {
                   value={formData.sobrenome}
                   onChange={handleChange}
                   className="w-full p-2 rounded"
-                  placeholder='Sobrenome'
+                  placeholder="Sobrenome"
                 />
-                {errors.sobrenome && <p className="text-red-500 text-sm">{errors.sobrenome}</p>}
-                <div className='h-[2px] bg-[#8E99AB]'></div>
+                {errors.sobrenome && (
+                  <p className="text-red-500 text-sm">{errors.sobrenome}</p>
+                )}
+                <div className="h-[2px] bg-[#8E99AB]"></div>
               </div>
 
               <div className="flex flex-col space-y-2">
                 <input
-                  type="number"
+                  type="text"
                   name="telefone"
                   value={formData.telefone}
                   onChange={handleChange}
                   className="w-full p-2 rounded"
-                  placeholder='Telefone'
+                  placeholder="Telefone"
                 />
-                {errors.telefone && <p className="text-red-500 text-sm">{errors.telefone}</p>}
-                <div className='h-[2px] bg-[#8E99AB]'></div>
+                {errors.telefone && (
+                  <p className="text-red-500 text-sm">{errors.telefone}</p>
+                )}
+                <div className="h-[2px] bg-[#8E99AB]"></div>
               </div>
 
               <div className="flex flex-col space-y-2">
@@ -187,10 +226,12 @@ export default function Cadastro() {
                   value={formData.email}
                   onChange={handleChange}
                   className="w-full p-2  rounded"
-                  placeholder='E-mail'
+                  placeholder="E-mail"
                 />
-                {errors.email && <p className="text-red-500 text-sm">{errors.email}</p>}
-                <div className='h-[2px] bg-[#8E99AB]'></div>
+                {errors.email && (
+                  <p className="text-red-500 text-sm">{errors.email}</p>
+                )}
+                <div className="h-[2px] bg-[#8E99AB]"></div>
               </div>
 
               <div className="flex flex-col space-y-2">
@@ -200,13 +241,15 @@ export default function Cadastro() {
                   value={formData.confirmEmail}
                   onChange={handleChange}
                   className="w-full p-2 rounded"
-                  placeholder='Confirme seu E-mail'
+                  placeholder="Confirme seu E-mail"
                 />
-                {errors.confirmEmail && <p className="text-red-500 text-sm">{errors.confirmEmail}</p>}
-                <div className='h-[2px] bg-[#8E99AB]'></div>
+                {errors.confirmEmail && (
+                  <p className="text-red-500 text-sm">{errors.confirmEmail}</p>
+                )}
+                <div className="h-[2px] bg-[#8E99AB]"></div>
               </div>
 
-              <div className='grid grid-cols-2 gap-3'>
+              <div className="grid grid-cols-2 gap-3">
                 <div className="flex flex-col space-y-2">
                   <input
                     type="password"
@@ -214,10 +257,12 @@ export default function Cadastro() {
                     value={formData.senha}
                     onChange={handleChange}
                     className="w-full p-2 rounded"
-                    placeholder='Senha'
+                    placeholder="Senha"
                   />
-                  {errors.senha && <p className="text-red-500 text-sm">{errors.senha}</p>}
-                  <div className='h-[2px] bg-[#8E99AB]'></div>
+                  {errors.senha && (
+                    <p className="text-red-500 text-sm">{errors.senha}</p>
+                  )}
+                  <div className="h-[2px] bg-[#8E99AB]"></div>
                 </div>
 
                 <div className="flex flex-col space-y-2">
@@ -227,21 +272,27 @@ export default function Cadastro() {
                     value={formData.confirmSenha}
                     onChange={handleChange}
                     className="w-full p-2 rounded"
-                    placeholder='Confirme sua Senha'
+                    placeholder="Confirme sua Senha"
                   />
-                  {errors.confirmSenha_usuario && <p className="text-red-500 text-sm">{errors.confirmSenha_usuario}</p>}
-                  <div className='h-[2px] bg-[#8E99AB]'></div>
+                  {errors.confirmSenha && (
+                    <p className="text-red-500 text-sm">
+                      {errors.confirmSenha}
+                    </p>
+                  )}
+                  <div className="h-[2px] bg-[#8E99AB]"></div>
                 </div>
               </div>
 
               <div className="flex justify-center mt-6">
-                <button className="bg-[#007871] text-white rounded-full py-2 px-8" type="submit">
+                <button
+                  className="bg-[#007871] text-white rounded-full py-2 px-8"
+                  type="submit"
+                >
                   Criar Conta
                 </button>
               </div>
             </form>
           </div>
-
         </div>
       </div>
     </div>

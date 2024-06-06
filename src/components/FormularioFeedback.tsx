@@ -5,7 +5,7 @@ interface FormData {
   email: string;
   telefone: string;
   mensagem: string;
-  nota: string;
+  nota: number;
 }
 
 const StarIcon: React.FC<{ filled: boolean; onClick: () => void }> = ({ filled, onClick }) => (
@@ -33,7 +33,7 @@ const FormularioFeedback: React.FC = () => {
     email: '',
     telefone: '',
     mensagem: '',
-    nota: '',
+    nota: 0, // Inicializamos a nota como 0
   });
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -43,16 +43,23 @@ const FormularioFeedback: React.FC = () => {
 
   const handleSubmitFeedback = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Substitua pela URL real do seu endpoint de back-end
-    const response = await fetch('/api/feedback', {
+
+    // Inclui a nota (rating) no formData
+    const dataToSend = { ...formData, nota: rating };
+
+    // Adiciona o console.log para verificar os dados
+    console.log('Dados enviados:', dataToSend);
+
+    const response = await fetch('http://localhost:8080/projetoMilotech/rest/feedback/enviar', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(formData),
+      body: JSON.stringify(dataToSend),
     });
     const result = await response.json();
     console.log('Feedback enviado:', result);
+
   };
 
   const handleSetRating = (index: number) => {
@@ -70,8 +77,8 @@ const FormularioFeedback: React.FC = () => {
         <div className="w-[350px] h-[57px] rounded-full bg-[#B9E2E0] p-4">
           <input
             type="text"
-            id="nome_feedback"
-            name="nome_feedback"
+            id="nome"
+            name="nome"
             value={formData.nome}
             onChange={handleInputChange}
             placeholder="Nome"
@@ -83,8 +90,8 @@ const FormularioFeedback: React.FC = () => {
         <div className="w-[350px] h-[57px] rounded-full bg-[#B9E2E0] p-4">
           <input
             type="text"
-            id="tel_feedback"
-            name="tel_feedback"
+            id="telefone"
+            name="telefone"
             value={formData.telefone}
             onChange={handleInputChange}
             placeholder="Telefone"
@@ -97,8 +104,8 @@ const FormularioFeedback: React.FC = () => {
       <div className="w-full h-[57px] rounded-full bg-[#B9E2E0] p-4">
         <input
           type="email"
-          id="email_feedback"
-          name="email_feedback"
+          id="email"
+          name="email"
           value={formData.email}
           onChange={handleInputChange}
           placeholder="E-mail"
@@ -109,8 +116,8 @@ const FormularioFeedback: React.FC = () => {
 
       <div className="w-full h-[182px] rounded-[25px] bg-[#B9E2E0] p-4">
         <textarea
-          id="msg_feedback"
-          name="msg_feedback"
+          id="mensagem"
+          name="mensagem"
           value={formData.mensagem}
           onChange={handleInputChange}
           placeholder="Mensagem"

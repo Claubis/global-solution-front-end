@@ -1,36 +1,31 @@
-'use client';
-import React, { useState } from 'react';
-import Link from 'next/link';
-import { useRouter } from 'next/navigation';
-import { signIn } from 'next-auth/react';
-import imagem from '../../public/assets/Login/login_imagegradiente.png';
+"use client";
+import React, { useState } from "react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { signIn } from "next-auth/react";
+import imagem from "../../public/assets/Login/login_imagegradiente.png";
 
 const Login: React.FC = () => {
-  const [formData, setFormData] = useState({ email_login: '', password_login: '' });
-  const [errors, setErrors] = useState({ email_login: '', password_login: '' });
+  const [formData, setFormData] = useState({ email: "", password: "" });
+  const [errors, setErrors] = useState({ email: "", password: "" });
   const router = useRouter();
-
-  // Preciso receber do back as informacoes do usuario para fazer login e validar com os 
-  // dados na tela -- metodo post
-  // email
-  // senha
 
   const validateForm = (): boolean => {
     let valid = true;
-    const newErrors = { email_login: '', password_login: '' };
+    const newErrors = { email: "", password: "" };
 
-    if (!formData.email_login) {
-      newErrors.email_login = 'E-mail é obrigatório';
+    if (!formData.email) {
+      newErrors.email = "E-mail é obrigatório";
       valid = false;
     } else {
-      newErrors.email_login = '';
+      newErrors.email = "";
     }
 
-    if (!formData.password_login) {
-      newErrors.password_login = 'Senha é obrigatória';
+    if (!formData.password) {
+      newErrors.password = "Senha é obrigatória";
       valid = false;
     } else {
-      newErrors.password_login = '';
+      newErrors.password = "";
     }
 
     setErrors(newErrors);
@@ -41,7 +36,7 @@ const Login: React.FC = () => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
-      [name]: value
+      [name]: value,
     });
   };
 
@@ -49,26 +44,36 @@ const Login: React.FC = () => {
     e.preventDefault();
     if (validateForm()) {
       try {
-        const response = await fetch('http://seu-endpoint-backend/api/login', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(formData)
-        });
+        const response = await fetch(
+          "http://localhost:8080/projetoMilotech/rest/login/autenticar",
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              email: formData.email,
+              senha: formData.password, // ajuste aqui para enviar os campos corretos
+            }),
+          }
+        );
 
-        const result = await response.json();
         if (response.ok) {
-          console.log('Login bem-sucedido:', result);
+          const result = await response.json();
+          console.log("Login bem-sucedido:", result);
           // Redirecionar ou realizar outras ações após login bem-sucedido
-          router.push('/dashboard');
+          router.push("/PaginaLogada");
         } else {
-          console.error('Erro no login:', result);
+          const result = await response.json();
+          console.error("Erro no login:", result);
+          alert(result.message || "Erro ao realizar login");
           // Tratar erro de login
         }
       } catch (error) {
-        console.error('Erro:', error);
+        console.error("Erro:", error);
+        alert("Erro ao realizar login. Tente novamente mais tarde.");
       }
     }
   };
+
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-[#F5EAE8] p-6">
@@ -77,17 +82,29 @@ const Login: React.FC = () => {
         style={{ backgroundImage: `url(${imagem.src})` }}
       >
         <div className="flex flex-col justify-center h-full p-10">
-          <h1 className="text-6xl font-montserrat font-extrabold text-left text-white mb-10">bem-vindo <br/>de volta!</h1>
+          <h1 className="text-6xl font-montserrat font-extrabold text-left text-white mb-10">
+            bem-vindo <br />
+            de volta!
+          </h1>
           <p className="text-left text-white font-montserrat font-medium mt-4 leading-10">
-            Se você já faz parte da nossa comunidade, estamos <br />   felizes em vê-lo de volta! Insira suas credenciais ao <br /> lado para continuar acessando o site e contribuir para <br /> a conservação marinha. Seu engajamento é essencial <br /> para ajudar a proteger a vida marinha.
+            Se você já faz parte da nossa comunidade, estamos <br /> felizes em
+            vê-lo de volta! Insira suas credenciais ao <br /> lado para
+            continuar acessando o site e contribuir para <br /> a conservação
+            marinha. Seu engajamento é essencial <br /> para ajudar a proteger a
+            vida marinha.
           </p>
         </div>
       </div>
 
       <div className="bg-white rounded-xl h-[80vh] w-[447px] p-10 flex flex-col items-center">
         <div className="w-full">
-          <h1 className="text-2xl font-montserrat font-bold text-[#F1A027] text-center">LOGIN</h1>
-          <p className="text-center text-black font-montserrat font-normal mt-4">Insira seus dados nos campos abaixo ou utilize o acesso rápido com o Google para facilitar o processo.</p>
+          <h1 className="text-2xl font-montserrat font-bold text-[#F1A027] text-center">
+            LOGIN
+          </h1>
+          <p className="text-center text-black font-montserrat font-normal mt-4">
+            Insira seus dados nos campos abaixo ou utilize o acesso rápido com o
+            Google para facilitar o processo.
+          </p>
         </div>
 
         <form className="w-full mt-6 space-y-6" onSubmit={handleSubmit}>
@@ -96,12 +113,14 @@ const Login: React.FC = () => {
               type="email"
               name="email"
               id="email"
-              value={formData.email_login}
+              value={formData.email}
               onChange={handleChange}
               className="w-full p-3 border border-gray-300 rounded bg-[#B9E2E0] text-[#057872] placeholder-[#057872]"
               placeholder="E-mail"
             />
-            {errors.email_login && <p className="text-red-500 text-sm">{errors.email_login}</p>}
+            {errors.email && (
+              <p className="text-red-500 text-sm">{errors.email}</p>
+            )}
           </div>
 
           <div className="flex flex-col space-y-2">
@@ -109,44 +128,47 @@ const Login: React.FC = () => {
               type="password"
               name="password"
               id="password"
-              value={formData.password_login}
+              value={formData.password}
               onChange={handleChange}
               className="w-full p-3 border border-gray-300 rounded bg-[#B9E2E0] text-[#057872] placeholder-[#057872]"
               placeholder="Senha"
             />
-            {errors.password_login && <p className="text-red-500 text-sm">{errors.password_login}</p>}
+            {errors.password && (
+              <p className="text-red-500 text-sm">{errors.password}</p>
+            )}
           </div>
 
           <div className="flex justify-end w-full">
-            <a href="#" className="text-black text-sm">Esqueceu sua senha?</a>
+            <a href="#" className="text-black text-sm">
+              Esqueceu sua senha?
+            </a>
           </div>
 
           <div className="flex justify-between w-full">
-            
-            <button type="submit" className="w-1/2 py-2 px-4 bg-[#20A19A] text-white rounded hover:bg-[#1B807A] mr-2">
+            <button
+              type="submit"
+              className="w-1/2 py-2 px-4 bg-[#20A19A] text-white rounded hover:bg-[#1B807A] mr-2"
+            >
               Login
             </button>
-
             <button
               type="button"
               className="w-1/2 py-2 px-4 bg-gray-200 text-black flex items-center justify-center rounded hover:bg-gray-300"
-              onClick={() => signIn('google', { callbackUrl: '/PaginaLogada' })}
+              onClick={() => signIn("google", { callbackUrl: "/PaginaLogada" })}
             >
               <span className="mr-2">Google</span>
             </button>
-            
           </div>
         </form>
 
-        <div className='min-w-full'>
-          
-          <p className="text-center text-black font-montserrat font-normal mt-4">Se não possui cadastro, faça agora.</p>
+        <div className="min-w-full">
+          <p className="text-center text-black font-montserrat font-normal mt-4">
+            Se não possui cadastro, faça agora.
+          </p>
           <div className="flex justify-center items-center w-full mt-5">
-            
             <button className="w-full py-2 px-4 bg-[#20A19A] text-white rounded hover:bg-[#1B807A] mr-2">
-              <Link href='/Cadastro'>cadastre-se</Link>
+              <Link href="/Cadastro">cadastre-se</Link>
             </button>
-
           </div>
         </div>
       </div>

@@ -1,19 +1,17 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 
-import imagem from "../../public/assets/Carrosel/imagem1.png"
-import imagem1 from "../../public/assets/Carrosel/imagem2.png"
-import imagem2 from "../../public/assets/Carrosel/imagem3.png"
+import imagem from "../../public/assets/Carrosel/imagem1.png";
+import imagem1 from "../../public/assets/Carrosel/imagem2.png";
+import imagem2 from "../../public/assets/Carrosel/imagem3.png";
 
 const Eventos: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const slides = [
-    { id: 1, content: <Image src={imagem} alt="Slide 1" /> },
-    { id: 2, content: <Image src={imagem1} alt="Slide 1" /> },
-    { id: 3, content: <Image src={imagem2} alt="Slide 1" /> },
-    { id: 4, content: 'Slide 4' },
-    { id: 5, content: 'Slide 5' },
+    { id: 1, content: <Image src={imagem} alt="Slide 1" width={600} height={400} /> },
+    { id: 2, content: <Image src={imagem1} alt="Slide 2" width={600} height={400} /> },
+    { id: 3, content: <Image src={imagem2} alt="Slide 3" width={600} height={400} /> },
   ];
 
   const nextSlide = () => {
@@ -30,25 +28,33 @@ const Eventos: React.FC = () => {
 
   return (
     <div className="w-full relative h-[700px] bg-gradient-to-b from-white to-[#007871]">
-      <div className="flex h-full justify-center items-center">
-        {slides.slice(currentIndex, currentIndex + 3).map((slide, index) => (
-          <div
-            key={slide.id}
-            className="w-1/1 flex-shrink-0 p-4 transition-transform duration-500"
-          >
-            <div className="rounded-2xl h-76 flex justify-center items-center mb-10">
-              <span className="text-2xl font-semibold text-indigo-600">
+      
+      <div className="flex h-full justify-center items-center md:pb-20">
+        {/* Mobile view: Show only one slide */}
+        <div className="w-full flex justify-center items-center p-4 transition-transform duration-500 md:hidden">
+          {slides[currentIndex].content}
+        </div>
+        
+        {/* Desktop view: Show three slides */}
+        <div className="hidden md:flex h-full justify-center items-center">
+          {slides.map((slide, index) => (
+            <div
+              key={slide.id}
+              className={`w-1/3 flex-shrink-0 p-4 transition-transform duration-500 ${index !== currentIndex && 'hidden md:flex'}`}
+            >
+              <div className="rounded-2xl h-76 flex justify-center items-center mb-10">
                 {slide.content}
-              </span>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
       
       <div className="absolute bottom-12 left-1/2 transform -translate-x-1/2 flex space-x-4">
+        
         <button
           onClick={prevSlide}
-          className="p-2 flex justify-center items-center border border-solid border-white w-12 h-12 transition-all duration-500 rounded-full hover:bg-indigo-600"
+          className="p-2 flex justify-center items-center border border-solid border-white w-12 h-12 transition-all duration-500 rounded-full hover:bg-[#F1A027] "
         >
           <svg
             className="h-5 w-5 text-white group-hover:text-white"
@@ -67,9 +73,10 @@ const Eventos: React.FC = () => {
             />
           </svg>
         </button>
+
         <button
           onClick={nextSlide}
-          className="p-2 flex justify-center items-center border border-solid border-white w-12 h-12 transition-all duration-500 rounded-full hover:bg-indigo-600"
+          className="p-2 flex justify-center items-center border border-solid border-white w-12 h-12 transition-all duration-500 rounded-full hover:bg-[#F1A027] "
         >
           <svg
             className="h-5 w-5 text-white group-hover:text-white"
@@ -89,6 +96,7 @@ const Eventos: React.FC = () => {
           </svg>
         </button>
       </div>
+
     </div>
   );
 };

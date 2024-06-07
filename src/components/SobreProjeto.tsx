@@ -7,9 +7,9 @@ import imagem1 from '../../public/assets/Projeto/video.png';
 export default function SobreProjeto() {
   return (
 
-    <div className="mx-auto w-full min-h-screen bg-white md:py-10" id='sobreProjeto'>
+    <div className="mx-auto w-full min-h-screen bg-white md:py-10 dark:bg-gray-900 dark:text-white" id='sobreProjeto'>
       
-      <h1 className="top-10 text-[#F1A027] font-montserrat font-extrabold text-7xl md:text-8xl md:leading-[126px] md:text-center p-10 md:p-0 mt-20 md:mt-0">
+      <h1 className="top-10 text-[#F1A027] dark:text-white font-montserrat font-extrabold text-7xl md:text-8xl md:leading-[126px] md:text-center p-10 md:p-0 mt-20 md:mt-0">
         sobre o projeto
       </h1>
 
@@ -17,11 +17,11 @@ export default function SobreProjeto() {
 
         <div className="flex-col justify-start items-center pl-5 w-full md:p-10">
           
-          <h2 className="text-[#20A19A] font-montserrat font-bold text-[40px] leading-[60px] p-5 md:p-0">
+          <h2 className="text-[#20A19A] font-montserrat font-bold text-[40px] leading-[60px] p-5 md:p-0 dark:text-white">
             apresentação
           </h2>
 
-          <p className="mt-4 text-black font-montserrat text-[20px] leading-[40px] p-5 md:p-0">
+          <p className="mt-4 text-black font-montserrat text-[20px] leading-[40px] p-5 md:p-0 dark:text-white">
             Estamos entusiasmados em apresentar nosso pitch, onde detalhamos a visão e a missão do projeto. Esta apresentação irá levá-lo através dos objetivos fundamentais do nosso aplicativo, como ele funciona, e o impacto significativo que esperamos alcançar na conservação marinha. Acompanhe para descobrir como estamos transformando a paixão pelo oceano em ações práticas para proteger a vida marinha.
           </p>
 

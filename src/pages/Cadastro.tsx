@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 
+import imagem from '../../public/assets/Cadastro/Cadastro_background.png'
+import imagem2 from '../../public/assets/Cadastro/glass.png'
+
 export default function Cadastro() {
   const [formData, setFormData] = useState({
     nome: "",
@@ -150,12 +153,14 @@ export default function Cadastro() {
   };
 
   return (
-    <div className="relative mx-auto w-full min-h-screen bg-[#B9E2E0]">
+
+    <div className="relative mx-auto w-full min-h-screen bg-[#B9E2E0]" style={{ backgroundImage: `url(${imagem.src})` }}>
       <div className="absolute inset-0 bg-white bg-opacity-40"></div>
 
       <div className="relative flex flex-col items-center justify-center min-h-screen p-4">
-        <div className="flex border h-auto p-0 bg-white shadow-lg w-full max-w-6xl gap-0">
-          <div className="w-full flex flex-col justify-center bg-[#20A19A] p-10 text-white">
+        <div className="grid md:flex border h-auto p-0 bg-white shadow-lg w-full max-w-6xl gap-0">
+          
+          <div className="w-full flex flex-col justify-center p-10 text-white" style={{ backgroundImage: `url(${imagem2.src})` }}>
             <h2 className="font-montserrat font-extrabold text-6xl mb-10 text-left ">
               crie sua <br /> conta
             </h2>
@@ -249,7 +254,7 @@ export default function Cadastro() {
                 <div className="h-[2px] bg-[#8E99AB]"></div>
               </div>
 
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid md:grid-cols-2 gap-3">
                 <div className="flex flex-col space-y-2">
                   <input
                     type="password"
@@ -293,6 +298,7 @@ export default function Cadastro() {
               </div>
             </form>
           </div>
+
         </div>
       </div>
     </div>

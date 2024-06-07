@@ -45,24 +45,24 @@ const Investimentos: React.FC = () => {
   };
 
   return (
-    <div className="relative w-full min-h-screen overflow-auto bg-white flex" id='Crowdfunding'>
+    <div className="relative w-full min-h-screen overflow-auto bg-white flex dark:bg-gray-900 dark:text-white" id='Crowdfunding'>
    
       <div className="container mx-auto px-4 py-16 flex flex-col md:flex-row  justify-center items-center">
         
-        <div className="text-center md:text-left mb-16 md:mb-0 md:w-1/2 flex flex-col gap-5">
+        <div className="text-left mb-16 md:mb-0 md:w-1/2 flex flex-col gap-5">
 
             <h1 className="text-6xl font-montserrat font-extrabold text-orange-500">apoie nossa <br /> missão</h1>
         
-            <p className='text-[#007871] font-montserrat font-semibold'>Torne-se um Investidor no Projeto</p>
+            <p className='text-[#007871] font-montserrat font-semibold dark:text-white'>Torne-se um Investidor no Projeto</p>
 
             <p className="text-lg mt-4 leading-10 font-montserrat font-normal">
             Se você está interessado em se tornar um investidor e fazer parte da nossa missão de conservação, convidamos você a preencher nosso formulário de interesse. Nele, você poderá fornecer suas informações de contato e nos contar um pouco sobre seu interesse no projeto. Nossa equipe entrará em contato para discutir como podemos trabalhar juntos para fazer uma diferença positiva no mundo.
           </p>
         </div>
 
-        <form className="w-full max-w-2xl bg-white p-8 md:w-1/2" onSubmit={handleSubmit}>
+        <form className="w-full max-w-2xl md:bg-white p-8 md:w-1/2 bg-[#F5EAE8] rounded-lg md:rounded-none dark:bg-gray-900 dark:text-white" onSubmit={handleSubmit}>
 
-        <div className='grid grid-cols-2 gap-5 font-montserrat font-medium'>
+        <div className='grid md:grid-cols-2 gap-5 font-montserrat font-medium'>
 
           <div className="mb-4 rounded-md">
             

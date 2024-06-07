@@ -76,17 +76,18 @@ const Login: React.FC = () => {
 
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-[#F5EAE8] p-6">
+    
+    <div className="grid md:flex justify-center items-center min-h-screen bg-[#F5EAE8] p-6">
       <div
-        className="w-full md:w-1/2 h-[80vh] bg-cover bg-center"
+        className="md:w-[50%] h-[80vh] bg-cover bg-center"
         style={{ backgroundImage: `url(${imagem.src})` }}
       >
         <div className="flex flex-col justify-center h-full p-10">
-          <h1 className="text-6xl font-montserrat font-extrabold text-left text-white mb-10">
-            bem-vindo <br />
+          <h1 className="text-4xl md:text-6xl font-montserrat font-extrabold text-left text-white mb-10 mt-20 md:mt-0">
+            bem-vindo <br/>
             de volta!
           </h1>
-          <p className="text-left text-white font-montserrat font-medium mt-4 leading-10">
+          <p className="text-left text-white font-montserrat font-medium md:mt-4 md:leading-10 text-sm">
             Se você já faz parte da nossa comunidade, estamos <br /> felizes em
             vê-lo de volta! Insira suas credenciais ao <br /> lado para
             continuar acessando o site e contribuir para <br /> a conservação
@@ -96,7 +97,7 @@ const Login: React.FC = () => {
         </div>
       </div>
 
-      <div className="bg-white rounded-xl h-[80vh] w-[447px] p-10 flex flex-col items-center">
+      <div className="bg-white h-[100vh] md:h-[80vh] md:w-[30%] p-10 flex flex-col items-center">
         <div className="w-full">
           <h1 className="text-2xl font-montserrat font-bold text-[#F1A027] text-center">
             LOGIN

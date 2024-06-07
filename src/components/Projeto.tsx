@@ -45,14 +45,14 @@ const roadmapData = [
 
 const Projeto: React.FC = () => {
   return (
-    <div className="bg-[#F5EAE8] min-h-screen py-10" id="Roadmap">
+    <div className="bg-[#F5EAE8] min-h-screen py-10 dark:bg-gray-900 dark:text-white" id="Roadmap">
       <div className="md:text-center mb-12">
         <div className="relative flex justify-center items-center mt-20 mb-20">
           <h1 className="relative text-[#F1A027] font-montserrat font-bold text-5xl md:text-7xl md:before:absolute md:before:content-[''] md:before:w-[336px] md:before:h-[3px] md:before:bg-[#F1A027] md:before:top-1/2 md:before:left-[-360px] md:after:absolute md:after:content-[''] md:after:w-[336px] md:after:h-[3px] after:bg-[#F1A027] md:after:top-1/2 md:after:right-[-360px]">
             roadmap
           </h1>
         </div>
-        <p className="text-[#000] font-montserrat font-extralight text-2xl md:m-20 p-10 md:p-0">
+        <p className="text-[#000] font-montserrat font-extralight text-2xl md:m-20 p-10 md:p-0 dark:text-white">
           Descubra o caminho que estamos trilhando para tornar a conservação marinha mais acessível e eficaz. Nosso roadmap destaca os principais marcos e etapas futuras para o desenvolvimento e aprimoramento do aplicativo MiloTech.
         </p>
       </div>

@@ -61,20 +61,27 @@ const PaginaLogada: React.FC = () => {
   const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
 
   return (
-    <div className="flex min-h-screen">
+    <div className="grid md:flex min-h-screen">
       {/* Barra lateral esquerda com filtros */}
-      <aside className="w-1/4 bg-gray-200 p-4">
+      
+      <aside className="max-w-[86%] md:w-1/4 bg-gray-200 p-4">
+        
         <h2 className="text-xl font-bold mb-4">Filtros</h2>
+        
         <div className="space-y-4">
+          
           <input type="text" placeholder="Filtrar por nome" className="w-full p-2 border border-gray-300 rounded" />
           <input type="text" placeholder="Filtrar por status" className="w-full p-2 border border-gray-300 rounded" />
           <button className="w-full py-2 px-4 bg-blue-500 text-white rounded">Aplicar Filtros</button>
         </div>
+
       </aside>
 
       {/* Conteúdo principal */}
-      <main className="w-3/4 p-6 bg-white">
+      <main className="md:w-3/4 p-6 bg-white mb-20 max-w-[86%]">
+        
         <header className="flex justify-end space-x-4 mb-6">
+          
           <button className="py-2 px-4 bg-green-500 text-white rounded"><Link href='/AtualizarCadastro'>Alterar Cadastro</Link></button>
           <button className="py-2 px-4 bg-red-500 text-white rounded" onClick={() => setIsModalOpen(true)}>Excluir Conta</button>
           <button className="py-2 px-4 bg-gray-500 text-white rounded" onClick={() => signOut({ callbackUrl: '/' })}>Logout</button>
@@ -103,8 +110,9 @@ const PaginaLogada: React.FC = () => {
               </tbody>
             </table>
           </div>
+
           <div>
-            <h2 className="text-lg font-bold mb-2">Tabela 2</h2>
+            <h2 className="text-sm md:text-lg font-bold mb-2 text-wrap">Tabela 2</h2>
             <table className="w-full border-collapse border border-gray-300">
               <thead>
                 <tr>
@@ -113,6 +121,7 @@ const PaginaLogada: React.FC = () => {
                   <th className="border border-gray-300 p-2">Status</th>
                 </tr>
               </thead>
+
               <tbody>
                 {dataTable.map((item, index) => (
                   <tr key={index}>

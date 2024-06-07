@@ -1,4 +1,6 @@
 import type { AppProps } from 'next/app';
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 
 /* 
 Instalar:
@@ -10,8 +12,9 @@ import '../globals.css';
 // Importações de componentes
 import Menu from '../components/Menu'; 
 import Rodape from '@/components/Rodape';
-import { useRouter } from 'next/router';
-import { useEffect } from 'react';
+import BarraAcessibilidade from '@/components/BarraAcessibilidade';
+import { ThemeProvider } from '../components/ThemeContext';
+
 
 
 
@@ -39,10 +42,15 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
 
   return (
     <SessionProvider session={session}>
+
+      <ThemeProvider>
       {/*{!isHomePage && <Header />*/}
       <Menu/>
+      <BarraAcessibilidade/>
       <Component {...pageProps} />
       <Rodape />
+
+      </ThemeProvider>
     </SessionProvider>
   );
 }

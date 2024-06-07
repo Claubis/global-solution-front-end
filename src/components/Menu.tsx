@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import FocusableComponent from './NavegacaoAcessibilidade';
 
 const Menu: React.FC = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -15,6 +16,7 @@ const Menu: React.FC = () => {
     setMenuOpen(false);
   };
 
+  
   const handleNavigation = (path: string) => {
     if (router.pathname === '/') {
       document.querySelector(path)?.scrollIntoView({ behavior: 'smooth' });
@@ -24,10 +26,15 @@ const Menu: React.FC = () => {
     closeMenu();
   };
 
+
   return (
-    <section className="relative flex justify-center items-center w-full h-[80px] bg-[#077B74]">
+    
+    <section className="relative flex justify-center items-center w-full h-[80px] bg-[#077B74] dark:bg-gray-900 dark:text-white">
+      
       <div className="absolute top-0 left-0 w-full h-[80px] flex items-center bg-transparent px-10">
         <div className="flex justify-between items-center w-full max-w-screen-xl mx-auto">
+
+        <FocusableComponent id="text0" tabIndex={0}>
           <div className="flex-shrink-0">
             <Link href="/">
               <Image
@@ -39,39 +46,52 @@ const Menu: React.FC = () => {
             </Link>
           </div>
 
+          </FocusableComponent>
+
           <div className="hidden lg:flex items-center space-x-8">
+            
             <ul className="flex space-x-8 font-montserrat font-semibold">
-              <li className="text-white font-semibold text-lg cursor-pointer" onClick={() => handleNavigation('#sobreProjeto')}>
+              <li id="text1" tabIndex={1} className="text-white font-semibold text-lg cursor-pointer" onClick={() => handleNavigation('#sobreProjeto')}>
                 sobre o projeto
               </li>
-              <li className="text-white font-semibold text-lg cursor-pointer" onClick={() => handleNavigation('#funcionalidades')}>
+
+              <li id="text2" tabIndex={2} className="text-white font-semibold text-lg cursor-pointer" onClick={() => handleNavigation('#funcionalidades')}>
                 funcionalidades
               </li>
-              <li className="text-white font-semibold text-lg">
+
+              <li id="text3" tabIndex={3} className="text-white font-semibold text-lg">
                 <Link href="/Investimentos">crowdfunding</Link>
               </li>
-              <li className="text-white font-semibold text-lg cursor-pointer" onClick={() => handleNavigation('#Roadmap')}>
+
+              <li id="text4" tabIndex={4} className="text-white font-semibold text-lg cursor-pointer" onClick={() => handleNavigation('#Roadmap')}>
                 roadmap
               </li>
-              <li className="text-white font-semibold text-lg cursor-pointer" onClick={() => handleNavigation('#Educacao')}>
+
+              <li id="text5" tabIndex={5}  className="text-white font-semibold text-lg cursor-pointer" onClick={() => handleNavigation('#Educacao')}>
                 educação
               </li>
-              <li className="text-white font-semibold text-lg">
+
+              <li id="text6" tabIndex={6}  className="text-white font-semibold text-lg">
                 <Link href="/Contato">contato</Link>
               </li>
-              <li className="text-white font-semibold text-lg">
+
+              <li id="text7" tabIndex={7}  className="text-white font-semibold text-lg">
                 <Link href="/Login">Login</Link>
               </li>
+
             </ul>
+
           </div>
 
           <div className="hidden lg:flex gap-5">
             <div className="flex items-center space-x-6">
+              
               <button className="border border-white p-2">
                 <span className="text-white font-semibold text-lg">
-                  <Link href="/Cadastro">apoie nossa missão</Link>
+                  <Link id="text8" tabIndex={8}  href="/Cadastro">apoie nossa missão</Link>
                 </span>
               </button>
+
             </div>
           </div>
 

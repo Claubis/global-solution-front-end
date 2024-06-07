@@ -3,14 +3,14 @@ import React from 'react'
 export default function Funcionalidades() {
   return (
 
-    <section className="bg-[#F5EAE8] " id='funcionalidades'>
+    <section className="bg-[#F5EAE8] dark:bg-gray-900 dark:text-white" id='funcionalidades'>
 	
 		<div className="container max-w-xl p-6 py-12 mx-auto space-y-24 lg:px-8 lg:max-w-7xl">
 
 			<div className="grid lg:gap-8 lg:grid-cols-2 lg:items-center">
 				
 				<div>
-					<h1 className="text-2xl md:text-6xl font-bold tracking-tight text-[#20A19A]">funcionalidades</h1>
+					<h1 className="text-2xl md:text-6xl font-bold tracking-tight text-[#20A19A] dark:text-white">funcionalidades</h1>
 					
 					<div className="mt-12 space-y-12">
 						
@@ -24,9 +24,9 @@ export default function Funcionalidades() {
 
 							<div className="ml-4">
 
-								<h4 className="text-lg font-medium leading-6 dark:text-gray-900">Registro de Incidentes</h4>
+								<h4 className="text-lg font-medium leading-6 dark:text-white">Registro de Incidentes</h4>
 								
-								<p className="mt-2 dark:text-gray-600">Utilize o aplicativo para registrar não só encalhes de animais marinhos, mas também ocorrências de resíduos poluentes e desastres ambientais marítimos, incluindo a localização exata, detalhes do incidente e fotos.</p>
+								<p className="mt-2 dark:text-white">Utilize o aplicativo para registrar não só encalhes de animais marinhos, mas também ocorrências de resíduos poluentes e desastres ambientais marítimos, incluindo a localização exata, detalhes do incidente e fotos.</p>
 
 							</div>
 
@@ -39,8 +39,8 @@ export default function Funcionalidades() {
 								</div>
 							</div>
 							<div className="ml-4">
-								<h4 className="text-lg font-medium leading-6 dark:text-gray-900">Mapa Interativo</h4>
-								<p className="mt-2 dark:text-gray-600">O aplicativo oferece um mapa interativo que mostra todos os encalhes reportados em tempo real, permitindo aos usuários visualizar e monitorar a situação nas suas proximidades ou em escala global.</p>
+								<h4 className="text-lg font-medium leading-6 dark:text-white">Mapa Interativo</h4>
+								<p className="mt-2 dark:text-white">O aplicativo oferece um mapa interativo que mostra todos os encalhes reportados em tempo real, permitindo aos usuários visualizar e monitorar a situação nas suas proximidades ou em escala global.</p>
 							</div>
 						</div>
 						
@@ -66,8 +66,8 @@ export default function Funcionalidades() {
 								</div>
 
 								<div className="ml-4">
-									<h4 className="text-lg font-medium leading-6 dark:text-gray-900">Alertas e Notificações</h4>
-									<p className="mt-2 dark:text-gray-600">Receba alertas sobre novos encalhes, avistamentos de resíduos poluentes, ou desastres ambientais nas suas proximidades, baseados em suas configurações de localização e preferências.</p>
+									<h4 className="text-lg font-medium leading-6 dark:text-white">Alertas e Notificações</h4>
+									<p className="mt-2 dark:text-white">Receba alertas sobre novos encalhes, avistamentos de resíduos poluentes, ou desastres ambientais nas suas proximidades, baseados em suas configurações de localização e preferências.</p>
 								</div>
 							</div>
 							<div className="flex">
@@ -77,8 +77,8 @@ export default function Funcionalidades() {
 									</div>
 								</div>
 								<div className="ml-4">
-									<h4 className="text-lg font-medium leading-6 dark:text-gray-900">Educação e Recursos</h4>
-									<p className="mt-2 dark:text-gray-600">Acesse uma variedade de recursos educativos que abordam desde a biologia marinha até técnicas para lidar com poluição e resgate de animais, enriquecendo seu conhecimento sobre o meio ambiente marinho e práticas de sustentabilidade.</p>
+									<h4 className="text-lg font-medium leading-6 dark:text-white">Educação e Recursos</h4>
+									<p className="mt-2 dark:text-white">Acesse uma variedade de recursos educativos que abordam desde a biologia marinha até técnicas para lidar com poluição e resgate de animais, enriquecendo seu conhecimento sobre o meio ambiente marinho e práticas de sustentabilidade.</p>
 								</div>
 							</div>
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 import imagem from '../../public/assets/Projeto/_3sobreoprojeto_play.png';
 import imagem1 from '../../public/assets/Projeto/video.png';
@@ -25,7 +26,12 @@ export default function SobreProjeto() {
             Estamos entusiasmados em apresentar nosso pitch, onde detalhamos a visão e a missão do projeto. Esta apresentação irá levá-lo através dos objetivos fundamentais do nosso aplicativo, como ele funciona, e o impacto significativo que esperamos alcançar na conservação marinha. Acompanhe para descobrir como estamos transformando a paixão pelo oceano em ações práticas para proteger a vida marinha.
           </p>
 
+          <p className='pt-10 text-[#20A19A] dark:text-white'><a href="https://youtu.be/S0LE24cNHBY?si=k0JXk9OdfuKp8sNX" target='_blank'>Clique aqui e veja o pitch sobre o site</a></p>
+
+
         </div>
+        
+        <a href='https://www.youtube.com/watch?v=8i8KAik3cs8' target='_blank'>
         
         <div className="flex justify-center items-center p-5 md:p-10">
           
@@ -34,6 +40,8 @@ export default function SobreProjeto() {
           </div>
 
         </div>
+        </a>
+
       </div>
     </div>
   );

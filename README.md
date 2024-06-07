@@ -11,7 +11,12 @@ Sabrina Café RM553568
 # Link do Vercel
 https://global-solution-front-end.vercel.app/
 
-# Link do vídeo
+# Link do vídeo - Projeto Geral
+https://www.youtube.com/watch?v=8i8KAik3cs8
+
+# Link do Pitch sobre o site
+
+
 
 
 # Componente Menu

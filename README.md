@@ -16,6 +16,11 @@ https://www.youtube.com/watch?v=8i8KAik3cs8
 
 # Link do Pitch sobre o site
 
+https://youtu.be/S0LE24cNHBY?si=k0JXk9OdfuKp8sNX
+
+# Repositório do GIT
+
+https://github.com/patinaomi/global-solutions
 
 
 
